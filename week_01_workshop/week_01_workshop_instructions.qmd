@@ -6,6 +6,8 @@ number-sections: true
 
 This guide walks you through the steps to set up your AI‑Course Portfolio Website for the Generative AI for Work & Research course.
 
+**NOTE:** This document is a short summary of the steps. For clearer instructions, consult the corresponding video on the website. 
+
 ## Open ChatGPT & switch to `o3`
 - Go to [chatgpt.com](https://chatgpt.com).
 - Click the `▼ Model` dropdown at the top left of the chat window.
@@ -14,7 +16,7 @@ This guide walks you through the steps to set up your AI‑Course Portfolio Webs
 > **Run out of o3 messages?** That's fine. Most other models can handle a single page website.
 
 ## Paste the prompt & course text 
-- Copy the template text from [thegraphcourses.org/aiw](https://thegraphcourses.org/aiw).
+- Copy any relevant parts of the course description from [thegraphcourses.org/aiw](https://thegraphcourses.org/aiw).
 - Start a new message and create an instruction similar to this:
   ```
   Build a one‑page portfolio website for my "Generative AI for Work & Research" course.
@@ -52,9 +54,9 @@ This guide walks you through the steps to set up your AI‑Course Portfolio Webs
 - Leave it **Public**. Click **Create repository**.
 
 ## Add your HTML file
-- Inside the repo, find the button to create a new file and click it.
+- Inside the GitHub repo you created, find the button to create a new file and click it.
 - Type `index.html` in the filename box, lowercase with no spaces.
-- Paste the HTML you copied.
+- Paste the HTML you copied into the main code box below.
 - Click **Commit new file**.
 
 ## Turn on GitHub Pages
@@ -65,13 +67,20 @@ This guide walks you through the steps to set up your AI‑Course Portfolio Webs
 - Click **Save**. Wait ~1 minute.
 - Your site URL appears at the top (e.g. `https://username.github.io/ai-portfolio/`). Click to check.
 
-## Add a profile picture
-- In the repo, click **Add file → Upload files** → upload your image.
+## Add a profile picture to GitHub
+- In the repo, locate the button or icon to upload a file.
+- Upload your image.
 - Click **Commit changes**.
 - Open the uploaded image → right‑click it → **Copy image address**.
-- Back in ChatGPT: "Please insert this image as a circular avatar at the top: <paste URL>".
+- Back in ChatGPT, ask the model to insert the image, which you paste as a link, as a circular avatar at the top. 
 - Copy the new HTML → return to *index.html* → click **Edit** (✎) → replace code → **Commit**.
 - Refresh your live site – after about 1 minute the avatar should appear.
+
+## Submitting your work
+- On the GitHub repo, click on the **index.html** file.
+- Locate the download button or icon in the top right corner.
+- Click it to download the file.
+- Upload the file to the course portal.
 
 ## Optional Challenge: Create a Professional CV with LaTeX
 
