@@ -1,0 +1,105 @@
+---
+title: "Set Up Your AI‑Course Portfolio Website"
+format: html
+number-sections: true
+---
+
+This guide walks you through the steps to set up your AI‑Course Portfolio Website for the Generative AI for Work & Research course.
+
+For more details, consult the corresponding video on the website. 
+
+## Open ChatGPT & switch to `o3`
+- Go to [chatgpt.com](https://chatgpt.com).
+- Click the `▼ Model` dropdown at the top left of the chat window.
+- Select **OpenAI o3**.
+   
+> **Run out of o3 messages?** That's fine. Most other models can handle a single page website.
+
+## Paste the prompt & course text 
+- Copy the template text from [thegraphcourses.org/aiw](https://thegraphcourses.org/aiw).
+- Start a new message and create an instruction similar to this:
+  ```
+  Build a one‑page portfolio website for my "Generative AI for Work & Research" course.
+  Use the course information below and my CV.
+  At least these three sections:
+  - About me
+  - About the course
+  - My weekly submissions (here we will add links to each submission later on)
+  Show the HTML in a Canvas.
+  Avoid frameworks.
+  Don't include my email in the site to avoid spam
+
+  [PASTE THE COURSE TEXT AND YOUR CV HERE]
+  ```
+- (If you are very private, you can use a pseudonym or use a random sample CV from the internet)
+
+## Render the Canvas & refine
+- ChatGPT should reply in a code block canvas.
+- Click the `👁 Preview` button at its top‑right to open the live view.
+- Now you can ask follow‑up prompts:
+  - "Change the accent colour to green."
+  - "Use a serif font for headings."
+  - Upload a screenshot of a site you like → "Match this layout."
+
+## Stop preview & copy `index.html`
+- Click the `■ Stop` button (same location as the eye) to close preview.
+- Select all the HTML inside the code box then copy it with `Ctrl/Cmd+C`.
+
+## Create a GitHub account (one‑off)
+- Visit [github.com](https://github.com) → click **Sign up** and follow the steps.
+
+## Make a new repository
+- Click the `＋` icon (top‑right) → **New repository**.
+- Name it `graph-ai-portfolio` (something similar).
+- Leave it **Public**. Click **Create repository**.
+
+## Add your HTML file
+- Inside the repo, find the plus icon to **Add file → Create new file**.
+- Type `index.html` in the filename box, lowercase with no spaces.
+- Paste the HTML you copied.
+- Scroll down → click **Commit new file**.
+
+## Turn on GitHub Pages
+- Go to **Settings** (tab near top).
+- In the sidebar, click **Pages**.
+- Under *Source*, choose **Deploy from a branch**.
+- Select **main** branch
+- Click **Save**. Wait ~1 minute.
+- Your site URL appears at the top (e.g. `https://username.github.io/ai-portfolio/`). Click to check.
+
+## Add a profile picture
+- In the repo, click **Add file → Upload files** → upload your image.
+- Click **Commit changes**.
+- Open the uploaded image → right‑click it → **Copy image address**.
+- Back in ChatGPT: "Please insert this image as a circular avatar at the top: <paste URL>".
+- Copy the new HTML → return to *index.html* → click **Edit** (✎) → replace code → **Commit**.
+- Refresh your live site – after about 1 minute the avatar should appear.
+
+## Optional Challenge: Create a Professional CV with LaTeX
+
+LaTeX is a powerful typesetting system commonly used for academic and professional documents. It's another markup format like HTML or Markdown, but specifically designed for creating beautifully formatted PDF documents. In this optional (ungraded) challenge, you'll create a professional CV using LaTeX.
+
+### Step 1: Get the LaTeX Template
+- Go to [overleaf.com](https://overleaf.com) → **New Project → Blank Project**.
+- Click **Templates** (left) → search "simple resume" → **Use template**.
+- Copy the entire LaTeX template code.
+
+### Step 2: Format Your CV with AI
+- Take the LaTeX template to ChatGPT (using o3 model).
+- Paste your CV text and the LaTeX template.
+- Ask the model to reformat your CV using the LaTeX template structure.
+- Copy the AI-generated LaTeX code.
+
+### Step 3: Create Your CV
+- Go back to Overleaf and paste the AI-generated LaTeX code.
+- Click **Recompile** to see your formatted CV.
+- Make any necessary adjustments.
+- Click **Download PDF** to save your CV.
+
+### Step 4: Add to Your Portfolio
+- Upload your CV PDF to Google Drive.
+- Get a shareable link (make sure it's publicly accessible).
+- Ask ChatGPT to add a "Download CV (PDF)" button to your website, linking to your Google Drive URL.
+- Update your `index.html` with the new code.
+- Commit the changes to GitHub.
+

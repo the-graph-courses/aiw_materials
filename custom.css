@@ -1,0 +1,108 @@
+/* Make slide titles smaller and remove "Slide X" */
+.reveal .slides section h1 {
+    font-size: 0.5em;
+    color: #1d5a66;
+}
+
+/* Remove slide numbers from titles */
+.reveal .slide-number {
+    display: none;
+}
+
+/* Basic Theme Colors */
+:root {
+    --r-heading-color: #1d5a66;
+    /* Dark teal for headings */
+    --r-main-color: #333333;
+    /* Darker text for light background */
+    --r-background-color: #ffffff;
+    /* White background */
+    --r-link-color: #50b1bf;
+    /* Light teal for links */
+    --r-link-color-hover: #1d5a66;
+    /* Dark teal for link hover */
+    --r-selection-background-color: #f6e83f;
+    /* Yellow for text selection */
+}
+
+/* Style code blocks */
+.reveal pre code {
+    background-color: #f8f8f8;
+    color: #333;
+    border-radius: 5px;
+    line-height: 1.2;
+}
+
+/* Style blockquotes */
+.reveal blockquote {
+    background: rgba(80, 177, 191, 0.1);
+    border-left: 5px solid #50b1bf;
+    color: var(--r-main-color);
+}
+
+/* Style tables */
+.reveal table {
+    font-size: 0.8em;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.reveal table th,
+.reveal table td {
+    padding: 0.5em;
+    border: 1px solid #ddd;
+}
+
+.reveal table th {
+    background-color: #f6e83f;
+    color: #1d5a66;
+}
+
+/* Add arrow styling for increasing values */
+.arrow-up {
+    color: #50b1bf;
+    font-weight: bold;
+    content: "↑";
+}
+
+/* Make the lineage table scrollable */
+.lineage-table-container {
+    max-height: 500px;
+    overflow-y: auto;
+    margin: 20px 0;
+}
+
+/* Style the lineage table specifically */
+.lineage-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lineage-table th,
+.lineage-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.lineage-table th {
+    background-color: #f6e83f;
+    color: #1d5a66;
+    position: sticky;
+    top: 0;
+}
+
+/* Add icons to table headers */
+.lineage-table th::before {
+    content: "📊";
+    margin-right: 5px;
+}
+
+/* Style the logo */
+.reveal .logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-height: 50px;
+    z-index: 30;
+}
