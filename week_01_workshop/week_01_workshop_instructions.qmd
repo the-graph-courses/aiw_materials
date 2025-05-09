@@ -6,8 +6,6 @@ number-sections: true
 
 This guide walks you through the steps to set up your AI‑Course Portfolio Website for the Generative AI for Work & Research course.
 
-For more details, consult the corresponding video on the website. 
-
 ## Open ChatGPT & switch to `o3`
 - Go to [chatgpt.com](https://chatgpt.com).
 - Click the `▼ Model` dropdown at the top left of the chat window.
