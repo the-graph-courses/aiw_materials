@@ -52,7 +52,7 @@ This guide walks you through the steps to set up your AI‑Course Portfolio Webs
 - Leave it **Public**. Click **Create repository**.
 
 ## Add your HTML file
-- Inside the repo, find the plus icon to **Add file → Create new file**.
+- Inside the repo, find the button to create a new file and click it.
 - Type `index.html` in the filename box, lowercase with no spaces.
 - Paste the HTML you copied.
 - Scroll down → click **Commit new file**.
