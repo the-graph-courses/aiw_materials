@@ -36,7 +36,7 @@ This guide walks you through the steps to set up your AI‑Course Portfolio Webs
 ## Render the Canvas & refine
 - ChatGPT should reply in a code block canvas.
 - Click the `👁 Preview` button at its top‑right to open the live view.
-- Now you can ask follow‑up prompts:
+- Now you can ask follow‑up prompts. For example:
   - "Change the accent colour to green."
   - "Use a serif font for headings."
   - Upload a screenshot of a site you like → "Match this layout."
