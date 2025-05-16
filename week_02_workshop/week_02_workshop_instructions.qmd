@@ -1,0 +1,176 @@
+---
+title: "Workshop 2: Automated Data Analysis & Reporting"
+format: html
+author: "The Graph Courses"
+---
+
+# Introduction
+
+Welcome to another session of your Generative AI Workshop! In this session, you'll use Data Analysis AI tools to compile a brief report.
+
+Your task is to create a data report (HTML or PDF) analyzing the relationship between two chosen country indicators from the Gapminder data repository here: [https://gapminder.org/data](https://gapminder.org/data).
+
+## Your final report should contain:
+
+1.  A choropleth world map of your first selected indicator (for the chosen recent year).
+2.  A choropleth world map of your second selected indicator (for the chosen recent year).
+3.  A scatterplot showing the relationship between your two chosen indicators.
+4.  A description and interpretation of the relationship between the two indicators. This may include a correlation coefficient (e.g., Pearson's $r$) if appropriate, or a qualitative description based on the scatterplot.
+
+## Tool Tracks
+
+You will choose one of the following tools based on your coding experience:
+
+*   **Students WITH significant coding experience in R:** You should use **Cursor**, an AI-powered code editor, with R.
+
+*   **Students WITHOUT significant coding experience:** You will use **Julius**, a more user-friendly AI data analysis tool with a chat interface.
+
+*   **If you finish your assigned tool track early, you are encouraged to try the other one!**
+
+---
+
+# Part 1: General Setup & Data Selection (All Students)
+
+1.  **Choose Your Data:**
+    *   Go to Gapminder’s data repository: [https://gapminder.org/data](https://gapminder.org/data)
+    *   Browse the indicators and **select TWO indicators** that you hypothesize might be related.
+        *   *Think about what story you want to explore. For example, a famous relationship is GDP per capita vs. Life Expectancy. Consider other potential meaningful connections.*
+    *   For each chosen indicator, download the data as a CSV file.
+
+2.  **Data Preparation Note: Data will be subsetted to a single year:**
+    *   After loading your data into Cursor or Julius, you will need to **subset it to the most recent year that has good data coverage**. "Good data coverage" means not too many missing values. 
+    *   This means that when you are choosing your indicators, you should choose indicators that have good data coverage for the same recent years.
+
+---
+
+# Part 2: Tool-Specific Instructions
+
+Please follow the instructions for the tool assigned to your group.
+
+## Section A: For Students WITH Coding Experience (Using Cursor with R)
+
+You will use Cursor to generate an R Markdown report.
+
+1.  **Setup Cursor:**
+
+    *   You'll need to set up Cursor and can use their free 14-day trial.
+
+    *   **Watch our setup video before you begin:** [AI Automated Data Analysis with R and Cursor (for R users only)](https://thegraphcourses.org/courses/aiw-2025-q2/topics/ai-automated-data-analysis-with-r-and-cursor-for-r-users-only/)
+
+2. **Project folder:**
+
+    *   Create a new project folder on your computer. Place the two CSV files you downloaded from Gapminder into this folder.
+
+3.  **Generating Your Report in Cursor:**
+
+    *   Open your project folder in Cursor. Create a new R Markdown (`.Rmd`) file with an appropriate name. 
+
+    *   Then use Cursor's "Agent Mode" to help you write the R code and narrative.
+
+    *   **Initial Agent Prompt Idea:**
+        Here is an example of an initial agent prompt:
+
+        ```
+        You are an AI agent that creates elegant data reports.
+        You will create reports by writing code to an Rmarkdown file (with github_document output), knitting that file, then reading the output md file to validate.
+        You repeat this edit, knit, review loop until the reporting task is achieved.
+        Use plots, tables, and inline R code as needed.
+        ```
+    *   **Specific Task Prompting Example:**
+
+        ```
+        Now create a data report in my Rmd file using the two datasets I've provided ([indicator1] and [indicator2]).
+
+        The report should:
+        1. Load both datasets.
+        2. For each indicator, identify the most recent year with good data coverage (e.g., less than 30% missing values). Subset the data to this year.
+        3. Create a choropleth world map for the first indicator for that year.
+        4. Create a choropleth world map for the second indicator for that year.
+        5. Merge the data for the two indicators for the chosen year.
+        6. Create a scatterplot showing the relationship between these two indicators.
+        7. Provide a brief interpretation of the relationship shown in the scatterplot (you can calculate Pearson's correlation coefficient $$r$$ if it's helpful).
+        Ensure all plots are clearly titled and labeled.
+
+        ```
+        *   *Remember to replace `[indicator1]` and `[indicator2]` with your actual indicator names.*
+
+    *   **Iterate and Refine:** Work with the agent to refine the figures and text until you are happy with the report. You can ask it to change the title of a plot, or to use a different color scheme, for example.
+
+    *   **NOTE:** Cursor cannot see your plots. It may hallucinate interpretations of the plots that are inaccurate. You can ignore these. 
+
+3.  **Final Output:** Your primary submission will be the HTML file generated from knitting your R Markdown file. 
+
+(That is, while your AI agent will output the report as an .md file while it is working, you should change the output format when you are done and ready to submit. To do this, in your .Rmd file, change `output: github_document` to `output: html_document` in the header section before your final knit.)
+
+## Section B: For Students WITHOUT Prior Coding Experience (Using Julius)
+
+You will use Julius, an AI data analysis chat-based tool, to analyze your data and generate content for your report.
+
+1.  **Setup Julius:**
+
+    *   Go to [Julius.ai](https://julius.ai/) and sign up.
+    *   For a 2-week trial of premium features, go to your **Settings**, then **Usage**, and under **Institutional Codes**, enter: `GRAPHAIR`
+    *   **Please do not share this code.**
+
+2.  **Analyzing Data & Generating Content with Julius:**
+
+    *   Start a new conversation in Julius and upload your two CSV files.
+
+    *   **Chat with Julius Example Prompt:**
+
+        ```
+        I've uploaded two datasets, which contain indicators on [indicator1] and [indicator2].
+
+        I am writing a report on the relationship between the indicators [indicator1] and [indicator2].
+
+        Please help me do the following:
+        1. For each indicator, find the most recent year where data is available for at least 70% of countries. 
+        2. Create a choropleth world map for the first indicator using data from its best recent year.
+        3. Create a choropleth world map for the second indicator using data from that same year if possible, or the most recent year with good data coverage if not.
+        4. Now merge the data for the chosen indicators and the chosen years.
+        5. Create a scatterplot showing the relationship between these two indicators.
+        6. Describe the relationship shown in the scatterplot? If relevant, calculate Pearson's correlation coefficient ($$r$$), but mainly explain what you see in simple terms.
+        Make sure the plots have good titles and labels.
+        ```
+
+        *   *Remember to replace `[indicator1]` and `[indicator2]` with your actual indicator names.*
+
+    *   **Review and Refine:** Julius will show its steps, data, and plots. Work with it to refine the figures and text until you are happy with the output plots. You can ask it to change the title of a plot, or to use a different color scheme, for example.
+
+3.  **Creating Your PDF Report from Julius Output:**
+
+    *   Export your conversation from Julius (to DOCX). To do this click on the "..." button in the top right corner of the conversation, select "Download" and then "Download as DOCX".
+    *   **Edit the DOCX:** The DOCX file will contain your chat history with the model. You now need to delete your prompts and conversational filler. Keep only the key outputs: plots and interpretations. Organize it into a clean report with your name and date.
+    *   **Export as PDF** from your word processor.
+
+4.  **Final Output:** Your primary submission will be the PDF file.
+
+---
+
+# Part 3: Submission
+
+*   Upload your final report file (HTML or PDF) to the designated submission link on the course workshop page.
+
+---
+
+# Part 4: Optional - Add to Your GitHub Pages Portfolio
+
+As a final step, you can add your report to your portfolio website which you created earlier in the course.
+
+1.  **Upload your Report:** Add your final report file (HTML or PDF) to the GitHub repository that hosts your portfolio website.
+
+2.  **Get the Link:** Once uploaded, navigate to the file in your GitHub repository and copy its direct link.
+
+3.  **Update Your Portfolio with ChatGPT:**
+
+    *   Go back to the ChatGPT conversation you used to build your portfolio website. (If you don't have it, you can start a new one, provide ChatGPT with your existing `index.html` file content, and then give it the new instructions).
+    *   Ask ChatGPT to add a new entry for this workshop. For example:
+
+        ```
+        Please update my portfolio website. I want to add a new project for "Workshop 2: Automated Data Analysis".
+        Include a brief description like "Analyzed Gapminder data to explore relationships between two global indicators using AI tools."
+        Then, add a link to my report: [paste the direct link to your uploaded report file here]
+        ```
+
+    *   ChatGPT will provide you with updated `index.html` code. Replace the content of your `index.html` file in your GitHub repository with this new code. Commit and push the changes.
+    *   Verify that your live GitHub Pages site now shows the new entry and the link works.
