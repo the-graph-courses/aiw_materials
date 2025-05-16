@@ -8,7 +8,7 @@ author: "The Graph Courses"
 
 Welcome to another session of your Generative AI Workshop! In this session, you'll use Data Analysis AI tools to compile a brief report.
 
-Your task is to create a data report (HTML or PDF) analyzing the relationship between two chosen country indicators from the Gapminder data repository here: [https://gapminder.org/data](https://gapminder.org/data).
+Your task is to create a data report (HTML or PDF) analyzing the relationship between two chosen country indicators from the Gapminder data repository here: [https://gapminder.org/data](https://gapminder.org/data){target="_blank"}.
 
 ## Your final report should contain:
 
@@ -33,7 +33,7 @@ You will choose one of the following tools based on your coding experience:
 # Part 1: General Setup & Data Selection (All Students)
 
 1.  **Choose Your Data:**
-    *   Go to Gapminder's data repository: [https://gapminder.org/data](https://gapminder.org/data)
+    *   Go to Gapminder's data repository: [https://gapminder.org/data](https://gapminder.org/data){target="_blank"}
     *   Browse the indicators and **select TWO indicators** that you hypothesize might be related.
         *   *Think about what story you want to explore. For example, a famous relationship is GDP per capita vs. Life Expectancy. Consider other potential meaningful connections.*
     *   For each chosen indicator, download the data as a CSV file.
@@ -56,7 +56,7 @@ You will use Cursor to generate an R Markdown report.
 
     *   You'll need to set up Cursor and can use their free 14-day trial.
 
-    *   **Watch our setup video before you begin:** [AI Automated Data Analysis with R and Cursor (for R users only)](https://thegraphcourses.org/courses/aiw-2025-q2/topics/ai-automated-data-analysis-with-r-and-cursor-for-r-users-only/)
+    *   **Watch our setup video before you begin:** [AI Automated Data Analysis with R and Cursor (for R users only)](https://thegraphcourses.org/courses/aiw-2025-q2/topics/ai-automated-data-analysis-with-r-and-cursor-for-r-users-only/){target="_blank"}
 
 2. **Project folder:**
 
@@ -111,7 +111,7 @@ You will use Julius, an AI data analysis chat-based tool, to analyze your data a
 
 1.  **Setup Julius:**
 
-    *   Go to [Julius.ai](https://julius.ai/) and sign up.
+    *   Go to [Julius.ai](https://julius.ai/){target="_blank"} and sign up.
     *   For a 2-week trial of premium features, go to your **Settings**, then **Usage**, and under **Institutional Codes**, enter: `GRAPHAIR`
     *   **Please do not share this code.**
 

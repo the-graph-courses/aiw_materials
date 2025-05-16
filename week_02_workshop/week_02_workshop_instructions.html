@@ -101,7 +101,7 @@ window.Quarto = {
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Welcome to another session of your Generative AI Workshop! In this session, you’ll use Data Analysis AI tools to compile a brief report.</p>
-<p>Your task is to create a data report (HTML or PDF) analyzing the relationship between two chosen country indicators from the Gapminder data repository here: <a href="https://gapminder.org/data">https://gapminder.org/data</a>.</p>
+<p>Your task is to create a data report (HTML or PDF) analyzing the relationship between two chosen country indicators from the Gapminder data repository here: <a href="https://gapminder.org/data" target="_blank">https://gapminder.org/data</a>.</p>
 <section id="your-final-report-should-contain" class="level2">
 <h2 class="anchored" data-anchor-id="your-final-report-should-contain">Your final report should contain:</h2>
 <ol type="1">
@@ -109,6 +109,7 @@ window.Quarto = {
 <li>A choropleth world map of your second selected indicator (for the chosen recent year).</li>
 <li>A scatterplot showing the relationship between your two chosen indicators.</li>
 <li>A description and interpretation of the relationship between the two indicators. This may include a correlation coefficient (e.g., Pearson’s <span class="math inline">\(r\)</span>) if appropriate, or a qualitative description based on the scatterplot.</li>
+<li>A short reflection written by you about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn?</li>
 </ol>
 </section>
 <section id="tool-tracks" class="level2">
@@ -127,7 +128,7 @@ window.Quarto = {
 <ol type="1">
 <li><strong>Choose Your Data:</strong>
 <ul>
-<li>Go to Gapminder’s data repository: <a href="https://gapminder.org/data">https://gapminder.org/data</a></li>
+<li>Go to Gapminder’s data repository: <a href="https://gapminder.org/data" target="_blank">https://gapminder.org/data</a></li>
 <li>Browse the indicators and <strong>select TWO indicators</strong> that you hypothesize might be related.
 <ul>
 <li><em>Think about what story you want to explore. For example, a famous relationship is GDP per capita vs.&nbsp;Life Expectancy. Consider other potential meaningful connections.</em></li>
@@ -152,7 +153,7 @@ window.Quarto = {
 <li><p><strong>Setup Cursor:</strong></p>
 <ul>
 <li><p>You’ll need to set up Cursor and can use their free 14-day trial.</p></li>
-<li><p><strong>Watch our setup video before you begin:</strong> <a href="https://thegraphcourses.org/courses/aiw-2025-q2/topics/ai-automated-data-analysis-with-r-and-cursor-for-r-users-only/">AI Automated Data Analysis with R and Cursor (for R users only)</a></p></li>
+<li><p><strong>Watch our setup video before you begin:</strong> <a href="https://thegraphcourses.org/courses/aiw-2025-q2/topics/ai-automated-data-analysis-with-r-and-cursor-for-r-users-only/" target="_blank">AI Automated Data Analysis with R and Cursor (for R users only)</a></p></li>
 </ul></li>
 <li><p><strong>Project folder:</strong></p>
 <ul>
@@ -185,6 +186,7 @@ Ensure all plots are clearly titled and labeled.
 </ul></li>
 <li><p><strong>Iterate and Refine:</strong> Work with the agent to refine the figures and text until you are happy with the report. You can ask it to change the title of a plot, or to use a different color scheme, for example.</p></li>
 <li><p><strong>NOTE:</strong> Cursor cannot see your plots. It may hallucinate interpretations of the plots that are inaccurate. You can ignore these.</p></li>
+<li><p><strong>Add Your Reflection:</strong> Before your final knit, make sure to add your short reflection (point 5 from “Your final report should contain”) directly into your R Markdown file. This should be part of the narrative of your report.</p></li>
 </ul></li>
 <li><p><strong>Final Output:</strong> Your primary submission will be the HTML file generated from knitting your R Markdown file.</p></li>
 </ol>
@@ -196,7 +198,7 @@ Ensure all plots are clearly titled and labeled.
 <ol type="1">
 <li><p><strong>Setup Julius:</strong></p>
 <ul>
-<li>Go to <a href="https://julius.ai/">Julius.ai</a> and sign up.</li>
+<li>Go to <a href="https://julius.ai/" target="_blank">Julius.ai</a> and sign up.</li>
 <li>For a 2-week trial of premium features, go to your <strong>Settings</strong>, then <strong>Usage</strong>, and under <strong>Institutional Codes</strong>, enter: <code>GRAPHAIR</code></li>
 <li><strong>Please do not share this code.</strong></li>
 </ul></li>
@@ -224,7 +226,7 @@ Make sure the plots have good titles and labels.</code></pre>
 <li><p><strong>Creating Your PDF Report from Julius Output:</strong></p>
 <ul>
 <li>Export your conversation from Julius (to DOCX). To do this click on the “…” button in the top right corner of the conversation, select “Download” and then “Download as DOCX”.</li>
-<li><strong>Edit the DOCX:</strong> The DOCX file will contain your chat history with the model. You now need to delete your prompts and conversational filler. Keep only the key outputs: plots and interpretations. Organize it into a clean report with your name and date.</li>
+<li><strong>Edit the DOCX:</strong> The DOCX file will contain your chat history with the model. You now need to delete your prompts and conversational filler. Keep only the key outputs: plots and interpretations. Organize it into a clean report with your name and date. <strong>At this stage, also add your short reflection</strong> (point 5 from “Your final report should contain”).</li>
 <li><strong>Export as PDF</strong> from your word processor.</li>
 </ul></li>
 <li><p><strong>Final Output:</strong> Your primary submission will be the PDF file.</p></li>
