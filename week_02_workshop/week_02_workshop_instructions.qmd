@@ -16,6 +16,7 @@ Your task is to create a data report (HTML or PDF) analyzing the relationship be
 2.  A choropleth world map of your second selected indicator (for the chosen recent year).
 3.  A scatterplot showing the relationship between your two chosen indicators.
 4.  A description and interpretation of the relationship between the two indicators. This may include a correlation coefficient (e.g., Pearson's $r$) if appropriate, or a qualitative description based on the scatterplot.
+5. A short reflection written by you about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn?
 
 ## Tool Tracks
 
@@ -32,7 +33,7 @@ You will choose one of the following tools based on your coding experience:
 # Part 1: General Setup & Data Selection (All Students)
 
 1.  **Choose Your Data:**
-    *   Go to Gapminder’s data repository: [https://gapminder.org/data](https://gapminder.org/data)
+    *   Go to Gapminder's data repository: [https://gapminder.org/data](https://gapminder.org/data)
     *   Browse the indicators and **select TWO indicators** that you hypothesize might be related.
         *   *Think about what story you want to explore. For example, a famous relationship is GDP per capita vs. Life Expectancy. Consider other potential meaningful connections.*
     *   For each chosen indicator, download the data as a CSV file.
@@ -98,6 +99,8 @@ You will use Cursor to generate an R Markdown report.
 
     *   **NOTE:** Cursor cannot see your plots. It may hallucinate interpretations of the plots that are inaccurate. You can ignore these. 
 
+    *   **Add Your Reflection:** Before your final knit, make sure to add your short reflection (point 5 from "Your final report should contain") directly into your R Markdown file. This should be part of the narrative of your report.
+
 3.  **Final Output:** Your primary submission will be the HTML file generated from knitting your R Markdown file. 
 
 (That is, while your AI agent will output the report as an .md file while it is working, you should change the output format when you are done and ready to submit. To do this, in your .Rmd file, change `output: github_document` to `output: html_document` in the header section before your final knit.)
@@ -140,7 +143,7 @@ You will use Julius, an AI data analysis chat-based tool, to analyze your data a
 3.  **Creating Your PDF Report from Julius Output:**
 
     *   Export your conversation from Julius (to DOCX). To do this click on the "..." button in the top right corner of the conversation, select "Download" and then "Download as DOCX".
-    *   **Edit the DOCX:** The DOCX file will contain your chat history with the model. You now need to delete your prompts and conversational filler. Keep only the key outputs: plots and interpretations. Organize it into a clean report with your name and date.
+    *   **Edit the DOCX:** The DOCX file will contain your chat history with the model. You now need to delete your prompts and conversational filler. Keep only the key outputs: plots and interpretations. Organize it into a clean report with your name and date. **At this stage, also add your short reflection** (point 5 from "Your final report should contain"). 
     *   **Export as PDF** from your word processor.
 
 4.  **Final Output:** Your primary submission will be the PDF file.
