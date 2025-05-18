@@ -100,17 +100,17 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Welcome to another session of your Generative AI Workshop! In this session, you’ll use Data Analysis AI tools to compile a brief report.</p>
-<p>Your task is to create a data report (HTML or PDF) analyzing the relationship between two chosen country indicators from the Gapminder data repository here: <a href="https://gapminder.org/data" target="_blank">https://gapminder.org/data</a>.</p>
+<p>Welcome to another session of your Generative AI Workshop! In this session, you’ll use Data Analysis AI tools to compile a brief report (HTML or PDF) analyzing the relationship between two chosen country indicators from the Gapminder data repository here: <a href="https://gapminder.org/data" target="_blank">https://gapminder.org/data</a>.</p>
 <section id="your-final-report-should-contain" class="level2">
 <h2 class="anchored" data-anchor-id="your-final-report-should-contain">Your final report should contain:</h2>
 <ol type="1">
-<li>A choropleth world map of your first selected indicator (for the chosen recent year).</li>
-<li>A choropleth world map of your second selected indicator (for the chosen recent year).</li>
+<li>A world map visualization of your first selected indicator (for the chosen recent year).</li>
+<li>A world map visualization of your second selected indicator (for the chosen recent year).</li>
 <li>A scatterplot showing the relationship between your two chosen indicators.</li>
 <li>A description and interpretation of the relationship between the two indicators. This may include a correlation coefficient (e.g., Pearson’s <span class="math inline">\(r\)</span>) if appropriate, or a qualitative description based on the scatterplot.</li>
 <li>A short reflection written by you about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn?</li>
 </ol>
+<p>Note that rather than grading the technical precision of the report (we understand that you are not all data analysts), we will simply check that you have followed the overall instructions and written an honest reflection.</p>
 </section>
 <section id="tool-tracks" class="level2">
 <h2 class="anchored" data-anchor-id="tool-tracks">Tool Tracks</h2>
@@ -137,8 +137,7 @@ window.Quarto = {
 </ul></li>
 <li><strong>Data Preparation Note: Data will be subsetted to a single year:</strong>
 <ul>
-<li>After loading your data into Cursor or Julius, you will need to <strong>subset it to the most recent year that has good data coverage</strong>. “Good data coverage” means not too many missing values.</li>
-<li>This means that when you are choosing your indicators, you should choose indicators that have good data coverage for the same recent years.</li>
+<li>After loading your data into Cursor or Julius, you will ask the AI to <strong>subset it to the most recent year that has good data coverage</strong>. “Good data coverage” means not too many missing values. When browsing on Gapminder, try to identify a specific recent year you’d like to focus on that has good coverage for both your chosen indicators, and make a note of this year.</li>
 </ul></li>
 </ol>
 <hr>
@@ -162,35 +161,42 @@ window.Quarto = {
 <li><p><strong>Generating Your Report in Cursor:</strong></p>
 <ul>
 <li><p>Open your project folder in Cursor. Create a new R Markdown (<code>.Rmd</code>) file with an appropriate name.</p></li>
+<li><p>Before using the Agent, it’s recommended to change the model to <strong>Claude 3.7 Sonnet</strong> for better performance with R. You can usually find this setting in a dropdown menu associated with the chat or agent interface.</p></li>
 <li><p>Then use Cursor’s “Agent Mode” to help you write the R code and narrative.</p></li>
 <li><p><strong>Initial Agent Prompt Idea:</strong> Here is an example of an initial agent prompt:</p>
-<pre><code>You are an AI agent that creates elegant data reports.
-You will create reports by writing code to an Rmarkdown file (with github_document output), knitting that file, then reading the output md file to validate.
+<pre><code>You are an AI agent that creates data reports.
+You create reports by writing code to an Rmarkdown file (with github_document output), knitting that file, then reading the output md file to validate your work.
 You repeat this edit, knit, review loop until the reporting task is achieved.
-Use plots, tables, and inline R code as needed.</code></pre></li>
+Use plots, tables, and inline R code where appropriate.
+Code should be hidden from the output.</code></pre></li>
 <li><p><strong>Specific Task Prompting Example:</strong></p>
 <pre><code>Now create a data report in my Rmd file using the two datasets I've provided ([indicator1] and [indicator2]).
 
 The report should:
 1. Load both datasets.
-2. For each indicator, identify the most recent year with good data coverage (e.g., less than 30% missing values). Subset the data to this year.
-3. Create a choropleth world map for the first indicator for that year.
-4. Create a choropleth world map for the second indicator for that year.
-5. Merge the data for the two indicators for the chosen year.
+2. For each indicator, subset the data to `[CHOSEN_YEAR]`.
+3. Create a world map visualization for the first indicator.
+4. Create a world map visualization for the second indicator.
+5. Merge the data for the two indicators.
 6. Create a scatterplot showing the relationship between these two indicators.
 7. Provide a brief interpretation of the relationship shown in the scatterplot (you can calculate Pearson's correlation coefficient $$r$$ if it's helpful).
 Ensure all plots are clearly titled and labeled.
-</code></pre>
-<ul>
-<li><em>Remember to replace <code>[indicator1]</code> and <code>[indicator2]</code> with your actual indicator names.</em></li>
-</ul></li>
+</code></pre></li>
 <li><p><strong>Iterate and Refine:</strong> Work with the agent to refine the figures and text until you are happy with the report. You can ask it to change the title of a plot, or to use a different color scheme, for example.</p></li>
-<li><p><strong>NOTE:</strong> Cursor cannot see your plots. It may hallucinate interpretations of the plots that are inaccurate. You can ignore these.</p></li>
-<li><p><strong>Add Your Reflection:</strong> Before your final knit, make sure to add your short reflection (point 5 from “Your final report should contain”) directly into your R Markdown file. This should be part of the narrative of your report.</p></li>
+<li><p><strong>Halluciations related to plots:</strong> Cursor cannot see your plots. It may hallucinate interpretations of the plots that are inaccurate. You can ignore these.</p></li>
+<li><p><strong>A Note on AI Interaction:</strong></p>
+<ul>
+<li>If the AI seems to be going off track or taking too long, look for a “stop” button (often near the prompt input box) to interrupt it.</li>
+<li>Often, if you don’t like the output, it’s more effective to go back to your previous prompt, edit it to be clearer or more specific, and resubmit, rather than trying to correct the AI with a long series of follow-up messages. Longer conversations can sometimes confuse the AI.</li>
 </ul></li>
-<li><p><strong>Final Output:</strong> Your primary submission will be the HTML file generated from knitting your R Markdown file.</p></li>
+<li><p><strong>Troubleshooting R Package Installations:</strong></p>
+<ul>
+<li>If Cursor has persistent trouble installing R packages, you might need to install them manually. Create a temporary R script (<code>.R</code>) file in your project. In this script, use the <code>install.packages("package_name")</code> command for each required package. Run this script. R might ask you to choose a CRAN mirror (a server to download from); pick any. Once the packages are installed, you can delete the temporary R script.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Add Your Reflection:</strong> Before your final knit, make sure to add your short reflection (point 5 from “Your final report should contain”) directly into your R Markdown file. This should be part of the narrative of your report.</p></li>
+<li><p><strong>Final Output:</strong> Your primary submission will be the HTML file generated from knitting your R Markdown file. (That is, while your AI agent will output the report as an .md file while it is working, you should change the output format when you are done and ready to submit. To do this, in your .Rmd file, change <code>output: github_document</code> to <code>output: html_document</code> in the header section before your final knit.)</p></li>
 </ol>
-<p>(That is, while your AI agent will output the report as an .md file while it is working, you should change the output format when you are done and ready to submit. To do this, in your .Rmd file, change <code>output: github_document</code> to <code>output: html_document</code> in the header section before your final knit.)</p>
 </section>
 <section id="section-b-for-students-without-prior-coding-experience-using-julius" class="level2">
 <h2 class="anchored" data-anchor-id="section-b-for-students-without-prior-coding-experience-using-julius">Section B: For Students WITHOUT Prior Coding Experience (Using Julius)</h2>
@@ -202,34 +208,57 @@ Ensure all plots are clearly titled and labeled.
 <li>For a 2-week trial of premium features, go to your <strong>Settings</strong>, then <strong>Usage</strong>, and under <strong>Institutional Codes</strong>, enter: <code>GRAPHAIR</code></li>
 <li><strong>Please do not share this code.</strong></li>
 </ul></li>
-<li><p><strong>Analyzing Data &amp; Generating Content with Julius:</strong></p>
+<li><p><strong>Starting Your Analysis in Julius:</strong></p>
 <ul>
-<li><p>Start a new conversation in Julius and upload your two CSV files.</p></li>
+<li>Start a new conversation in Julius.</li>
+<li><strong>Select your tools:</strong>
+<ul>
+<li><strong>Code Language:</strong> Julius can use Python or R. If you have no preference, we recommend selecting <strong>R</strong>. The default figures from R are often a bit nicer, and more members of The Graph team are R experts, so we can better assist with debugging if needed. The code language changer is usually found at the top left of the Julius window.</li>
+<li><strong>AI Model:</strong> It’s recommended to switch to the <strong>Claude 3.7 Sonnet</strong> model for potentially better results. The model selection is typically in a dropdown menu below the prompt input box.</li>
+</ul></li>
+<li>Now, <strong>upload your two CSV files</strong> to the conversation.</li>
+</ul></li>
+<li><p><strong>Chatting with Julius (Example Prompt):</strong></p>
+<ul>
 <li><p><strong>Chat with Julius Example Prompt:</strong></p>
-<pre><code>I've uploaded two datasets, which contain indicators on [indicator1] and [indicator2].
-
-I am writing a report on the relationship between the indicators [indicator1] and [indicator2].
+<pre><code>I am writing a report on the relationship between the indicators [indicator1] and [indicator2]. Both datasets have been added.
 
 Please help me do the following:
-1. For each indicator, find the most recent year where data is available for at least 70% of countries. 
-2. Create a choropleth world map for the first indicator using data from its best recent year.
-3. Create a choropleth world map for the second indicator using data from that same year if possible, or the most recent year with good data coverage if not.
-4. Now merge the data for the chosen indicators and the chosen years.
-5. Create a scatterplot showing the relationship between these two indicators.
-6. Describe the relationship shown in the scatterplot? If relevant, calculate Pearson's correlation coefficient ($$r$$), but mainly explain what you see in simple terms.
-Make sure the plots have good titles and labels.</code></pre>
-<ul>
-<li><em>Remember to replace <code>[indicator1]</code> and <code>[indicator2]</code> with your actual indicator names.</em></li>
-</ul></li>
+1. Load both datasets.
+2. For each indicator, subset the data to `[CHOSEN_YEAR]`.
+3. Create a world map visualization for the first indicator.
+4. Create a world map visualization for the second indicator.
+5. Now merge the data for the chosen indicators.
+6. Create a scatterplot showing the relationship between these two indicators.
+7. Provide a brief interpretation of the relationship shown in the scatterplot (you can calculate Pearson's correlation coefficient $$r$$ if it's helpful).
+Make sure the plots have good titles and labels.</code></pre></li>
 <li><p><strong>Review and Refine:</strong> Julius will show its steps, data, and plots. Work with it to refine the figures and text until you are happy with the output plots. You can ask it to change the title of a plot, or to use a different color scheme, for example.</p></li>
-</ul></li>
-<li><p><strong>Creating Your PDF Report from Julius Output:</strong></p>
+<li><p><strong>A Note on AI Interaction:</strong></p>
 <ul>
-<li>Export your conversation from Julius (to DOCX). To do this click on the “…” button in the top right corner of the conversation, select “Download” and then “Download as DOCX”.</li>
-<li><strong>Edit the DOCX:</strong> The DOCX file will contain your chat history with the model. You now need to delete your prompts and conversational filler. Keep only the key outputs: plots and interpretations. Organize it into a clean report with your name and date. <strong>At this stage, also add your short reflection</strong> (point 5 from “Your final report should contain”).</li>
-<li><strong>Export as PDF</strong> from your word processor.</li>
+<li>If the AI seems to be going off track or taking too long, look for a “stop” button (often near the prompt input box) to interrupt it.</li>
+<li>Often, if you don’t like the output, it’s more effective to go back to your previous prompt, edit it to be clearer or more specific, and resubmit, rather than trying to correct the AI with a long series of follow-up messages. Longer conversations can sometimes confuse the AI.</li>
 </ul></li>
-<li><p><strong>Final Output:</strong> Your primary submission will be the PDF file.</p></li>
+</ul></li>
+<li><p><strong>Creating Your Report Document:</strong></p>
+<ul>
+<li><strong>Download Outputs:</strong> Download the individual plots (as images, e.g., PNG) that Julius generates. You will also copy any key text outputs, such as data summaries or interpretations.</li>
+<li><strong>Create a DOCX/GDocs file:</strong> Open a word processor (like Microsoft Word, Google Docs, or Pages) and create a new document.</li>
+<li><strong>Assemble initial report content:</strong>
+<ul>
+<li>Add a title, your name, and the date.</li>
+<li>Insert the plots you downloaded.</li>
+<li>Paste in the relevant text outputs from Julius.</li>
+<li>Organize this content into a clean and readable report.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Add Your Reflection:</strong></p>
+<ul>
+<li>Before finalizing your report, add your short reflection (point 5 from “Your final report should contain”) to your document.</li>
+</ul></li>
+<li><p><strong>Final Output:</strong></p>
+<ul>
+<li><strong>Export as PDF</strong> from your word processor. This PDF is your primary submission.</li>
+</ul></li>
 </ol>
 <hr>
 </section>
