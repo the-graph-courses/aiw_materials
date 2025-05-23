@@ -121,6 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Analysis of “Programming Language Requirements” (including a visualization and your interpretation).</li>
 <li>A personal reflection on the process (see details in Part 2).</li>
 </ol>
+<p>(In your interpretations, be sure to note the limitations of the small sample size.)</p>
 <hr>
 </section>
 </section>
@@ -132,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p><strong>Get the Data:</strong></p>
 <ul>
-<li>The dataset for this assignment is a CSV file of Data Analyst job postings: <a href="https://github.com/the-graph-courses/aiw_materials/blob/main/week_03_workshop/data/data_analyst_postings_sample_300.csv" target="_blank">data_analyst_postings_sample_300.csv</a>. There is a download icon at the top right of the file</li>
+<li>The dataset for this assignment is a CSV file of Data Analyst job postings: <a href="https://github.com/the-graph-courses/aiw_materials/blob/main/week_03_workshop/data/data_analyst_postings_sample.csv" target="_blank">data_analyst_postings_sample.csv</a>. There is a download icon at the top right of the file</li>
 </ul>
 <p>Screenshot: <img src="https://thegraphcourses.org/wp-content/uploads/2024/10/github_download_button.jpg" class="img-fluid" width="200" alt="download icon">.</p>
 <ul>
@@ -225,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Craft Your Own Prompt:</strong>
 <ul>
 <li>For this task, you need to write the prompt yourself.</li>
-<li>Your prompt must clearly instruct the LLM to analyze the <code>Job Description</code> and return <strong>ONLY one of these four specific strings</strong>: “R”, “Python”, “both”, or “neither”.</li>
+<li>Your prompt must clearly instruct the LLM to analyze the <code>Job Description</code> and return <strong>ONLY one of these four specific strings</strong> based on the data programming language requirements in the job description: R, Python, Both, or Neither.**</li>
 <li><strong>Hint:</strong> Be very explicit. A good prompt will state the options clearly and tell the model to choose only one.</li>
 </ul></li>
 <li><strong>Apply <code>MYGPT</code> Function:</strong>
 <ul>
 <li>Use your crafted prompt with the <code>MYGPT</code> function, similar to Task 1, concatenating it with the relevant job description cell (e.g., <code>C2</code>) and using <code>google/gemini-2.5-flash-preview</code> and your API key reference (e.g., <code>$M$2</code>).</li>
-<li>Apply to a few rows first, then to all rows.</li>
+<li>Apply to a few rows first to validate that the model is doing what you want, then to all rows.</li>
 </ul></li>
 <li><strong>Lock in Results:</strong> Again, once processed, select all cells with results in your <code>Data Languages</code> column, copy them, and then paste special as values only.</li>
 </ol>
@@ -253,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><strong>Tool Choice:</strong>
 <ul>
-<li><strong>Julius:</strong> If you prefer a chat-based interface or have less coding experience.</li>
+<li><strong>Julius:</strong> If you prefer a chat-based interface or have less coding experience. Remember to switch to the Claude 4 sonnet model.</li>
 <li><strong>Cursor:</strong> If you have coding experience (e.g., R or Python) and prefer an AI-assisted code editor.</li>
 <li>Refer to the instructions from our previous workshop if you need a refresher on setting up or basic interaction with your chosen tool.</li>
 </ul></li>
