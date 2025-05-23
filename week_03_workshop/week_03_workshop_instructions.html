@@ -140,15 +140,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p><strong>Import Data into Google Sheets:</strong></p>
 <ul>
-<li>Create a new Google Sheet.</li>
+<li>Create a new Google Sheet and give it a name like “Data Analyst Job Market Analysis”. (You can quickly create a new sheet by going to “sheets.new” in your browser.)</li>
 <li>Go to <code>File → Import</code>.</li>
 <li>In the Import file dialog, select the <code>Upload</code> tab.</li>
 <li>Drag the downloaded <code>data_analyst_postings_sample_300.csv</code> file into the upload area. The default import settings should be fine.</li>
-<li><strong>Adjust Row Height (if needed):</strong> If the rows are too tall due to long job descriptions, select all cells (Ctrl+A or Cmd+A), then move your mouse to the divider line between any two row numbers on the left (e.g., between row 1 and row 2). Your cursor will change. Click and drag the divider upwards to resize all selected rows.</li>
+<li><strong>Adjust Row Height (if needed):</strong> If the rows are too tall due to long job descriptions, select all cells (press Ctrl+A or Cmd+A two times), then move your mouse to the divider line between any two row numbers on the left (e.g., between row 1 and row 2). Your cursor will change. Click and drag the divider upwards to resize all selected rows.</li>
 </ul></li>
 <li><p><strong>Set Up Your API Key:</strong></p>
 <ul>
-<li>In your Google Sheet, choose an empty cell that’s out of the way (e.g., <code>M1</code>). Paste your personal OpenRouter API key into this cell.</li>
+<li>In your Google Sheet, choose an empty cell that’s out of the way (e.g., <code>M2</code>). Paste your personal OpenRouter API key into this cell.</li>
 </ul></li>
 <li><p><strong>Add the <code>MYGPT</code> Apps Script Function:</strong></p>
 <ul>
@@ -188,6 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Click the “Save project” icon (💾).</li>
 <li>Click “Run” once. Google will ask you to authorize the script. Follow the prompts to allow it. You might see a “This app isn’t verified” warning; you can proceed by clicking “Advanced” and then “Go to (your project name)”.</li>
+<li>You may need to go through the authorization process more than once. You will know it has worked when you see “Execution completed” after pressing “Run”.</li>
 </ul></li>
 </ol>
 </section>
@@ -199,9 +200,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Formulate the Prompt &amp; Apply <code>MYGPT</code>:</strong>
 <ul>
 <li>We will use the <code>google/gemini-2.5-flash-preview</code> model.</li>
-<li>Assuming your first job description is in cell <code>C2</code> (adjust if it’s in a different column for your imported data) and your API key is in cell <code>M1</code> , the formula in the first cell under your <code>Minimum Years Experience</code> header would be:</li>
+<li>Assuming your first job description is in cell <code>C2</code> (adjust if it’s in a different column for your imported data) and your API key is in cell <code>M2</code> , the formula in the first cell under your <code>Minimum Years Experience</code> header would be:</li>
 </ul>
-<pre><code>=MYGPT(CONCATENATE("Extract the minimum years of experience required from this job description. Return ONLY a number. If a range is given, return the lower number. If no years of experience are explicitly mentioned, return 'NA'. Here's the job description: ", C2), "google/gemini-2.5-flash-preview", $M$1)</code></pre>
+<pre><code>=MYGPT(CONCATENATE("Extract the minimum years of experience required from this job description. Return ONLY a number. If a range is given, return the lower number. If no years of experience are explicitly mentioned, return 'NA'. Here's the job description: ", C2), "google/gemini-2.5-flash-preview", $M$2)</code></pre>
 <ul>
 <li>Test this on a few rows (e.g.&nbsp;2-5) and manually verify that the outputs are reasonable.</li>
 </ul></li>
@@ -229,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><strong>Apply <code>MYGPT</code> Function:</strong>
 <ul>
-<li>Use your crafted prompt with the <code>MYGPT</code> function, similar to Task 1, concatenating it with the relevant job description cell (e.g., <code>C2</code>) and using <code>google/gemini-2.5-flash-preview</code> and your API key reference (e.g., <code>$M$1</code>).</li>
+<li>Use your crafted prompt with the <code>MYGPT</code> function, similar to Task 1, concatenating it with the relevant job description cell (e.g., <code>C2</code>) and using <code>google/gemini-2.5-flash-preview</code> and your API key reference (e.g., <code>$M$2</code>).</li>
 <li>Apply to a few rows first, then to all rows.</li>
 </ul></li>
 <li><strong>Lock in Results:</strong> Again, once processed, select all cells with results in your <code>Data Languages</code> column, copy them, and then paste special as values only.</li>

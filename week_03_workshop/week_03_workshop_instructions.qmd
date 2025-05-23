@@ -41,14 +41,14 @@ You will begin by setting up Google Sheets to call an LLM API to extract specifi
     *   (This data was originally scraped from Glassdoor in June 2020. The scraping project and full dataset can be found here: [Original Data Source](https://github.com/picklesueat/data_jobs_data){target="_blank"})
 
 2.  **Import Data into Google Sheets:**
-    *   Create a new Google Sheet.
+    *   Create a new Google Sheet and give it a name like "Data Analyst Job Market Analysis". (You can quickly create a new sheet by going to "sheets.new" in your browser.)
     *   Go to `File → Import`.
     *   In the Import file dialog, select the `Upload` tab.
     *   Drag the downloaded `data_analyst_postings_sample_300.csv` file into the upload area. The default import settings should be fine.
-    *   **Adjust Row Height (if needed):** If the rows are too tall due to long job descriptions, select all cells (Ctrl+A or Cmd+A), then move your mouse to the divider line between any two row numbers on the left (e.g., between row 1 and row 2). Your cursor will change. Click and drag the divider upwards to resize all selected rows.
+    *   **Adjust Row Height (if needed):** If the rows are too tall due to long job descriptions, select all cells (press Ctrl+A or Cmd+A two times), then move your mouse to the divider line between any two row numbers on the left (e.g., between row 1 and row 2). Your cursor will change. Click and drag the divider upwards to resize all selected rows.
 
 3.  **Set Up Your API Key:**
-    *   In your Google Sheet, choose an empty cell that's out of the way (e.g., `M1`). Paste your personal OpenRouter API key into this cell.
+    *   In your Google Sheet, choose an empty cell that's out of the way (e.g., `M2`). Paste your personal OpenRouter API key into this cell.
 
 4.  **Add the `MYGPT` Apps Script Function:**
     *   Go to `Extensions → Apps Script`.
@@ -87,6 +87,7 @@ You will begin by setting up Google Sheets to call an LLM API to extract specifi
     ```
     *   Click the "Save project" icon (💾).
     *   Click "Run" once. Google will ask you to authorize the script. Follow the prompts to allow it. You might see a "This app isn't verified" warning; you can proceed by clicking "Advanced" and then "Go to (your project name)".
+    *   You may need to go through the authorization process more than once. You will know it has worked when you see "Execution completed" after pressing "Run".
 
 ## Part 1B. Extracting Years of Experience Required
 
@@ -95,10 +96,10 @@ You'll use the LLM API to find the minimum years of experience mentioned in the 
 1.  **Create New Column:** In your sheet, find the first empty column to the right of your data. Add a header like `Minimum Years Experience `.
 2.  **Formulate the Prompt & Apply `MYGPT`:**
     *   We will use the `google/gemini-2.5-flash-preview` model.
-    *   Assuming your first job description is in cell `C2` (adjust if it's in a different column for your imported data) and your API key is in cell `M1` , the formula in the first cell under your `Minimum Years Experience ` header would be:
+    *   Assuming your first job description is in cell `C2` (adjust if it's in a different column for your imported data) and your API key is in cell `M2` , the formula in the first cell under your `Minimum Years Experience ` header would be:
 
     ```
-    =MYGPT(CONCATENATE("Extract the minimum years of experience required from this job description. Return ONLY a number. If a range is given, return the lower number. If no years of experience are explicitly mentioned, return 'NA'. Here's the job description: ", C2), "google/gemini-2.5-flash-preview", $M$1)
+    =MYGPT(CONCATENATE("Extract the minimum years of experience required from this job description. Return ONLY a number. If a range is given, return the lower number. If no years of experience are explicitly mentioned, return 'NA'. Here's the job description: ", C2), "google/gemini-2.5-flash-preview", $M$2)
     ```
 
     *   Test this on a few rows (e.g. 2-5) and manually verify that the outputs are reasonable.
@@ -118,7 +119,7 @@ Next, you'll ask the LLM to identify if job descriptions mention R, Python, both
     *   Your prompt must clearly instruct the LLM to analyze the `Job Description` and return **ONLY one of these four specific strings**: "R", "Python", "both", or "neither".
     *   **Hint:** Be very explicit. A good prompt will state the options clearly and tell the model to choose only one. 
 3.  **Apply `MYGPT` Function:**
-    *   Use your crafted prompt with the `MYGPT` function, similar to Task 1, concatenating it with the relevant job description cell (e.g., `C2`) and using `google/gemini-2.5-flash-preview` and your API key reference (e.g., `$M$1`).
+    *   Use your crafted prompt with the `MYGPT` function, similar to Task 1, concatenating it with the relevant job description cell (e.g., `C2`) and using `google/gemini-2.5-flash-preview` and your API key reference (e.g., `$M$2`).
     *   Apply to a few rows first, then to all rows.
 4.  **Lock in Results:** Again, once processed, select all cells with results in your `Data Languages` column, copy them, and then paste special as values only.
 
