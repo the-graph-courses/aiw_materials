@@ -46,7 +46,7 @@ You will begin by setting up Google Sheets to call an LLM API to extract specifi
     *   Create a new Google Sheet and give it a name like "Data Analyst Job Market Analysis". (You can quickly create a new sheet by going to "sheets.new" in your browser.)
     *   Go to `File → Import`.
     *   In the Import file dialog, select the `Upload` tab.
-    *   Drag the downloaded `data_analyst_postings_sample_300.csv` file into the upload area. The default import settings should be fine.
+    *   Drag the downloaded `data_analyst_postings_sample.csv` file into the upload area. The default import settings should be fine.
     *   **Adjust Row Height (if needed):** If the rows are too tall due to long job descriptions, select all cells (press Ctrl+A or Cmd+A two times), then move your mouse to the divider line between any two row numbers on the left (e.g., between row 1 and row 2). Your cursor will change. Click and drag the divider upwards to resize all selected rows.
 
 3.  **Set Up Your API Key:**
