@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="The Graph Courses">
+
+<title>Analyzing Job Market Data with LLMs in Sheets and AI Reporting Agents</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="week_03_workshop_instructions_files/libs/clipboard/clipboard.min.js"></script>
+<script src="week_03_workshop_instructions_files/libs/quarto-html/quarto.js"></script>
+<script src="week_03_workshop_instructions_files/libs/quarto-html/popper.min.js"></script>
+<script src="week_03_workshop_instructions_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="week_03_workshop_instructions_files/libs/quarto-html/anchor.min.js"></script>
+<link href="week_03_workshop_instructions_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="week_03_workshop_instructions_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="week_03_workshop_instructions_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="week_03_workshop_instructions_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="week_03_workshop_instructions_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analyzing Job Market Data with LLMs in Sheets and AI Reporting Agents</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>The Graph Courses </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Welcome! In this assignment, you’ll use Large Language Models (LLMs) directly within Google Sheets to extract specific information from hundreds of data analysis job postings. (This is the kind of analysis that we do at Graph Courses to inform our course offerings.)</p>
+<p>Afterwards, you’ll take this extracted data and use an AI-powered analysis tool (Julius or Cursor, based on your experience from the previous workshop) to create visualizations and a concise report.</p>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p><strong>Before you begin:</strong> This assignment assumes you have completed the pre-work, which covers setting up and using LLMs in Google Sheets with OpenRouter. If you haven’t, please briefly review the video here: <a href="https://thegraphcourses.org/courses/aiw-2025-q2/topics/using-llm-apis-with-openrouter-and-google-sheets/" target="_blank">Using LLM APIs with OpenRouter and Google Sheets</a> to ensure you have the necessary context. You don’t have to code/type along with the video; a brief review is enough.</p>
+<p>Then come back to this assignment.</p>
+</section>
+<section id="your-final-report-structure" class="level2">
+<h2 class="anchored" data-anchor-id="your-final-report-structure">Your Final Report Structure</h2>
+<p>Your submitted report for this assignment should include the following sections:</p>
+<ol type="1">
+<li>A brief introduction (1-2 sentences) describing the data and the project’s aim.</li>
+<li>Analysis of “Years of Experience” (including a visualization and your interpretation).</li>
+<li>Analysis of “Programming Language Requirements” (including a visualization and your interpretation).</li>
+<li>A personal reflection on the process (see details in Part 2).</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="part-1-data-extraction-in-google-sheets" class="level1">
+<h1>Part 1: Data Extraction in Google Sheets</h1>
+<p>You will begin by setting up Google Sheets to call an LLM API to extract specific information from job descriptions.</p>
+<section id="part-1a.-setting-up-your-google-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="part-1a.-setting-up-your-google-sheet">Part 1A. Setting Up Your Google Sheet</h2>
+<ol type="1">
+<li><p><strong>Get the Data:</strong></p>
+<ul>
+<li>The dataset for this assignment is a CSV file of Data Analyst job postings: <a href="https://github.com/the-graph-courses/aiw_materials/blob/main/week_03_workshop/data/data_analyst_postings_sample_300.csv" target="_blank">data_analyst_postings_sample_300.csv</a>. There is a download icon at the top right of the file</li>
+</ul>
+<p>Screenshot: <img src="https://thegraphcourses.org/wp-content/uploads/2024/10/github_download_button.jpg" class="img-fluid" width="200" alt="download icon">.</p>
+<ul>
+<li>(This data was originally scraped from Glassdoor in June 2020. The scraping project and full dataset can be found here: <a href="https://github.com/picklesueat/data_jobs_data" target="_blank">Original Data Source</a>)</li>
+</ul></li>
+<li><p><strong>Import Data into Google Sheets:</strong></p>
+<ul>
+<li>Create a new Google Sheet.</li>
+<li>Go to <code>File → Import</code>.</li>
+<li>In the Import file dialog, select the <code>Upload</code> tab.</li>
+<li>Drag the downloaded <code>data_analyst_postings_sample_300.csv</code> file into the upload area. The default import settings should be fine.</li>
+<li><strong>Adjust Row Height (if needed):</strong> If the rows are too tall due to long job descriptions, select all cells (Ctrl+A or Cmd+A), then move your mouse to the divider line between any two row numbers on the left (e.g., between row 1 and row 2). Your cursor will change. Click and drag the divider upwards to resize all selected rows.</li>
+</ul></li>
+<li><p><strong>Set Up Your API Key:</strong></p>
+<ul>
+<li>In your Google Sheet, choose an empty cell that’s out of the way (e.g., <code>M1</code>). Paste your personal OpenRouter API key into this cell.</li>
+</ul></li>
+<li><p><strong>Add the <code>MYGPT</code> Apps Script Function:</strong></p>
+<ul>
+<li>Go to <code>Extensions → Apps Script</code>.</li>
+<li>Replace any starter code in the editor with the exact snippet below:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">MYGPT</span>(prompt<span class="op">,</span> model<span class="op">,</span> key) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>prompt) <span class="cf">return</span> <span class="st">''</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>model) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">'Model ID required (e.g. "google/gemini-2.5-flash-preview").'</span>)<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>key) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">'OpenRouter API key required.'</span>)<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> url <span class="op">=</span> <span class="st">'https://openrouter.ai/api/v1/chat/completions'</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> body <span class="op">=</span> {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">model</span><span class="op">:</span> model<span class="op">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">messages</span><span class="op">:</span> [{ <span class="dt">role</span><span class="op">:</span> <span class="st">'user'</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="bu">String</span>(prompt) }]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> options <span class="op">=</span> {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">method</span><span class="op">:</span> <span class="st">'post'</span><span class="op">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">contentType</span><span class="op">:</span> <span class="st">'application/json'</span><span class="op">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">headers</span><span class="op">:</span> { <span class="dt">Authorization</span><span class="op">:</span> <span class="st">'Bearer '</span> <span class="op">+</span> key }<span class="op">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">payload</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(body)<span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">muteHttpExceptions</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> res <span class="op">=</span> UrlFetchApp<span class="op">.</span><span class="fu">fetch</span>(url<span class="op">,</span> options)<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> json <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(res<span class="op">.</span><span class="fu">getContentText</span>())<span class="op">;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (json<span class="op">.</span><span class="at">error</span>) { <span class="co">// Check for API errors returned in JSON</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="st">'GPT error: '</span> <span class="op">+</span> json<span class="op">.</span><span class="at">error</span><span class="op">.</span><span class="at">message</span><span class="op">;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json<span class="op">.</span><span class="at">choices</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">message</span><span class="op">.</span><span class="at">content</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (err) {</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'GPT error: '</span> <span class="op">+</span> err<span class="op">;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Click the “Save project” icon (💾).</li>
+<li>Click “Run” once. Google will ask you to authorize the script. Follow the prompts to allow it. You might see a “This app isn’t verified” warning; you can proceed by clicking “Advanced” and then “Go to (your project name)”.</li>
+</ul></li>
+</ol>
+</section>
+<section id="part-1b.-extracting-years-of-experience-required" class="level2">
+<h2 class="anchored" data-anchor-id="part-1b.-extracting-years-of-experience-required">Part 1B. Extracting Years of Experience Required</h2>
+<p>You’ll use the LLM API to find the minimum years of experience mentioned in the <code>Job Description</code> column.</p>
+<ol type="1">
+<li><strong>Create New Column:</strong> In your sheet, find the first empty column to the right of your data. Add a header like <code>Minimum Years Experience</code>.</li>
+<li><strong>Formulate the Prompt &amp; Apply <code>MYGPT</code>:</strong>
+<ul>
+<li>We will use the <code>google/gemini-2.5-flash-preview</code> model.</li>
+<li>Assuming your first job description is in cell <code>C2</code> (adjust if it’s in a different column for your imported data) and your API key is in cell <code>M1</code> , the formula in the first cell under your <code>Minimum Years Experience</code> header would be:</li>
+</ul>
+<pre><code>=MYGPT(CONCATENATE("Extract the minimum years of experience required from this job description. Return ONLY a number. If a range is given, return the lower number. If no years of experience are explicitly mentioned, return 'NA'. Here's the job description: ", C2), "google/gemini-2.5-flash-preview", $M$1)</code></pre>
+<ul>
+<li>Test this on a few rows (e.g.&nbsp;2-5) and manually verify that the outputs are reasonable.</li>
+</ul></li>
+<li><strong>Apply to All Rows:</strong>
+<ul>
+<li>Once you have tested the formula on a few rows, drag the fill handle (the small square at the bottom-right of the selected cell) down to apply it to all job descriptions. This will make an API call for each row, so it might take a moment.</li>
+</ul></li>
+<li><strong>Lock in Results:</strong> Once the LLM has processed the column and you have the results:
+<ul>
+<li>Select the column of results and copy them (Ctrl+C or Cmd+C).</li>
+<li>Right-click on the column header again, then <code>Paste special → Values only</code>. This converts the formulas to static text, preventing accidental re-runs and saving API costs.</li>
+</ul></li>
+</ol>
+</section>
+<section id="part-1c.-extracting-programming-language-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="part-1c.-extracting-programming-language-requirements">Part 1C. Extracting Programming Language Requirements</h2>
+<p>Next, you’ll ask the LLM to identify if job descriptions mention R, Python, both, or neither.</p>
+<ol type="1">
+<li><strong>Create New Column:</strong> Add another new column with a header like <code>Data Languages</code>.</li>
+<li><strong>Craft Your Own Prompt:</strong>
+<ul>
+<li>For this task, you need to write the prompt yourself.</li>
+<li>Your prompt must clearly instruct the LLM to analyze the <code>Job Description</code> and return <strong>ONLY one of these four specific strings</strong>: “R”, “Python”, “both”, or “neither”.</li>
+<li><strong>Hint:</strong> Be very explicit. A good prompt will state the options clearly and tell the model to choose only one.</li>
+</ul></li>
+<li><strong>Apply <code>MYGPT</code> Function:</strong>
+<ul>
+<li>Use your crafted prompt with the <code>MYGPT</code> function, similar to Task 1, concatenating it with the relevant job description cell (e.g., <code>C2</code>) and using <code>google/gemini-2.5-flash-preview</code> and your API key reference (e.g., <code>$M$1</code>).</li>
+<li>Apply to a few rows first, then to all rows.</li>
+</ul></li>
+<li><strong>Lock in Results:</strong> Again, once processed, select all cells with results in your <code>Data Languages</code> column, copy them, and then paste special as values only.</li>
+</ol>
+</section>
+<section id="side-note-is-an-llm-needed-just-to-extract-r-and-python" class="level2">
+<h2 class="anchored" data-anchor-id="side-note-is-an-llm-needed-just-to-extract-r-and-python">Side Note: Is An LLM Needed just to extract ‘R’ and ‘Python’?</h2>
+<p>A valid question at this point is “Is an LLM needed just to extract R and Python? Can’t I just use a simple text search?” While this would work for Python, it would not work for R, unfortunately.</p>
+<p>The challenge is that “R” is an extremely common letter in English text. A simple text search for “R” in job descriptions would return a lot of false positives like “R &amp; D (research and development)”, “H R (human resources)”, “RA (research assistant)” and others.</p>
+<p>An LLM is more robust because it understands context, allowing it to accurately distinguish between what capital R means in “R programming” and what it means in “HR department”.</p>
+<hr>
+</section>
+</section>
+<section id="part-2-reporting-with-ai-agents-julius-or-cursor" class="level1">
+<h1>Part 2: Reporting with AI Agents (Julius or Cursor)</h1>
+<p>Now that you’ve extracted data in Sheets, you’ll use an AI agent for visualization and reporting.</p>
+<p>Ensure your Google Sheet has the original <code>Job Description</code> and <code>Median Salary Estimate USD</code> columns, plus your newly created and value-pasted <code>Minimum Years Experience</code> and <code>Data Languages</code> columns.</p>
+<p>Next, in Google Sheets, go to <code>File → Download → Comma Separated Values (.csv)</code>. Save this file to your computer.</p>
+<p>You will use either Julius or Cursor, the tool you used in a previous workshop, to analyze your downloaded CSV and generate your report.</p>
+<ol type="1">
+<li><strong>Tool Choice:</strong>
+<ul>
+<li><strong>Julius:</strong> If you prefer a chat-based interface or have less coding experience.</li>
+<li><strong>Cursor:</strong> If you have coding experience (e.g., R or Python) and prefer an AI-assisted code editor.</li>
+<li>Refer to the instructions from our previous workshop if you need a refresher on setting up or basic interaction with your chosen tool.</li>
+</ul></li>
+<li><strong>Generate Your Report:</strong>
+<ul>
+<li><p>Upload your downloaded CSV file to Julius (Or for Cursor, create a new folder, open that in Cursor, then add the CSV file to that folder).</p></li>
+<li><p>Your goal is to create a report document that includes:</p>
+<ul>
+<li>A brief introduction (1-2 sentences) describing the data and project.</li>
+<li><strong>Years of Experience Analysis:</strong>
+<ul>
+<li>A scatter plot: <code>Minimum Years Experience</code> (x-axis) vs.&nbsp;<code>Median Salary Estimate USD</code> (y-axis).</li>
+<li>A brief written interpretation of the plot.</li>
+</ul></li>
+<li><strong>Programming Language Analysis:</strong>
+<ul>
+<li>A box plot: <code>Median Salary Estimate USD</code> distributions for each category in <code>Data Languages</code>.</li>
+<li>A brief written interpretation of the plot.</li>
+</ul></li>
+<li><strong>Reflection:</strong> A short reflection (e.g., 1-2 paragraphs) written by you (not the AI) on your experience with this assignment. Consider:
+<ul>
+<li>What was easy or difficult?</li>
+<li>What was surprising or noteworthy?</li>
+<li>What did you learn?</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Example Prompting Idea for JULIUS (adapt as needed):</strong></p>
+<pre><code>I've added a CSV which contains data from job postings. It contains job data with columns like 'Median Salary Estimate USD', 'Minimum Years Experience ' (numeric, may contain 'NA' or non-numeric text if conversion failed), and 'Data Languages' (categorical: "R", "Python", "both", "neither").
+
+Help me generate the following figures:
+- A scatter plot of 'Minimum Years Experience ' vs. 'Median Salary Estimate USD'. 
+- A box plot of 'Median Salary Estimate USD' grouped by 'Data Languages'. 
+
+I will compile these into a report and add my own introduction and reflection.</code></pre></li>
+<li><p><strong>Example Prompting Idea for CURSOR (adapt as needed):</strong></p>
+<pre><code>You are an AI agent that creates data reports.
+- You create reports by writing code to an Rmarkdown file (with github_document output), knitting that file, then reading the output md file to validate your work.
+- You repeat this edit, knit, review loop until the reporting task is achieved.
+- Use plots, tables, and inline R code where appropriate.
+- Code should be hidden from the output.
+
+Now, I've added a CSV which contains data from job postings. It contains job data with columns like 'Median Salary Estimate USD', 'Minimum Years Experience ' (numeric, may contain 'NA' or non-numeric text if conversion failed), and 'Data Languages' (categorical: "R", "Python", "both", "neither").
+
+Help me generate a report with the following figures:
+- A scatter plot of 'Minimum Years Experience ' vs. 'Median Salary Estimate USD'. 
+- A box plot of 'Median Salary Estimate USD' grouped by 'Data Languages'. 
+
+I will compile these into a report and add my own introduction, interpretation, and reflection.</code></pre></li>
+</ul></li>
+</ol>
+<section id="side-note-why-this-multi-step-process" class="level2">
+<h2 class="anchored" data-anchor-id="side-note-why-this-multi-step-process">Side Note: Why This Multi-Step Process?</h2>
+<p>You might wonder: “Why not just upload the original, raw CSV of job postings directly into Julius, Cursor, or even ChatGPT and ask it to do everything?”</p>
+<p>While powerful, LLMs and AI agents have limitations, especially with large, unstructured inputs:</p>
+<ul>
+<li><p><strong>Context Window Limits:</strong> LLMs can only process a certain amount of text (the “context window”) at once. A large CSV with many long job descriptions can easily exceed this limit. The model might then ignore parts of your data or fail to process it comprehensively.</p></li>
+<li><p><strong>Focus and Accuracy:</strong> Asking an LLM to perform many complex tasks (like reading hundreds of descriptions, identifying specific data points within each, cleaning them, and then visualizing) all from one massive, raw input can lead to confusion, errors, or “hallucinations.” The model might struggle to keep all instructions and data points straight.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="part-3-submission" class="level1">
+<h1>Part 3: Submission</h1>
+<ul>
+<li><strong>What to Submit:</strong> Your final report as a <strong>single PDF or HTML document</strong>. This PDF or HTML should include all the sections outlined at the beginning: Introduction, Years of Experience Analysis (plot &amp; interpretation), Programming Language Analysis (plot &amp; interpretation), and your AI Reflection.</li>
+<li><strong>You don’t need to submit your Google Sheet.</strong> That is for your own work.</li>
+</ul>
+<hr>
+</section>
+<section id="part-4-optional---add-to-your-github-pages-portfolio" class="level1">
+<h1>Part 4: Optional - Add to Your GitHub Pages Portfolio</h1>
+<p>You’re encouraged to add this report to your GitHub Pages portfolio.</p>
+<ol type="1">
+<li><strong>Upload Your Report:</strong> Add your final report file to the same GitHub repository that hosts your portfolio website.</li>
+<li><strong>Get the Link:</strong> Once the report is uploaded to your GitHub repository, navigate to the file and get its direct link. Usually, you can right-click the file and “Copy Link Address”.</li>
+<li><strong>Update Your Portfolio:</strong>
+<ul>
+<li>You can ask ChatGPT (or a similar LLM) to help you update your <code>index.html</code> file. If you have your previous ChatGPT conversation for building the site, you can continue it. Otherwise, you might start a new conversation, provide the content of your existing <code>index.html</code> file, and then give your update request.</li>
+<li>ChatGPT will provide updated <code>index.html</code> code. Carefully replace the entire content of your <code>index.html</code> file in your GitHub repository with this new code.</li>
+<li>Commit and push the changes to GitHub.</li>
+<li>Verify that your live GitHub Pages site shows the new entry and that the link to your report works correctly. This may take a few minutes to update.</li>
+</ul></li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

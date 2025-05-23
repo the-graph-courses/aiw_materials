@@ -1,0 +1,222 @@
+---
+title: "Analyzing Job Market Data with LLMs in Sheets and AI Reporting Agents"
+format: html
+author: "The Graph Courses"
+---
+
+# Introduction
+
+Welcome! In this assignment, you'll use Large Language Models (LLMs) directly within Google Sheets to extract specific information from hundreds of data analysis job postings. (This is the kind of analysis that we do at Graph Courses to inform our course offerings.)
+
+Afterwards, you'll take this extracted data and use an AI-powered analysis tool (Julius or Cursor, based on your experience from the previous workshop) to create visualizations and a concise report.
+
+## Prerequisites
+
+**Before you begin:** This assignment assumes you have completed the pre-work, which covers setting up and using LLMs in Google Sheets with OpenRouter. If you haven't, please briefly review the video here: [Using LLM APIs with OpenRouter and Google Sheets](https://thegraphcourses.org/courses/aiw-2025-q2/topics/using-llm-apis-with-openrouter-and-google-sheets/){target="_blank"} to ensure you have the necessary context. You don't have to code/type along with the video; a brief review is enough.
+
+Then come back to this assignment.
+
+## Your Final Report Structure
+
+Your submitted report for this assignment should include the following sections:
+
+1.  A brief introduction (1-2 sentences) describing the data and the project's aim.
+2.  Analysis of "Years of Experience" (including a visualization and your interpretation).
+3.  Analysis of "Programming Language Requirements" (including a visualization and your interpretation).
+4.  A personal reflection on the process (see details in Part 2).
+
+---
+
+# Part 1: Data Extraction in Google Sheets
+
+You will begin by setting up Google Sheets to call an LLM API to extract specific information from job descriptions. 
+
+## Part 1A. Setting Up Your Google Sheet
+
+1.  **Get the Data:**
+    *   The dataset for this assignment is a CSV file of Data Analyst job postings: [data_analyst_postings_sample_300.csv](https://github.com/the-graph-courses/aiw_materials/blob/main/week_03_workshop/data/data_analyst_postings_sample_300.csv){target="_blank"}. There is a download icon at the top right of the file
+    
+    Screenshot: ![download icon](https://thegraphcourses.org/wp-content/uploads/2024/10/github_download_button.jpg){width="200px"}.
+
+    *   (This data was originally scraped from Glassdoor in June 2020. The scraping project and full dataset can be found here: [Original Data Source](https://github.com/picklesueat/data_jobs_data){target="_blank"})
+
+2.  **Import Data into Google Sheets:**
+    *   Create a new Google Sheet.
+    *   Go to `File → Import`.
+    *   In the Import file dialog, select the `Upload` tab.
+    *   Drag the downloaded `data_analyst_postings_sample_300.csv` file into the upload area. The default import settings should be fine.
+    *   **Adjust Row Height (if needed):** If the rows are too tall due to long job descriptions, select all cells (Ctrl+A or Cmd+A), then move your mouse to the divider line between any two row numbers on the left (e.g., between row 1 and row 2). Your cursor will change. Click and drag the divider upwards to resize all selected rows.
+
+3.  **Set Up Your API Key:**
+    *   In your Google Sheet, choose an empty cell that's out of the way (e.g., `M1`). Paste your personal OpenRouter API key into this cell.
+
+4.  **Add the `MYGPT` Apps Script Function:**
+    *   Go to `Extensions → Apps Script`.
+    *   Replace any starter code in the editor with the exact snippet below:
+    ```javascript
+    function MYGPT(prompt, model, key) {
+      if (!prompt) return '';
+      if (!model) throw new Error('Model ID required (e.g. "google/gemini-2.5-flash-preview").');
+      if (!key) throw new Error('OpenRouter API key required.');
+
+      const url = 'https://openrouter.ai/api/v1/chat/completions';
+      const body = {
+        model: model,
+        messages: [{ role: 'user', content: String(prompt) }]
+      };
+
+      const options = {
+        method: 'post',
+        contentType: 'application/json',
+        headers: { Authorization: 'Bearer ' + key },
+        payload: JSON.stringify(body),
+        muteHttpExceptions: true
+      };
+
+      try {
+        const res = UrlFetchApp.fetch(url, options);
+        const json = JSON.parse(res.getContentText());
+        if (json.error) { // Check for API errors returned in JSON
+          return 'GPT error: ' + json.error.message;
+        }
+        return json.choices[0].message.content.trim();
+      } catch (err) {
+        return 'GPT error: ' + err;
+      }
+    }
+    ```
+    *   Click the "Save project" icon (💾).
+    *   Click "Run" once. Google will ask you to authorize the script. Follow the prompts to allow it. You might see a "This app isn't verified" warning; you can proceed by clicking "Advanced" and then "Go to (your project name)".
+
+## Part 1B. Extracting Years of Experience Required
+
+You'll use the LLM API to find the minimum years of experience mentioned in the `Job Description` column.
+
+1.  **Create New Column:** In your sheet, find the first empty column to the right of your data. Add a header like `Minimum Years Experience `.
+2.  **Formulate the Prompt & Apply `MYGPT`:**
+    *   We will use the `google/gemini-2.5-flash-preview` model.
+    *   Assuming your first job description is in cell `C2` (adjust if it's in a different column for your imported data) and your API key is in cell `M1` , the formula in the first cell under your `Minimum Years Experience ` header would be:
+
+    ```
+    =MYGPT(CONCATENATE("Extract the minimum years of experience required from this job description. Return ONLY a number. If a range is given, return the lower number. If no years of experience are explicitly mentioned, return 'NA'. Here's the job description: ", C2), "google/gemini-2.5-flash-preview", $M$1)
+    ```
+
+    *   Test this on a few rows (e.g. 2-5) and manually verify that the outputs are reasonable.
+3.  **Apply to All Rows:**
+    *   Once you have tested the formula on a few rows, drag the fill handle (the small square at the bottom-right of the selected cell) down to apply it to all job descriptions. This will make an API call for each row, so it might take a moment.
+4.  **Lock in Results:** Once the LLM has processed the column and you have the results:
+    *   Select the column of results and copy them (Ctrl+C or Cmd+C).
+    *   Right-click on the column header again, then `Paste special → Values only`. This converts the formulas to static text, preventing accidental re-runs and saving API costs.
+
+## Part 1C. Extracting Programming Language Requirements
+
+Next, you'll ask the LLM to identify if job descriptions mention R, Python, both, or neither.
+
+1.  **Create New Column:** Add another new column with a header like `Data Languages`.
+2.  **Craft Your Own Prompt:**
+    *   For this task, you need to write the prompt yourself.
+    *   Your prompt must clearly instruct the LLM to analyze the `Job Description` and return **ONLY one of these four specific strings**: "R", "Python", "both", or "neither".
+    *   **Hint:** Be very explicit. A good prompt will state the options clearly and tell the model to choose only one. 
+3.  **Apply `MYGPT` Function:**
+    *   Use your crafted prompt with the `MYGPT` function, similar to Task 1, concatenating it with the relevant job description cell (e.g., `C2`) and using `google/gemini-2.5-flash-preview` and your API key reference (e.g., `$M$1`).
+    *   Apply to a few rows first, then to all rows.
+4.  **Lock in Results:** Again, once processed, select all cells with results in your `Data Languages` column, copy them, and then paste special as values only.
+
+## Side Note: Is An LLM Needed just to extract 'R' and 'Python'?
+
+A valid question at this point is "Is an LLM needed just to extract R and Python? Can't I just use a simple text search?" While this would work for Python, it would not work for R, unfortunately.
+
+The challenge is that "R" is an extremely common letter in English text. A simple text search for "R" in job descriptions would return a lot of false positives like "R & D (research and development)", "H R (human resources)", "RA (research assistant)" and others.
+
+An LLM is more robust because it understands context, allowing it to accurately distinguish between what capital R means in "R programming" and what it means in "HR department".
+
+---
+
+# Part 2: Reporting with AI Agents (Julius or Cursor)
+
+Now that you've extracted data in Sheets, you'll use an AI agent for visualization and reporting.
+
+Ensure your Google Sheet has the original `Job Description` and `Median Salary Estimate USD` columns, plus your newly created and value-pasted `Minimum Years Experience ` and `Data Languages` columns.
+
+Next, in Google Sheets, go to `File → Download → Comma Separated Values (.csv)`. Save this file to your computer.
+
+You will use either Julius or Cursor, the tool you used in a previous workshop, to analyze your downloaded CSV and generate your report.
+
+1.  **Tool Choice:**
+    *   **Julius:** If you prefer a chat-based interface or have less coding experience.
+    *   **Cursor:** If you have coding experience (e.g., R or Python) and prefer an AI-assisted code editor.
+    *   Refer to the instructions from our previous workshop if you need a refresher on setting up or basic interaction with your chosen tool.
+2.  **Generate Your Report:**
+    *   Upload your downloaded CSV file to Julius (Or for Cursor, create a new folder, open that in Cursor, then add the CSV file to that folder).
+    *   Your goal is to create a report document that includes:
+        *   A brief introduction (1-2 sentences) describing the data and project.
+        *   **Years of Experience Analysis:**
+            *   A scatter plot: `Minimum Years Experience ` (x-axis) vs. `Median Salary Estimate USD` (y-axis).
+            *   A brief written interpretation of the plot.
+        *   **Programming Language Analysis:**
+            *   A box plot: `Median Salary Estimate USD` distributions for each category in `Data Languages`.
+            *   A brief written interpretation of the plot.
+        *   **Reflection:** A short reflection (e.g., 1-2 paragraphs) written by you (not the AI) on your experience with this assignment. Consider:
+            *   What was easy or difficult?
+            *   What was surprising or noteworthy?
+            *   What did you learn?
+
+    *   **Example Prompting Idea for JULIUS (adapt as needed):**
+        ```
+        I've added a CSV which contains data from job postings. It contains job data with columns like 'Median Salary Estimate USD', 'Minimum Years Experience ' (numeric, may contain 'NA' or non-numeric text if conversion failed), and 'Data Languages' (categorical: "R", "Python", "both", "neither").
+
+        Help me generate the following figures:
+        - A scatter plot of 'Minimum Years Experience ' vs. 'Median Salary Estimate USD'. 
+        - A box plot of 'Median Salary Estimate USD' grouped by 'Data Languages'. 
+
+        I will compile these into a report and add my own introduction and reflection.
+        ```
+
+    *   **Example Prompting Idea for CURSOR (adapt as needed):**
+        ```
+        You are an AI agent that creates data reports.
+        - You create reports by writing code to an Rmarkdown file (with github_document output), knitting that file, then reading the output md file to validate your work.
+        - You repeat this edit, knit, review loop until the reporting task is achieved.
+        - Use plots, tables, and inline R code where appropriate.
+        - Code should be hidden from the output.
+
+        Now, I've added a CSV which contains data from job postings. It contains job data with columns like 'Median Salary Estimate USD', 'Minimum Years Experience ' (numeric, may contain 'NA' or non-numeric text if conversion failed), and 'Data Languages' (categorical: "R", "Python", "both", "neither").
+
+        Help me generate a report with the following figures:
+        - A scatter plot of 'Minimum Years Experience ' vs. 'Median Salary Estimate USD'. 
+        - A box plot of 'Median Salary Estimate USD' grouped by 'Data Languages'. 
+
+        I will compile these into a report and add my own introduction, interpretation, and reflection.
+        ```
+
+## Side Note: Why This Multi-Step Process?
+
+You might wonder: "Why not just upload the original, raw CSV of job postings directly into Julius, Cursor, or even ChatGPT and ask it to do everything?"
+
+While powerful, LLMs and AI agents have limitations, especially with large, unstructured inputs:
+
+*   **Context Window Limits:** LLMs can only process a certain amount of text (the "context window") at once. A large CSV with many long job descriptions can easily exceed this limit. The model might then ignore parts of your data or fail to process it comprehensively.
+
+*   **Focus and Accuracy:** Asking an LLM to perform many complex tasks (like reading hundreds of descriptions, identifying specific data points within each, cleaning them, and then visualizing) all from one massive, raw input can lead to confusion, errors, or "hallucinations." The model might struggle to keep all instructions and data points straight.
+
+---
+
+# Part 3: Submission
+
+*   **What to Submit:** Your final report as a **single PDF or HTML document**. This PDF or HTML should include all the sections outlined at the beginning: Introduction, Years of Experience Analysis (plot & interpretation), Programming Language Analysis (plot & interpretation), and your AI Reflection.
+*   **You don't need to submit your Google Sheet.** That is for your own work.
+
+---
+
+# Part 4: Optional - Add to Your GitHub Pages Portfolio
+
+You're encouraged to add this report to your GitHub Pages portfolio.
+
+1.  **Upload Your Report:** Add your final report file to the same GitHub repository that hosts your portfolio website.
+2.  **Get the Link:** Once the report is uploaded to your GitHub repository, navigate to the file and get its direct link. Usually, you can right-click the file and "Copy Link Address".
+3.  **Update Your Portfolio:**
+    *   You can ask ChatGPT (or a similar LLM) to help you update your `index.html` file. If you have your previous ChatGPT conversation for building the site, you can continue it. Otherwise, you might start a new conversation, provide the content of your existing `index.html` file, and then give your update request.
+    *   ChatGPT will provide updated `index.html` code. Carefully replace the entire content of your `index.html` file in your GitHub repository with this new code.
+    *   Commit and push the changes to GitHub.
+    *   Verify that your live GitHub Pages site shows the new entry and that the link to your report works correctly. This may take a few minutes to update.
+
