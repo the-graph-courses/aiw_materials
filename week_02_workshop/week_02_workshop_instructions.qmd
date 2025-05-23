@@ -120,7 +120,7 @@ You will use Julius, an AI data analysis chat-based tool, to analyze your data a
     *   **Please do not share this code.**
 
 2.  **Starting Your Analysis in Julius:**
-    *   Start a new conversation in Julius.
+    *   Start a new "thread" in Julius.
     *   **Select your tools:**
         *   **Code Language:** Julius can use Python or R. If you have no preference, we recommend selecting **R**. The default figures from R are often a bit nicer, and more members of The Graph team are R experts, so we can better assist with debugging if needed. The code language changer is usually found at the top left of the Julius window.
         *   **AI Model:** It's recommended to switch to the **Claude 3.7 Sonnet** model for potentially better results. The model selection is typically in a dropdown menu below the prompt input box.
