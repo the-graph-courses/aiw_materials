@@ -21,6 +21,7 @@ Your completed chatbot will be able to:
 1. **Create Your Botpress Account:**
    - Go to [botpress.com](https://botpress.com/)
    - Sign up for a free account using your email
+   (Note: Botpress provides $5 in free credits, which should cover over 1000 messages on the default models. But for serious use, you will need to add credit to your account)
    - Verify your email address if needed
 
 2. **Create a New Bot:**
@@ -136,3 +137,9 @@ Your bot will use an "Autonomous Node", which means you can define your AI agent
    - Try the same tests you did before, but now on your live website
    - Ensure the bot loads properly and responds correctly
    - Verify the registration flow works in the live environment
+
+3. **Making changes to your bot:**
+   - WATCH OUT: If you make any changes to your bot, be sure to click on "Publish" again in the top-right corner to save your changes.
+
+
+messages.
