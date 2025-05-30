@@ -1,0 +1,139 @@
+---
+title: "Portfolio Website Chatbot with Botpress"
+format: html
+author: "The Graph Courses"
+---
+
+## Introduction
+
+Welcome! In this assignment, you'll create an LLM-powered chatbot using Botpress and embed it into your portfolio website that you created in a previous session. 
+
+Your completed chatbot will be able to:
+
+1. **Answer CV/Resume Questions** - Provide information about your background using uploaded CV data
+2. **Share Course Information** - Provide info about the Graph Courses GenAI syllabus and curriculum details  
+3. **Collect Visitor Information** - Gather names and emails from interested visitors for showcase day registration
+
+---
+
+# Part 1: Setting Up Your Botpress Account and Creating Your Bot
+
+1. **Create Your Botpress Account:**
+   - Go to [botpress.com](https://botpress.com/)
+   - Sign up for a free account using your email
+   - Verify your email address if needed
+
+2. **Create a New Bot:**
+   - Once logged in, click "Create Bot" 
+   - Name your bot something like "Portfolio Assistant" or "[Your Name] Course Bot"
+   - Follow the instructions to open the bot in the studio
+
+Your bot will use an "Autonomous Node", which means you can define your AI agent's purpose and behavior in just a few lines of text.
+
+3. **Set Bot Instructions:**
+   - In the main configuration area, find the "Instructions" field
+
+   ![](images/bot_instructions.jpg)
+
+   - Enter instructions like:
+   ```
+   You are a portfolio assistant for a Generative AI course student. Your main tasks are:
+   - Answer questions about the student's CV and background using the knowledge base
+   - Provide information about the Graph Courses GenAI syllabus and curriculum based on your knowledge base
+   - After answering a users question, politely ask them whether they might be interested in our upcoming showcase event on Friday June 27th at 3pm GMT or Sunday June 29th at 5pm GMT
+   - If they express interest, you will collect their name and email for registration and record those in the Attendees table tool.
+   
+   Be friendly, professional, and informative. Always try to be helpful while staying focused on these core topics. For other topics, politely decline to answer. 
+   ```
+
+# Part 2: Set up the Knowledge Base
+
+1. **Navigate to Knowledge Base:**
+   - Find the "Knowledge Base" section under the "Instructions" section 
+   - Drag and drop your CV into the upload box. (If you don't want any of your personal information online, you can use a fake example CV from the internet, like here: https://www.careers.ox.ac.uk/files/traditional-cv-examplepdf)
+   - Access the syllabus from: https://drive.google.com/file/d/1NV-Mo2UgXQwdTu_Jv-HtCVnB9Pf2Grng/view
+
+# Part 3: Set Up Data Collection 
+
+1. **Create Attendees Table Structure:**
+   - On the Botpress sidebar, click on the Tables icon. 
+
+   ![](images/tables_icon.jpg)
+
+   - Click on the New Table button at the top left and call it something like "Attendees", then click to Save
+
+   - Click the new column icon to add the following two columns, leaving all settings as default
+     - Name
+     - Email
+
+   ![](images/new_column_icon.jpg)
+
+
+2. **Configure Collection:**
+   - Return to the main configuration area, by clicking on the "Main" icon on the left sidebar
+
+   ![](images/main_icon.jpg)
+
+   - Scroll down to the Tools section under Knowledge Base
+   - Click on the Add Tool plus icon
+   - Click on Tables then the Attendees table, then "Create Rows". This gives your bot the ability to create rows in that table.
+
+# Part 4: Testing and Publishing Your Bot
+
+1. **Use the Test Chat:**
+   - The Botpress interface has a test chat panel on the right side of the screen
+   - Try asking questions about:
+     - Your background ("Tell me about the educational background of [your name]")
+     - Course content ("What topics are covered in the GenAI course?")
+   - The bot should interrupt at some point to ask if you might be interested in the event. 
+   - Give your email and name, then check the Attendees table to see if the bot was successful in adding your information.
+
+2. **Publish:**
+   - Click "Publish" button in the top-right corner
+   - Wait for the publishing process to complete
+
+3. **Get Embedding Code:**
+   - After publishing, go to "Share", also in the top-right corner
+   - Select "Configure" or "Embed"
+   - Find the "Chat Bubble" section
+   - Copy the two script lines that will look similar to this:
+   ```html
+   <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+   <script src="https://files.bpcontent.cloud/2025/05/27/14/20250527145803-WFVSK7BL.js"></script>
+   ```
+
+# Part 5: Embedding Your Bot on Your Website
+
+## Part 5A: Add Bot to Your Portfolio
+
+1. **Access Your GitHub Repository:**
+   - Go to your GitHub Pages repository where your portfolio is hosted
+   - Open the `index.html` file for editing
+
+2. **Insert the Bot Code:**
+   - Locate the `<head>` section of your HTML file
+   - Paste the two script lines you copied from Botpress right before the opening `</body>` tag. This will be near the end of the document.
+   ```html
+   <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+   <script src="https://files.bpcontent.cloud/2025/05/27/14/20250527145803-WFVSK7BL.js"></script>
+   </body>
+   ```
+   - If you do not feel comfortable making this change yourself, you can ask an LLM to do it for you. 
+
+3. **Commit and Deploy:**
+   - Save your changes to the `index.html` file
+   - Commit the changes to your GitHub repository
+   - Your live site will update automatically (this may take 3-5 minutes)
+   - You can track the status of your deployment by clicking on the "Actions" tab in the menu of the GitHub repository page
+   - NOTE: Even after the site is done deploying, you may need to refresh the page a few times to see the bot appear, because your browser may be loading a cached version of the page.
+
+## Part 5B: Test Live Integration
+
+1. **Visit Your Live Site:** 
+   - Go to your GitHub Pages URL
+   - Look for the chat bubble (usually appears in the bottom-right corner)
+
+2. **Test Full Functionality:**
+   - Try the same tests you did before, but now on your live website
+   - Ensure the bot loads properly and responds correctly
+   - Verify the registration flow works in the live environment
