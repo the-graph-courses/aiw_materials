@@ -94,7 +94,7 @@ Your bot will use an "Autonomous Node", which means you can define your AI agent
 
 3. **Get Embedding Code:**
    - After publishing, go to "Share", also in the top-right corner
-   - Select "Configure" or "Embed"
+   - Select "Configure"
    - Find the "Chat Bubble" section
    - Copy the two script lines that will look similar to this:
    ```html
