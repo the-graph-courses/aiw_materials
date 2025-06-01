@@ -52,7 +52,7 @@ Your bot will use an "Autonomous Node", which means you can define your AI agent
 1. **Navigate to Knowledge Base:**
    - Find the "Knowledge Base" section under the "Instructions" section 
    - Drag and drop your CV into the upload box. (If you don't want any of your personal information online, you can use a fake example CV from the internet, like here: https://www.careers.ox.ac.uk/files/traditional-cv-examplepdf)
-   - Access the syllabus from: https://drive.google.com/file/d/1NV-Mo2UgXQwdTu_Jv-HtCVnB9Pf2Grng/view
+   - Download the syllabus from: [https://drive.google.com/file/d/1NV-Mo2UgXQwdTu_Jv-HtCVnB9Pf2Grng/view](https://drive.google.com/file/d/1NV-Mo2UgXQwdTu_Jv-HtCVnB9Pf2Grng/view), and upload it to the knowledge base.
 
 # Part 3: Set Up Data Collection 
 
@@ -142,4 +142,12 @@ Your bot will use an "Autonomous Node", which means you can define your AI agent
    - WATCH OUT: If you make any changes to your bot, be sure to click on "Publish" again in the top-right corner to save your changes.
 
 
-messages.
+# Part 6: Optional - Customize the Appearance of Your Bot
+
+1. **Navigate to the Customize Dashboard:** To customize the appearance of your bot, again click on the "Share" button in the top-right corner then select "Configure". Make sure you are in the "Chat Bubble" section, then under the "Appearance and Theme" section, click on "Edit on Dashboard". 
+
+   ![](images/configure_share.jpg){width=50%}
+
+   ![](images/edit_appearance.jpg){width=70%}
+
+2. **Customize the Appearance:** On this page, under the "Theme" section, you can change the color and font, and under the General section you can change the name of the bot, a description, an icon and a composer placeholder. 
