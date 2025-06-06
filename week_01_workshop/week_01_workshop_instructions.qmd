@@ -1,5 +1,5 @@
 ---
-title: "Set Up Your AI‑Course Portfolio Website"
+title: "Week 1: Set Up Your AI‑Course Portfolio Website"
 format: html
 number-sections: true
 ---

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="The Graph Courses Team">
+
+<title>Workshop: Automation with Make.com</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="week_05_workshop_instructions_files/libs/clipboard/clipboard.min.js"></script>
+<script src="week_05_workshop_instructions_files/libs/quarto-html/quarto.js"></script>
+<script src="week_05_workshop_instructions_files/libs/quarto-html/popper.min.js"></script>
+<script src="week_05_workshop_instructions_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="week_05_workshop_instructions_files/libs/quarto-html/anchor.min.js"></script>
+<link href="week_05_workshop_instructions_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="week_05_workshop_instructions_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="week_05_workshop_instructions_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="week_05_workshop_instructions_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="week_05_workshop_instructions_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Workshop: Automation with Make.com</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>The Graph Courses Team </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In this workshop, you’ll create an automated workflow using Make.com that processes consultation inquiries submitted through a Google Form. The automation will:</p>
+<ol type="1">
+<li>Monitor a Google Form for new submissions</li>
+<li>Use an AI model to research the potential client’s company and generate a report</li>
+<li>Create a formatted Google Doc with the research findings</li>
+<li>Send you an email notification with the report</li>
+</ol>
+<p>The goal here is to build an extremely simple automation that demonstrates the power of connecting different web services with an AI Large Language Model (LLM).</p>
+<p>In the wild, you will find much more complex automations. Many organizations run a large fraction of their processes using automations on services like Make.com. With the rise of LLMs, these automations can do increasingly complex tasks.</p>
+</section>
+<section id="part-1-setting-up-your-google-form-and-data-collection" class="level1">
+<h1>Part 1: Setting Up Your Google Form and Data Collection</h1>
+<section id="create-your-project-folder" class="level2">
+<h2 class="anchored" data-anchor-id="create-your-project-folder">Create Your Project Folder</h2>
+<ol type="1">
+<li>In your browser, navigate to <a href="https://drive.google.com/">drive.google.com</a></li>
+<li>Click <strong>New</strong> at the top left → then click <strong>New folder</strong></li>
+<li>Name the folder something like <code>GenAI Consultations</code></li>
+<li>Double-click to open the folder</li>
+</ol>
+<p><img src="https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/6e163120-758c-4186-b7f3-be06417a2cd6/File.jpeg?tl_px=0,0&amp;br_px=1376,769&amp;force_format=jpeg&amp;q=100&amp;width=1120.0&amp;wat=1&amp;wat_opacity=0.7&amp;wat_gravity=northwest&amp;wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&amp;wat_pad=337,171" class="img-fluid" width="619"></p>
+</section>
+<section id="build-your-consultation-form" class="level2">
+<h2 class="anchored" data-anchor-id="build-your-consultation-form">Build Your Consultation Form</h2>
+<ol type="1">
+<li><p>Inside the folder, again click <strong>New</strong> then click on <strong>Google Forms</strong> to create a new form.</p></li>
+<li><p>In the title field and enter: <code>Consultation Inquiry</code></p></li>
+<li><p>Set up the following form questions:</p>
+<ul>
+<li><strong>Question 1:</strong> “Name” (Short answer)</li>
+<li><strong>Question 2:</strong> “Email” (Short answer)</li>
+<li><strong>Question 3:</strong> “What is your company name and primary geographic area?” (Short answer)</li>
+<li><strong>Question 4:</strong> “What would you like help with?” (Paragraph)</li>
+</ul></li>
+</ol>
+<p><img src="images/consultation_form.jpg" class="img-fluid" width="525"></p>
+<ol start="4" type="1">
+<li>When done, click <strong>Publish</strong> at the top right to make your form live.</li>
+</ol>
+</section>
+<section id="test-your-form-and-connect-to-sheets" class="level2">
+<h2 class="anchored" data-anchor-id="test-your-form-and-connect-to-sheets">Test Your Form and Connect to Sheets</h2>
+<ol type="1">
+<li><p>Click the Share button at the top right, then copy the responder link.</p></li>
+<li><p>Open the form in a new tab and submit a test response. For example</p>
+<ul>
+<li>Name: <code>John Doe</code></li>
+<li>Email: <code>john.doe@example.com</code></li>
+<li>Company: <code>The Graduate Institute, Geneva</code></li>
+<li>Help needed: <code>General advice on how to use GenAI to help students</code></li>
+</ul></li>
+<li><p>Return to the form editor tab and click <strong>Responses</strong>. This will show you the responses to your form. You should see a new response in the list.</p></li>
+<li><p>Click <strong>Link to Sheets</strong> → <strong>Create</strong> to generate a connected spreadsheet.</p></li>
+</ol>
+<p><img src="images/link_to_sheets.jpg" class="img-fluid" width="367"></p>
+<ol start="5" type="1">
+<li>Share the spreadsheet by clicking <strong>Share</strong> in the top right → <strong>Copy link</strong>. Copy this link to your clipboard. We will use it in the next section.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="part-2-setting-up-make.com-automation" class="level1">
+<h1>Part 2: Setting Up Make.com Automation</h1>
+<section id="build-your-first-module-google-sheets-watcher" class="level2">
+<h2 class="anchored" data-anchor-id="build-your-first-module-google-sheets-watcher">Build Your First Module: Google Sheets Watcher</h2>
+<ol type="1">
+<li><p>If you have not yet done so, create a Make.com account. Once done, navigate to <a href="https://www.make.com/en" class="uri">https://www.make.com/en</a> and sign in.</p></li>
+<li><p>Click <strong>Create a new scenario</strong></p></li>
+</ol>
+<p><img src="https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/2a6e92d6-c1a2-4737-93dd-ae062ef61780/File.jpeg?tl_px=148,0&amp;br_px=1525,769&amp;force_format=jpeg&amp;q=100&amp;width=1120.0&amp;wat=1&amp;wat_opacity=0.7&amp;wat_gravity=northwest&amp;wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&amp;wat_pad=962,5" class="img-fluid" width="455"></p>
+<ol start="2" type="1">
+<li>Click the plus button to add a new module, and select <strong>Google Sheets</strong></li>
+</ol>
+<p><img src="images/scenario_new_row.jpg" class="img-fluid" width="356"></p>
+<ol start="3" type="1">
+<li><p>Choose <strong>Watch New Rows ACID</strong>. This will watch for new rows in the spreadsheet, and trigger when someone fills out the connected form.</p></li>
+<li><p>Click <strong>Creating a connection…</strong> → <strong>Sign in with Google</strong></p></li>
+<li><p>You may need to select your Google account and authorize access. Give the requested permissions.</p></li>
+<li><p>Now, configure the module settings:</p>
+<ul>
+<li><strong>Spreadsheet ID:</strong> Navigate to and select your consultation form spreadsheet. It shoudl be called something like Consultation Inquiry.</li>
+<li><strong>Sheet name:</strong> Select “Form Responses 1”</li>
+<li><strong>Limit:</strong> Set to <code>1</code> (processes one response at a time)</li>
+<li>Click <strong>Save</strong></li>
+</ul></li>
+</ol>
+<p><img src="images/sheets_boxes.jpg" class="img-fluid" style="width:26.0%"></p>
+<section id="test-the-google-sheets-module" class="level3">
+<h3 class="anchored" data-anchor-id="test-the-google-sheets-module">Test the Google Sheets module</h3>
+<p>Now to test the connection, you need to perform the steps below.</p>
+<ol type="1">
+<li>Right-click on the Google Sheets module</li>
+<li>Click <strong>“Choose where to start”</strong></li>
+<li>Click <strong>“Choose manually”</strong> → <strong>“All”</strong> → <strong>“Save”</strong></li>
+<li>Click <strong>“Run once”</strong> at the bottom left</li>
+</ol>
+<p>Note that you will need to do this every time you want to test your workflow.</p>
+<p>If you get no errors, the workflow is working properly.</p>
+</section>
+<section id="save-your-work" class="level3">
+<h3 class="anchored" data-anchor-id="save-your-work">Save your work</h3>
+<p>Make does not save your work automatically. You need to click the <strong>Save</strong> icon at the bottom after major changes so that in case you refresh the page or lose connection, you do not lose your work.</p>
+<p><img src="images/save_button.jpg" class="img-fluid" width="389"></p>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-3-adding-ai-research-capabilities" class="level1">
+<h1>Part 3: Adding AI Research Capabilities</h1>
+<section id="set-up-openrouter-ai-module" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-openrouter-ai-module">Set Up OpenRouter AI Module</h2>
+<ol type="1">
+<li><p>Click the <strong>+</strong> button next to the Google Sheets module</p></li>
+<li><p>Search for <strong>OpenRouter</strong> and select <strong>Create a chat completion</strong></p></li>
+</ol>
+<p><img src="images/openrouter_select.jpg" class="img-fluid" width="389"></p>
+<ol start="3" type="1">
+<li><p>Click <strong>Create a connection</strong> and enter the openrouter API key that was emailed to you some time ago.</p></li>
+<li><p>Click <strong>Save</strong> to confirm the connection</p></li>
+</ol>
+</section>
+<section id="configure-the-ai-research-prompt" class="level2">
+<h2 class="anchored" data-anchor-id="configure-the-ai-research-prompt">Configure the AI Research Prompt</h2>
+<ol type="1">
+<li>Under <strong>Messages</strong>, click <strong>Add item</strong></li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>In the <strong>Content</strong> field, paste a prompt something like:</li>
+</ol>
+<pre><code>A potential client has filled out a form on my website requesting generative AI consulting services. Research the company/organization below and create a clear, elegant markdown report that covers their an introduction to the business as well as potential generative AI opportunities for their work.
+
+Use emojis, tables, and lists for visual appeal while keeping your writing clear and concise.
+
+If you cannot find online information about the company, just indicate so.
+
+Do not include any prelude or postlude.
+
+Company Name and Geography:</code></pre>
+<ol start="3" type="1">
+<li>After the prompt, click the variable selector and choose the company name field from your Google Form (e.g., “What is your company name…”)</li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li>Set the <strong>Role</strong> field to <strong>User</strong></li>
+</ol>
+<p><img src="https://colony-recorder.s3.amazonaws.com/files/2025-06-06/b4b2b521-eb1d-4524-9efc-3f870e43364e/File.jpeg?tl_px=148,182&amp;br_px=1525,952&amp;force_format=jpeg&amp;q=100&amp;width=1120.0&amp;wat=1&amp;wat_opacity=0.7&amp;wat_gravity=northwest&amp;wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&amp;wat_pad=833,329" class="img-fluid"></p>
+<ol start="5" type="1">
+<li>In the <strong>Model</strong> field, type “search” and select <strong>OpenAI: GPT-4o Search Preview</strong>
+<ul>
+<li>This model can search the internet to research companies, providing more comprehensive and current information. In the past we used Perplexity Sonar for this, but our testing shows that OpenAI’s model works a bit better for this task.</li>
+</ul></li>
+</ol>
+<p><img src="https://colony-recorder.s3.amazonaws.com/files/2025-06-06/6e4b7179-b274-404a-afda-c350d6e7f45d/File.jpeg?tl_px=148,182&amp;br_px=1525,952&amp;force_format=jpeg&amp;q=100&amp;width=1120.0&amp;wat=1&amp;wat_opacity=0.7&amp;wat_gravity=northwest&amp;wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&amp;wat_pad=869,298" class="img-fluid"></p>
+<ol start="6" type="1">
+<li>Click <strong>Save</strong></li>
+</ol>
+<section id="test-and-save-your-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="test-and-save-your-workflow">Test and Save Your Workflow</h3>
+<p>Now that you have two modules, you should test the workflow.</p>
+<ol type="1">
+<li>Right-click the Google Sheets module → <strong>Choose where to start</strong> → <strong>Choose manually</strong> → <strong>All</strong> → <strong>Save</strong></li>
+<li>Then click <strong>Run once</strong> at the bottom left to test the entire workflow</li>
+<li>If you get no errors, then all is working fine.</li>
+<li>Click the Save icon in the bottom toolbar to save your work.</li>
+</ol>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-4-converting-to-html" class="level1">
+<h1>Part 4: Converting to HTML</h1>
+<p>By default, OpenAI’s Search model outputs a format of content called “markdown”. But Google Docs prefers the HTML format, so we can use a built-in Make.com module to convert from markdown to HTML.</p>
+<section id="add-markdown-to-html-converter" class="level2">
+<h2 class="anchored" data-anchor-id="add-markdown-to-html-converter">Add Markdown to HTML Converter</h2>
+<ol type="1">
+<li>Click the <strong>+</strong> button next to the OpenRouter module</li>
+<li>Search for <strong>Markdown</strong> and select <strong>Markdown to HTML</strong></li>
+<li>In the <strong>Markdown</strong> field, select the AI response from the variable picker:
+<ul>
+<li>Navigate to OpenRouter variables → <strong>Choices</strong> → <strong>Message</strong> → <strong>Content</strong></li>
+</ul></li>
+<li>Set <strong>Sanitize</strong> to <strong>Yes</strong></li>
+<li>Click <strong>Save</strong></li>
+</ol>
+<p><img src="https://colony-recorder.s3.amazonaws.com/files/2025-06-06/72c82764-67e3-45fc-ae0c-3811cbf6b9c1/File.webp" class="img-fluid"></p>
+<section id="test-and-save-the-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="test-and-save-the-workflow">Test And Save the Workflow</h3>
+<p>Again, follow the sequence to test your flow:</p>
+<p>Right-click the first module → <strong>Choose where to start</strong> → <strong>All</strong> → <strong>Save</strong> → <strong>Run once</strong> (You may see a warning about running with transformation as the last node - click <strong>Run anyway</strong>)</p>
+<p>Save your work.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-5-creating-google-docs-reports" class="level1">
+<h1>Part 5: Creating Google Docs Reports</h1>
+<section id="set-up-google-docs-module" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-google-docs-module">Set Up Google Docs Module</h2>
+<ol type="1">
+<li>Click the <strong>+</strong> button to add another module</li>
+<li>Search for <strong>Google Docs</strong> and select <strong>Create a new document</strong></li>
+</ol>
+<p><img src="images/create_docs_module.jpg" class="img-fluid" width="425"></p>
+<ol start="3" type="1">
+<li>For the document <strong>Name</strong>, type: <code>GenAI Web Report for</code> then select the company name variable from your form</li>
+<li>For the <strong>Content</strong> field, we want to add the HTML output from the Markdown converter. However, for Google Docs to recognize the content as HTML, we need to wrap the HTML in a <code>&lt;html&gt;</code> tag. So:
+<ul>
+<li>Type: <code>&lt;html&gt;</code></li>
+<li>Add the <strong>HTML</strong> variable from the Markdown converter</li>
+<li>Type: <code>&lt;/html&gt;</code></li>
+</ul></li>
+<li>Under <strong>New document’s location folder</strong>, search for and select your “GenAI Consultations” folder</li>
+<li>Click <strong>Save</strong></li>
+</ol>
+<p><img src="https://colony-recorder.s3.amazonaws.com/files/2025-06-06/9d1ef82c-ade1-4ef0-bc62-9ce9c621b994/File.webp" class="img-fluid"></p>
+<section id="test-and-save-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="test-and-save-workflow">Test and Save Workflow</h3>
+<p>Run your complete workflow test again and save your work. If successful, check your Google Drive for the newly created report document.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-6-adding-email-notifications" class="level1">
+<h1>Part 6: Adding Email Notifications</h1>
+<section id="set-up-resend-email-service" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-resend-email-service">Set Up Resend Email Service</h2>
+<p>Sending emails from your automations is often useful. In an ideal case, you can connect your own email directly to the make.com service and draft and send emails from your account using your automations.</p>
+<p>But connecting personal Gmail accounts to Make.com requires complex setup and many companies might require special permissions to create such a connection.</p>
+<p>To simplify our demonstration, we’ll instead use a service called Resend.com (email service for app development) for easy email delivery:</p>
+<ol type="1">
+<li>Go to <a href="https://resend.com">resend.com</a> and create a free account</li>
+<li>On the homepage, create an API key and copy it</li>
+</ol>
+</section>
+<section id="configure-email-module-in-make.com" class="level2">
+<h2 class="anchored" data-anchor-id="configure-email-module-in-make.com">Configure Email Module in Make.com</h2>
+<ol type="1">
+<li>Add a new module and search for <strong>Resend</strong></li>
+<li>Select <strong>Send an Email</strong></li>
+</ol>
+<p><img src="images/resend_email.jpg" class="img-fluid" width="246"></p>
+<ol start="3" type="1">
+<li>Click <strong>Creating a connection…</strong> and paste your Resend API key</li>
+<li>Click <strong>Save</strong></li>
+<li>Configure the email settings:
+<ul>
+<li><strong>From:</strong> <code>onboarding@resend.dev</code></li>
+<li><strong>Subject:</strong> Type <code>GenAI Report for</code> then add the company name variable</li>
+<li><strong>To:</strong> Enter your email address</li>
+<li><strong>Send email as:</strong> Select <strong>HTML</strong></li>
+<li><strong>HTML content:</strong> Add the HTML variable from the Markdown converter</li>
+</ul></li>
+<li>Click <strong>Save</strong></li>
+</ol>
+<p><img src="https://colony-recorder.s3.amazonaws.com/files/2025-06-06/50ba9064-1f0e-4cc3-a1ad-e85bdb124e98/File.webp" class="img-fluid"></p>
+<section id="test-email-delivery" class="level3">
+<h3 class="anchored" data-anchor-id="test-email-delivery">Test Email Delivery</h3>
+<p>Run your complete workflow test. You should receive an email with the generated report. Save your work.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-7-activating-your-automation" class="level1">
+<h1>Part 7: Activating Your Automation</h1>
+<section id="set-schedule-and-activate" class="level2">
+<h2 class="anchored" data-anchor-id="set-schedule-and-activate">Set Schedule and Activate</h2>
+<ol type="1">
+<li>Locate the scheduling section next to the <strong>Run once</strong> button</li>
+<li>We recommend changing the frequency from <strong>Minutes</strong> to <strong>120</strong> (runs every 2 hours)
+<ul>
+<li>This prevents using too many operations on the free plan (1000 credits limit)</li>
+</ul></li>
+<li>Click <strong>Save</strong></li>
+<li>Toggle the scenario <strong>On</strong> or click <strong>Activate scenario</strong> if prompted</li>
+</ol>
+<p><img src="https://colony-recorder.s3.amazonaws.com/files/2025-06-06/56d2a9c3-6c0f-4f84-9fbf-6340c3df89c7/File.webp" class="img-fluid"></p>
+<p>Your automation is now live and will process new form submissions automatically!</p>
+<hr>
+</section>
+</section>
+<section id="part-8-embedding-the-form-in-your-website" class="level1">
+<h1>Part 8: Embedding the Form in Your Website</h1>
+<section id="get-the-embed-code" class="level2">
+<h2 class="anchored" data-anchor-id="get-the-embed-code">Get the Embed Code</h2>
+<ol type="1">
+<li>Return to your Google Form</li>
+<li>Click the three-dot menu (⋮) in the top right</li>
+<li>Select <strong>Embed</strong></li>
+<li>Copy the provided HTML embed code</li>
+</ol>
+<p><img src="https://colony-recorder.s3.amazonaws.com/files/2025-06-06/390e2496-d4ca-4073-a977-ff9a638f18ff/File.webp" class="img-fluid"></p>
+</section>
+<section id="add-to-your-portfolio-website" class="level2">
+<h2 class="anchored" data-anchor-id="add-to-your-portfolio-website">Add to Your Portfolio Website</h2>
+<ol type="1">
+<li>Go to ChatGPT and open your existing portfolio conversation, or copy paste in the index.html code from your page.</li>
+<li>Provide a prompt something like this:</li>
+</ol>
+<pre><code>Please update my portfolio website to include this consultation form. 
+Add a new section called "Contact for Consultation" and embed this Google Form:
+
+[Paste your embed code here]</code></pre>
+<ol start="3" type="1">
+<li>Update your GitHub Pages website with ChatGPT’s new HTML code</li>
+<li>Commit and push the changes to make your consultation form live</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="submission" class="level1">
+<h1>Submission</h1>
+<p>To submit your work:</p>
+<ol type="1">
+<li>Export and upload your scenario blueprint. In the bottom toolbar, under the more options, click <strong>Export Blueprint</strong>. This contains a file that represents your completed workflow. (This means if you wanted you could share, [or sell!] your workflows!)</li>
+<li>Upload that file to the submission form.</li>
+</ol>
+<hr>
+</section>
+<section id="submission-1" class="level1">
+<h1>Submission</h1>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,346 @@
+# Creating a Google Form for Consultation Inquiries (Copy)
+
+#### [Made by GRAPH Courses Team with Scribe](https://scribehow.com/shared/Creating_a_Google_Form_for_Consultation_Inquiries_Copy__6AU6aqAOReqUO4Zgt3Vm7Q)
+
+
+1\. Navigate to [https://www.google.com/](https://www.google.com/)
+Click "New"
+Click "New folder"
+
+
+2\. Type "GenAI Consultations [[enter]]"
+
+
+3\. Double-click "GenAI Consultations"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/6e163120-758c-4186-b7f3-be06417a2cd6/File.jpeg?tl_px=0,0&br_px=1376,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=337,171)
+
+
+4\. Click "New"
+Click "Google Forms"
+
+
+5\. Click this text field.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/60574454-0404-446d-8d5d-f90f59fe7d7c/File.jpeg?tl_px=0,0&br_px=1376,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=69,-10)
+
+
+6\. Type "Consultation Inquiry"
+
+
+7\. Click "Consultation Inquiry"
+Click "Untitled Question"
+Type "Name"
+Click "Multiple choice"
+Click "Short answer"
+Click here.
+Type "Email"
+Click "Multiple choice"
+Click "Short answer"
+Click here.
+Click "Question"
+Type "What is your company name and primary geographic area?"
+Click "Multiple choice"
+Click "Short answer"
+Click here.
+Type "What would you like help with?"
+Click "Multiple choice"
+Click "Paragraph"
+Click "Publish"
+
+
+8\. Click "Publish"
+Click here.
+Click "Copy"
+In a new tab, navigate to [https://docs.google.com/forms/d/e/1FAIpQLSc8zUUseQvGtzMjdU1o8fQnoZ8MMWQnnQw2C2o5IUVE9ah5Iw/viewform](https://docs.google.com/forms/d/e/1FAIpQLSc8zUUseQvGtzMjdU1o8fQnoZ8MMWQnnQw2C2o5IUVE9ah5Iw/viewform)
+Click this text field.
+Type "Kene (test) [[tab]] [kendavidn1@gmail.com](mailto:kendavidn1@gmail.com) [[tab]] The Graph Courses (global)"
+Click this field.
+Type "General advice on how to use GenAI to help students"
+Click "Submit"
+Switch to tab Consultation Inquiry - Google Forms"
+Click "Responses1"
+Click "Link to Sheets"
+Click "Create"
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/0de7317d-1dc1-4719-8226-37d0e3ab3952/stack_animation.webp)
+
+
+9\. Click "Share"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/90040116-fe6e-462c-98d2-c608eb925805/File.jpeg?tl_px=148,0&br_px=1525,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=929,-7)
+
+
+10\. Click "Copy link"
+Click "Done"
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/1cef7ac7-7368-4531-9cab-a93b949f3e41/File.webp)
+
+
+11\. In a new tab, navigate to [https://www.make.com/en](https://www.make.com/en)
+
+
+12\. Click "Accept All Cookies"
+Click "Log in"
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/b121d3d7-b6d4-415c-bdbd-196741cc9ed3/File.webp)
+
+
+13\. Click "Sign in with Google"
+Click "Kene Nwosu"
+Click here.
+Click "Sign up for FREE"
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/34e72a87-6cf2-444f-89b0-82eadc353230/stack_animation.webp)
+
+
+14\. Click here.
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/d65ddb36-1954-47e2-a014-c657d8cc7bae/File.webp)
+
+
+15\. Click here.
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/4a37b01d-44a8-4792-ac84-42a4ee94faf2/File.webp)
+
+
+16\. Click "Create a new scenario"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/2a6e92d6-c1a2-4737-93dd-ae062ef61780/File.jpeg?tl_px=148,0&br_px=1525,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=962,5)
+
+
+17\. Click "Google Sheets"
+Click "Watch New Rows ACID"
+Click "Creating a connection..."
+Click "Sign in with Google"
+
+
+18\. Click "[kendavidn2@gmail.com](mailto:kendavidn2@gmail.com)"
+Click here.
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/d089b4f5-2952-4f23-a511-7fd6f97d54e2/File.webp)
+
+
+19\. Click the "Select all" field.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/06a1aa3d-50f4-40d2-8396-0729cb508fd9/File.jpeg?tl_px=0,0&br_px=1024,572&force_format=jpeg&q=100&wat_scale=91&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=530,178)
+
+
+20\. Click here.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/182afef1-513e-4e8c-ab2b-531b5b8e5cb2/File.jpeg?tl_px=0,194&br_px=1024,767&force_format=jpeg&q=100&wat_scale=91&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=707,377)
+
+
+21\. Click "Click here to choose file"\
+Click "/"\
+Click the spreadsheet ID field\
+Search for the consultation inquiry form and click it\
+Click to select the sheet name\
+Click "Form Responses 1"\
+Click the "Limit\*" field.\
+Double-click the "Limit\*" field.\
+Type "1" (we only want our automation to process one at a time)\
+Click "Save"\
+Now, every time we want to test our workflow, we need to right click on the google sheets module, click "Choose where to start", then click "all" then save.\
+then click run once at the bottom left of the screen. \
+Do this now to test that your sheet module is able to get the row. If you get no errors, it means it has probably worked.
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/6299ecac-b121-48b0-9bac-27356696edc2/File.webp)
+
+
+22\. Click the plus button beside the google sheets module to add another module\
+Then search for openrouter\
+Click on it then click on Create a chat completion\
+Then "create a connection"\
+Then enter in the api key we had sent you in a previous email.\
+Click save to confirm thie
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/759a2370-a739-4ac4-a764-bc2737b6d2b1/stack_animation.webp)
+
+
+23\. In the openrouter pop up, Click "Add item" under messages. THese are messages we will send to our LLM model.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/08c96d5e-243d-409e-98f2-064e153b3cf2/File.jpeg?tl_px=148,82&br_px=1525,851&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=769,277)
+
+
+24\. Click into the content field of the first item, and paste in a prompt that looks like the following: \
+\
+"A potential client has filled out a form on my website requesting generative AI consulting services. Research the company/organization below and create a clear, elegant markdown report that covers their business and potential generative AI opportunities for their work.
+
+Use emojis, tables, and lists for visual appeal while keeping your writing clear and concise.
+
+Do not include any prelude or postlude.
+
+Company Name and Geography:"\
+\
+After that prompt, click into the side panel that you see that lets you access variables from past steps, Click the variable that represents the country from the form. Something like "What is your compnay name..."
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/9daccaee-8d8e-4c5b-97a7-d7a26c2ac7d7/File.jpeg?tl_px=148,78&br_px=1525,847&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=847,277)
+
+
+25\. Click into the Role field
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/cd889b0c-26f5-4087-a8ed-8c5b285a0d30/File.jpeg?tl_px=148,182&br_px=1525,952&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=850,284)
+
+
+26\. Select "User" as the role (This just means we are acting as a user of the AI model)
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/b4b2b521-eb1d-4524-9efc-3f870e43364e/File.jpeg?tl_px=148,182&br_px=1525,952&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=833,329)
+
+
+27\. Click into the model field
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/a2d2d906-ecee-492d-81be-17b1e1527e3a/File.jpeg?tl_px=148,182&br_px=1525,952&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=819,403)
+
+
+28\. Type the term "search"
+
+
+29\. Click "OpenAI: GPT-4o Search Preview". Unlike most models accessible through openrouter, this model can directly use the internet to search for things. So it will use a search engine to try to find info about the company and select and summarize the best results. In the past we have used perplexity sonar for this, but openai's model gives slightly better outputs for this task.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/6e4b7179-b274-404a-afda-c350d6e7f45d/File.jpeg?tl_px=148,182&br_px=1525,952&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=869,298)
+
+
+30\. Click "Save"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/fea9eaac-1eb0-46c8-b999-09ffa0a75dc6/File.jpeg?tl_px=148,182&br_px=1525,952&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=1035,554)
+
+
+31\. Right-click here.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/3398c4ae-0062-472f-a9ef-943b222c7e72/File.jpeg?tl_px=0,44&br_px=1376,813&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=504,277)
+
+
+32\. Click "Choose where to start"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/5a2a4a78-6ae5-4859-8208-03cbbc1e585b/File.jpeg?tl_px=39,124&br_px=1415,893&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=523,277)
+
+
+33\. Click "Choose manually"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/4a835409-87fb-477a-b86d-0babf7cd2533/File.jpeg?tl_px=127,111&br_px=1503,880&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
+
+
+34\. Click All.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/1fe46911-0dca-4af0-8c88-9c0be50d7c9d/File.jpeg?tl_px=148,96&br_px=1525,865&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=694,277)
+
+
+35\. Click "Save"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/8bc031c5-8849-4de0-95d7-8ceab21a228c/File.jpeg?tl_px=148,157&br_px=1525,926&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=771,276)
+
+
+36\. Click Run once to test again. if no errors you are good.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/0474d585-ff9a-4c8e-8f82-ab3f542ab4f0/File.jpeg?tl_px=0,182&br_px=1376,952&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=75,545)
+
+
+37\. Click the + button beside the openrouter to add another module "Search apps or modules" field.\
+Type "markdown"\
+Click "Markdown to HTML"\
+Click here.
+
+Click into the markdown field, the pop up box showing you variables from past steps will show up. We want to select whatever the openrouter llm returned. So under the variables from openrouter, click the dropdown beside "Choices", then the dropdown beside "Message" then click "Content"\
+\
+The variable  finally selected should look something like "Choices: Message. Content". \
+\
+Then under Sanitize, click yes, then save
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/72c82764-67e3-45fc-ae0c-3811cbf6b9c1/File.webp)
+
+
+38\. Again test your thing (right click first node, choose where to start, all). It may give a complaint about running with transformation as last node, click run anyway.
+
+
+39\. Click the button again to make new module, search for docs, and select create a new document under google docs
+
+
+40\. For the Name, you can call it somethign like GenAI Web Report for then select the google forms response from your variable selector.
+
+
+41\. Click into the content field. The HTML from our markdown thing will go here (Google docs needs html to make a well formatted new doc thats why we did this this conversion)\
+But we need to wrap the variable in opening and closing html tag\
+\
+Type "&lt;&gt; [[left]] html [[right]] [[enter]]"\
+Click the "HTML" variable from the markdown converter thing\
+Type " [[enter]] &lt;/html&gt; [[right]]"\
+\
+Now in the new documents location folder, search for and select your  "GenAI Consultations" folder\
+Click "Save"
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/9d1ef82c-ade1-4ef0-bc62-9ce9c621b994/File.webp)
+
+
+42\. Again test (right click on first sheet....)
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/cd1e42b7-63ad-475f-a36c-1c9437ed3bf3/File.webp)
+
+
+43\. You can now go to your google drive to check out the report
+
+
+44\. Double-click "GenAI Web Report forThe Graph Courses (Global)"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/cff6c60e-1f5d-4677-93d8-484e09a432d7/File.jpeg?tl_px=0,0&br_px=1376,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=370,247)
+
+
+45\. Now we have the report. we also want the automation to send us an email. \
+\
+normally you can just connect your email with make to send emails from your own email, but with personal gmail accounts the setup is quite time-consuming (see here: <https://www.youtube.com/watch?v=VlDT_D9zjnU>), so we are using the [resend.com](https://resend.com) service as a temporary easy way to send emails from [make.com](https://make.com)\
+\
+Go to resend.com, sign up for an account. On the homepage, there should be button to click to create an api key. create and copy it.
+
+
+46\. Go back to [make.com](https://make.com) \
+CLick to create a new module, then search for resend, click it \
+Click the "Send an Email" option for esent\
+Click "Creating a connection..."\
+Click the "API Key\*" field and enter your copied key\
+Click "Save"
+
+
+47\. In the from field for this module, type "onboarding@resend.dev"
+
+
+48\. In the subject field,\
+Type "GenAI Report for " then click the variable about "What is your company name and primary country" from the google form
+
+
+49\. In the to field, type your email (the one you signed up for resend with) "[kendavidn2@gmail.com](mailto:kendavidn2@gmail.com)"\
+Click "Item 1"\
+Under the send email as field\
+Click "HTML"\
+Click "Save"\
+Then
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/50ba9064-1f0e-4cc3-a1ad-e85bdb124e98/File.webp)
+
+
+50\. Again test....If all is well you should receive an email. \
+\
+we now want to activate our scenario.
+
+
+51\. Beside the run once button there is a section that shows how frequently the scenario runs, and a dial for on off.\
+Double-click the "Minutes\*" field.\
+Change to "120" minutes. This means it will only run once every two hours. That way you don't use up too many operations. (The free plan for make only gives you 1000 credits) \
+Click "Save"\
+Click "Activate scenario" if you get the popup. or turn the dial on.
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/56d2a9c3-6c0f-4f84-9fbf-6340c3df89c7/File.webp)
+
+
+52\. Now we wanna embed the form in our website we created.
+
+
+53\. Go to google form page, click the three dot option dropdown on the right\
+Click "Embed HTML". we'll need this link.
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/390e2496-d4ca-4073-a977-ff9a638f18ff/File.webp)
+
+
+54\. go to chatgpt, ask it to embed this consultation form in your github page. (Copy and paste the github page info.... and so on...)
+#### [Made with Scribe](https://scribehow.com/shared/Creating_a_Google_Form_for_Consultation_Inquiries_Copy__6AU6aqAOReqUO4Zgt3Vm7Q)
+
+
