@@ -82,7 +82,7 @@ In the wild, you will find much more complex automations. Many organizations run
 
 5.  Click **Creating a connection...** → **Sign in with Google**
 
-6.  You may need to select your Google account and authorize access. Give the requested permissions.
+6.  You may need to select your Google account and authorize access. Give all requested permissions. (Note that you it is only *your* automations that have the access, not the entire Make.com service, so you do not need to worry about data security or leakage.)
 
 7.  Now, configure the module settings:
 
