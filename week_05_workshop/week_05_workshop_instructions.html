@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Create a formatted Google Doc with the research findings</li>
 <li>Send you an email notification with the report</li>
 </ol>
-<p>The goal here is to build an extremely simple automation that demonstrates the power of connecting different web services with an AI Large Language Model (LLM).</p>
+<p>The goal here is to build an extremely simple automation that demonstrates the power of connecting different web services with an AI Large Language Model (LLM). Setting up this automation is quite a bit of work, but the beauty of automations of course is that (in theory) you should only need to set it up once!</p>
 <p>In the wild, you will find much more complex automations. Many organizations run a large fraction of their processes using automations on services like Make.com. With the rise of LLMs, these automations can do increasingly complex tasks.</p>
 </section>
 <section id="part-1-setting-up-your-google-form-and-data-collection" class="level1">
@@ -97,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="build-your-consultation-form">Build Your Consultation Form</h2>
 <ol type="1">
 <li><p>Inside the folder, again click <strong>New</strong> then click on <strong>Google Forms</strong> to create a new form.</p></li>
-<li><p>In the title field and enter: <code>Consultation Inquiry</code></p></li>
+<li><p>In the title field enter: <code>Consultation Inquiry</code></p></li>
 <li><p>Set up the following form questions:</p>
 <ul>
 <li><strong>Question 1:</strong> “Name” (Short answer)</li>
@@ -124,10 +124,7 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><p>Return to the form editor tab and click <strong>Responses</strong>. This will show you the responses to your form. You should see a new response in the list.</p></li>
 <li><p>Click <strong>Link to Sheets</strong> → <strong>Create</strong> to generate a connected spreadsheet.</p></li>
-</ol>
-<p><img src="images/link_to_sheets.jpg" class="img-fluid" width="367"></p>
-<ol start="5" type="1">
-<li>Share the spreadsheet by clicking <strong>Share</strong> in the top right → <strong>Copy link</strong>. Copy this link to your clipboard. We will use it in the next section.</li>
+<li><p>Share the spreadsheet by clicking <strong>Share</strong> in the top right → <strong>Copy link</strong>. Copy this link to your clipboard. We will use it in the next section.</p></li>
 </ol>
 <hr>
 </section>
@@ -141,17 +138,17 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Click <strong>Create a new scenario</strong></p></li>
 </ol>
 <p><img src="https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/2a6e92d6-c1a2-4737-93dd-ae062ef61780/File.jpeg?tl_px=148,0&amp;br_px=1525,769&amp;force_format=jpeg&amp;q=100&amp;width=1120.0&amp;wat=1&amp;wat_opacity=0.7&amp;wat_gravity=northwest&amp;wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&amp;wat_pad=962,5" class="img-fluid" width="455"></p>
-<ol start="2" type="1">
+<ol start="3" type="1">
 <li>Click the plus button to add a new module, and select <strong>Google Sheets</strong></li>
 </ol>
 <p><img src="images/scenario_new_row.jpg" class="img-fluid" width="356"></p>
-<ol start="3" type="1">
+<ol start="4" type="1">
 <li><p>Choose <strong>Watch New Rows ACID</strong>. This will watch for new rows in the spreadsheet, and trigger when someone fills out the connected form.</p></li>
 <li><p>Click <strong>Creating a connection…</strong> → <strong>Sign in with Google</strong></p></li>
 <li><p>You may need to select your Google account and authorize access. Give the requested permissions.</p></li>
 <li><p>Now, configure the module settings:</p>
 <ul>
-<li><strong>Spreadsheet ID:</strong> Navigate to and select your consultation form spreadsheet. It shoudl be called something like Consultation Inquiry.</li>
+<li><strong>Spreadsheet ID:</strong> Navigate to and select your consultation form spreadsheet. It should be called something like Consultation Inquiry.</li>
 <li><strong>Sheet name:</strong> Select “Form Responses 1”</li>
 <li><strong>Limit:</strong> Set to <code>1</code> (processes one response at a time)</li>
 <li>Click <strong>Save</strong></li>
@@ -199,9 +196,9 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <!-- -->
 <ol start="2" type="1">
-<li>In the <strong>Content</strong> field, paste a prompt something like:</li>
+<li>In the <strong>Content</strong> field, paste a prompt that looks something like:</li>
 </ol>
-<pre><code>A potential client has filled out a form on my website requesting generative AI consulting services. Research the company/organization below and create a clear, elegant markdown report that covers their an introduction to the business as well as potential generative AI opportunities for their work.
+<pre><code>A potential client has filled out a form on my website requesting generative AI consulting services. Research the company/organization below and create a clear, elegant markdown report that covers an introduction to the business as well as potential generative AI opportunities for their work.
 
 Use emojis, tables, and lists for visual appeal while keeping your writing clear and concise.
 
@@ -213,6 +210,7 @@ Company Name and Geography:</code></pre>
 <ol start="3" type="1">
 <li>After the prompt, click the variable selector and choose the company name field from your Google Form (e.g., “What is your company name…”)</li>
 </ol>
+<p>So each time someone fills out the form, the company name will be added to the prompt, and send to the AI model.</p>
 <!-- -->
 <ol start="4" type="1">
 <li>Set the <strong>Role</strong> field to <strong>User</strong></li>
@@ -272,7 +270,7 @@ Company Name and Geography:</code></pre>
 <h2 class="anchored" data-anchor-id="set-up-google-docs-module">Set Up Google Docs Module</h2>
 <ol type="1">
 <li>Click the <strong>+</strong> button to add another module</li>
-<li>Search for <strong>Google Docs</strong> and select <strong>Create a new document</strong></li>
+<li>Search for <strong>Google Docs</strong> and select <strong>Create a document</strong></li>
 </ol>
 <p><img src="images/create_docs_module.jpg" class="img-fluid" width="425"></p>
 <ol start="3" type="1">
@@ -289,7 +287,7 @@ Company Name and Geography:</code></pre>
 <p><img src="https://colony-recorder.s3.amazonaws.com/files/2025-06-06/9d1ef82c-ade1-4ef0-bc62-9ce9c621b994/File.webp" class="img-fluid"></p>
 <section id="test-and-save-workflow" class="level3">
 <h3 class="anchored" data-anchor-id="test-and-save-workflow">Test and Save Workflow</h3>
-<p>Run your complete workflow test again and save your work. If successful, check your Google Drive for the newly created report document.</p>
+<p>Run your complete workflow test again and save your work. If successful, check your Google Drive for the newly created report document. If you’re unhappy with the report, try editing the prompt and rerunning your test until you get an output that works.</p>
 <hr>
 </section>
 </section>
@@ -299,11 +297,11 @@ Company Name and Geography:</code></pre>
 <section id="set-up-resend-email-service" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-resend-email-service">Set Up Resend Email Service</h2>
 <p>Sending emails from your automations is often useful. In an ideal case, you can connect your own email directly to the make.com service and draft and send emails from your account using your automations.</p>
-<p>But connecting personal Gmail accounts to Make.com requires complex setup and many companies might require special permissions to create such a connection.</p>
+<p>But connecting personal Gmail accounts to Make.com requires a somewhat long setup process (see: <a href="https://www.youtube.com/watch?v=VlDT_D9zjnU">https://www.youtube.com/watch?v=VlDT_D9zjnU</a>) and connecting company email accounts typically requires special permissions.</p>
 <p>To simplify our demonstration, we’ll instead use a service called Resend.com (email service for app development) for easy email delivery:</p>
 <ol type="1">
-<li>Go to <a href="https://resend.com">resend.com</a> and create a free account</li>
-<li>On the homepage, create an API key and copy it</li>
+<li>Go to <a href="https://resend.com">resend.com</a> and create a free account.</li>
+<li>On the homepage or API Keys page, create an API key and copy it.</li>
 </ol>
 </section>
 <section id="configure-email-module-in-make.com" class="level2">
@@ -336,6 +334,7 @@ Company Name and Geography:</code></pre>
 </section>
 <section id="part-7-activating-your-automation" class="level1">
 <h1>Part 7: Activating Your Automation</h1>
+<p>Congratulations! You’ve now built a complete automation that will process new form submissions automatically! Let’s make it live.</p>
 <section id="set-schedule-and-activate" class="level2">
 <h2 class="anchored" data-anchor-id="set-schedule-and-activate">Set Schedule and Activate</h2>
 <ol type="1">
@@ -367,8 +366,8 @@ Company Name and Geography:</code></pre>
 <section id="add-to-your-portfolio-website" class="level2">
 <h2 class="anchored" data-anchor-id="add-to-your-portfolio-website">Add to Your Portfolio Website</h2>
 <ol type="1">
-<li>Go to ChatGPT and open your existing portfolio conversation, or copy paste in the index.html code from your page.</li>
-<li>Provide a prompt something like this:</li>
+<li>Go to ChatGPT or your favorite LLM and open your existing portfolio conversation, or copy paste in the index.html code from your page.</li>
+<li>Provide a prompt that looks something like this:</li>
 </ol>
 <pre><code>Please update my portfolio website to include this consultation form. 
 Add a new section called "Contact for Consultation" and embed this Google Form:
@@ -376,7 +375,7 @@ Add a new section called "Contact for Consultation" and embed this Google Form:
 [Paste your embed code here]</code></pre>
 <ol start="3" type="1">
 <li>Update your GitHub Pages website with ChatGPT’s new HTML code</li>
-<li>Commit and push the changes to make your consultation form live</li>
+<li>Commit/Push the changes to make your consultation form live</li>
 </ol>
 <hr>
 </section>
@@ -389,9 +388,6 @@ Add a new section called "Contact for Consultation" and embed this Google Form:
 <li>Upload that file to the submission form.</li>
 </ol>
 <hr>
-</section>
-<section id="submission-1" class="level1">
-<h1>Submission</h1>
 </section>
 
 </main>
