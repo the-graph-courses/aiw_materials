@@ -93,7 +93,7 @@ In the wild, you will find much more complex automations. Many organizations run
 
 ![](images/sheets_boxes.jpg){width="26%"}
 
-### Test the Google Sheets module
+### Test the Workflow
 
 Now to test the connection, you need to perform the steps below.
 
@@ -101,6 +101,8 @@ Now to test the connection, you need to perform the steps below.
 2.  Click **"Choose where to start"**
 3.  Click **"All"** → **"Save"**
 4.  Click **"Run once"** at the bottom left
+
+![](images/choose_where_to_start.jpg){width="200"} ![](images/test_all.jpg){width="291"} ![](images/run_once.jpg){width="288"}
 
 Note that you will need to do this every time you want to test your workflow.
 
@@ -167,9 +169,9 @@ So each time someone fills out the form, the company name will be added to the p
 
 ### Test and Save Your Workflow
 
-Now that you have two modules, you should test the workflow.
+Now that you have two modules, you should test the workflow again!
 
-1.  Right-click the Google Sheets module → **Choose where to start** → **All** → **Save**
+1.  As you did before, right-click the Google Sheets module → **Choose where to start** → **All** → **Save**
 2.  Then click **Run once** at the bottom left to test the entire workflow
 3.  If you get no errors, then all is working fine.
 4.  Click the Save icon in the bottom toolbar to save your work.
@@ -232,7 +234,7 @@ Run your complete workflow test again and save your work. If successful, check y
 
 Sending emails from your automations is often useful. In an ideal case, you can connect your own email directly to the make.com service and draft and send emails from your account using your automations.
 
-But connecting personal Gmail accounts to Make.com requires a somewhat long setup process (see: [https://www.youtube.com/watch?v=VlDT_D9zjnU](https://www.youtube.com/watch?v=VlDT_D9zjnU)) and connecting company email accounts typically requires special permissions.
+But connecting personal Gmail accounts to Make.com requires a somewhat long setup process (see: <https://www.youtube.com/watch?v=VlDT_D9zjnU>) and connecting company email accounts typically requires special permissions.
 
 To simplify our demonstration, we'll instead use a service called Resend.com (email service for app development) for easy email delivery:
 
@@ -312,9 +314,9 @@ Add a new section called "Contact for Consultation" and embed this Google Form:
 
 # Submission
 
-To submit your work: 
+To submit your work:
 
-1. Export and upload your scenario blueprint. In the bottom toolbar, under the more options, click **Export Blueprint**. This contains a file that represents your completed workflow. (This means if you wanted you could share, [or sell!] your workflows!)
-2. Upload that file to the submission form.
+1.  Export and upload your scenario blueprint. In the bottom toolbar, under the more options, click **Export Blueprint**. This contains a file that represents your completed workflow. (This means if you wanted you could share, \[or sell!\] your workflows!)
+2.  Upload that file to the submission form.
 
 ------------------------------------------------------------------------
