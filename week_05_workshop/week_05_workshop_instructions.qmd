@@ -128,8 +128,6 @@ Make does not save your work automatically. You need to click the **Save** icon 
 
 3.  Click **Create a connection** and enter the openrouter API key that was emailed to you some time ago.
 
-4.  Click **Save** to confirm the connection
-
 ## Configure the AI Research Prompt
 
 1.  Under **Messages**, click **Add item**
