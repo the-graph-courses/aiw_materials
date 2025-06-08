@@ -185,7 +185,7 @@ By default, OpenAI's Search model outputs a format of content called "markdown".
 1.  Click the **+** button next to the OpenRouter module
 2.  Search for **Markdown** and select **Markdown to HTML**
 3.  In the **Markdown** field, select the AI response from the variable picker:
-    -   Navigate to OpenRouter variables → **Choices** → **Message** → **Content**
+    -   Navigate to OpenRouter variables → **Choices** → **Message** → **Content** and click on **Content**. 
 4.  Set **Sanitize** to **Yes**
 5.  Click **Save**
 
