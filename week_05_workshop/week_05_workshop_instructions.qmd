@@ -99,7 +99,7 @@ Now to test the connection, you need to perform the steps below.
 
 1.  Right-click on the Google Sheets module
 2.  Click **"Choose where to start"**
-3.  Click **"Choose manually"** → **"All"** → **"Save"**
+3.  Click **"All"** → **"Save"**
 4.  Click **"Run once"** at the bottom left
 
 Note that you will need to do this every time you want to test your workflow.
@@ -169,7 +169,7 @@ So each time someone fills out the form, the company name will be added to the p
 
 Now that you have two modules, you should test the workflow.
 
-1.  Right-click the Google Sheets module → **Choose where to start** → **Choose manually** → **All** → **Save**
+1.  Right-click the Google Sheets module → **Choose where to start** → **All** → **Save**
 2.  Then click **Run once** at the bottom left to test the entire workflow
 3.  If you get no errors, then all is working fine.
 4.  Click the Save icon in the bottom toolbar to save your work.
