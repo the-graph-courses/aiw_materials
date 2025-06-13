@@ -1,0 +1,58 @@
+---
+title: "Final Project: GenAI for Work & Research Productivity"
+format: 
+  html:
+    embed-resources: true
+author: "The Graph Courses"
+---
+
+# Overview
+
+The final project is your opportunity to apply the skills you've learned in this course to a real-world problem or opportunity in your own work or research area. You will select one of the topics covered during the course, enhance it, and present your work in a short presentation.
+
+The goal is to create a practical AI-powered solution that demonstrates your ability to automate tasks, generate content, or manage knowledge more effectively.
+
+# Project Requirements
+
+1.  **Choose a Core Topic**: Select one of the six main topics from the course to build upon.
+2.  **Enhance and Customize**: Go beyond the workshop exercises. Adapt the tools and workflows to a specific use case relevant to your professional or academic context.
+3.  **Create a Presentation**: Prepare a 4-minute presentation (e.g., a slide deck) that explains your project.
+4.  **Submit Your Work**: Submit your slide deck for review.
+
+# Project Options
+
+You can base your project on any of the following weekly modules. You are also welcome to combine elements from one or two modules.
+
+*   **Week 1: Enhanced Content & Web Presence**
+    *   Create a professional website or a series of documents for a project, course, or lab group. Use GenAI for content generation and structuring the site/documents with a tool like Quarto or Carrd.
+
+*   **Week 2: Automated Data Analytics Product**
+    *   Develop an automated data processing and visualization workflow for a dataset from your field. Use tools like Julius, ChatGPT Code Interpreter, or TheBricks to create a dashboard or report that provides actionable insights.
+
+*   **Week 3: AI-Powered Research Assistant**
+    *   Build a system for conducting a literature review or text analysis on a body of research. Use tools like Elicit or LiteRev in a loop with an LLM to synthesize findings, classify documents, or extract key information.
+
+*   **Week 4: Custom Chatbot/Agent**
+    *   Design and build a custom chatbot to support a specific task, such as answering questions about a research paper, guiding a user through a protocol, or managing a project. Use a platform like Botpress to create the agent.
+
+*   **Week 5: Advanced Workflow Automation**
+    *   Identify a repetitive, multi-step process in your work and automate it. Use a tool like Make.com to connect different applications (e.g., Google Sheets, Gmail, a database) and orchestrate a seamless workflow.
+
+*   **Week 6: Professional Design & Communication**
+    *   Create a suite of professional communication materials (e.g., flyer, social media posts, visual abstract) for an event, project, or publication. Use tools like Ideogram, Canva, and Claude for generating images and layouts.
+
+# Evaluation Rubric
+
+Your project will be evaluated based on the following criteria.
+
+| Category                  | Description                                                                                                                             | Points |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| **1. Relevance & Impact**   | The project addresses a clear, practical problem or opportunity in the student's work or research area. The potential impact of the solution is well-defined. | 30     |
+| **2. Technical Execution**  | The selected AI tools are used correctly and effectively. The workflow or system is well-designed and functional. The project demonstrates a clear understanding of the tool's capabilities. | 40     |
+| **3. Enhancement & Creativity** | The project shows significant enhancement beyond the original workshop. The student has creatively adapted or extended the concepts to their specific use case. | 20     |
+| **4. Presentation & Clarity** | The 4-minute presentation is clear, concise, and professional. The slide deck effectively communicates the project's goals, methods, and outcomes. | 10     |
+| **Total**                 |                                                                                                                                         | **100**  |
+
+# Submission
+
+Please submit your final presentation slide deck (in PDF or PowerPoint format) through the course portal by the specified deadline. Be prepared to briefly present your project during our final showcase session. 

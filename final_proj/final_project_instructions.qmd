@@ -1,0 +1,62 @@
+---
+title: "Final Project: Generative AI for work & research"
+format:
+  html:
+    embed-resources: true
+author: "The Graph Courses"
+---
+
+# Overview
+
+For your final project, you will design and present an enhanced AI solution relevant to your work or research area, building on one or more modules from this course. You will deliver a **4-minute live presentation** and submit your slide deck.
+
+We recommend that your project should be based on one or more of the core themes covered in each module of the course: 
+
+- **A website** (Week 1)
+- **A data analytics product** (Week 2)
+- **A research/text analysis product** using LLMs (Week 3)
+- **A chatbot/agent** (Week 4)
+- **An automation workflow** (Week 5)
+- **A design/communication asset** (Week 6)
+- **Or a combination of some of these**
+
+# Project Requirements
+
+- **Relevance:** The project should address a real-world problem or opportunity in your work, research, or study area.
+- **AI Integration:** Use at least one GenAI tool or workflow covered in the course.
+- **Originality:** Enhance or extend the example from the chosen week(s) with your own data, content, or workflow.
+- **Presentation:** Prepare a clear, engaging 4-minute presentation and submit your slide deck (PDF, PPTX or HTML).
+- **Reflection:** Reflect on what worked and what was not ideal, especially with regard to AI limitations and or ethical considerations. 
+
+# Submission Instructions
+
+1. **Prepare your slide deck** (PDF, PPTX or HTML)
+We recommend that your presentation should include the following sections, with these recommended (approximate) durations:
+   - The problem or opportunity addressed (30 seconds)
+   - Your solution and workflow (Live demonstration, screenshots or short video) (60 seconds)
+   - Key features and AI tools used (30 seconds)
+   - Discussion of current AI model limitations in your solution (30 seconds)
+   - Opportunities for improvement as AI models advance (forecasting future capabilities) (30 seconds)
+2. **Present live** in your assigned session (4-5 minutes)
+3. **Upload your slide deck** to the submission page which will be posted.
+
+---
+
+# Grading Rubric
+
+| Criteria                | Excellent (4)         | Good (3)             | Satisfactory (2)      | Needs Improvement (1) |
+|------------------------|-----------------------|----------------------|-----------------------|-----------------------|
+| **Relevance**          | Highly relevant to work/research; clear real-world value | Relevant; some real-world value | Somewhat relevant; value not fully clear | Not relevant or unclear value |
+| **AI Integration**     | Creative, effective use of GenAI tools; integrates multiple features | Good use of GenAI tools; some integration | Basic use of GenAI tools | Minimal or unclear use of GenAI |
+| **Originality/Enhancement** | Strongly extends or customizes course example | Some extension/customization | Minor changes to example | Direct copy, little change |
+| **Presentation Quality** | Clear, engaging, well-structured; visuals support message | Clear and organized; some visuals | Adequate; some unclear points | Disorganized or unclear |
+| **Reflection & Next Steps** | Insightful reflection; clear next steps | Some reflection; next steps mentioned | Basic reflection | Little or no reflection |
+
+# Some project ideas
+
+- Build a website for a project, course, or lab group. Use LLMs for content generation and structuring the site/documents.
+- Develop a comprehensive data dashboard for your field, including multiple visualizations and insights
+- Create a knowledge synthesis project on a topic of your choice. Use Elicit or other research tools for comprehensive text analysis
+- Build a custom chatbot to support a specific task, such as answering questions about a research paper, guiding a user through a protocol, or managing a project. 
+- Design and implement an automation addressing a real pain point in your work or organization
+- Create a suite of professional communication materials for a campaign for an event, project, or publication (e.g., flyer, social media posts, visual abstract)
