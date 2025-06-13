@@ -44,18 +44,72 @@ Typically, the text will be error-ridden. To fix this, we can use Canva's Grab T
 
 1. Go to **canva.com** Sign up and start a free trial for the pro features. Cancel the trial immediately after. 
 2. Drag-and-drop your Ideogram image onto the blank page.
-3. Once uploaded, click it and right click create design at the top right.
+3. Once uploaded, click it and right click "Create design" at the top right.
 4. Select the image, click to edit it, then in the left sidebar click **Magic Studio → Grab Text**. 
    *Canva auto-extracts the pixel text into editable layers.*
 5. Correct any typos, tweak fonts, adjust colours.
----
+
 
 ### 1-C  Share & Upload
 
-1. Download as a PDF and upload to the course page. 
+1. Click on "Share" at the top right of the Canva page.
+2. Click on "Download", change file type to "PDF Standard" and click "Download".
+3. Upload the PDF to the course page. 
 
-# Task Optional Challenge – AI Visual Abstracts
+# Optional Challenge – AI Visual Abstracts
 
-Pick any recent research paper you find intriguing. Use Claude to create either an SVG or HTML visual abstract. For the SVG, you can edit using Powerpoint, and for the HTML, you can edit using GrapesJS. 
+### 2-A  Choose Your Paper
 
-Take a screenshot of your final output and upload to the course page. 
+Pick any recent research paper you are interested in. You'll need the paper title and abstract for the next step.
+
+---
+
+### 2-B  Generate Visual Abstract with Claude
+
+Use Claude to create either an SVG or HTML-based "visual abstract" of the paper.
+
+**Option 1: SVG Visual Abstract**
+```
+Create an SVG visual abstract of the following paper:
+
+[Paper Title]
+[Paper Abstract]
+```
+
+**Option 2: HTML Visual Abstract**
+```   
+Create an HTML visual abstract of the following paper:
+
+[Paper Title]
+[Paper Abstract]
+```
+
+After the initial prompt, you can iterate on the output to refine the design.
+
+---
+
+### 2-C  Edit and Finalize (Choose Your Path)
+
+**If you chose SVG:**
+
+1. Click on the dropdown at the top right of the SVG in Claude
+2. Click on "Download SVG"
+3. Drag the SVG to PowerPoint
+4. Right click on the image, click on Group, then Ungroup. You may need to do this a few times, until there is nothing left to ungroup.
+5. Make any edits you need
+6. Export as a PDF or take a screenshot
+
+**If you chose HTML:**
+
+1. Copy the HTML code from Claude
+2. Open GrapesJS (a GUI editor) and paste the code
+3. Edit the design as needed using the visual interface
+4. Review the following video guide for details on how to edit with GrapesJS:
+
+<iframe src="https://player.vimeo.com/video/1092170358" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+### 2-D  Submit Your Work
+
+Upload the final result (PDF, screenshot, or exported file) to the course page.
