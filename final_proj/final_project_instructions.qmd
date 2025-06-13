@@ -8,7 +8,7 @@ author: "The Graph Courses"
 
 # Overview
 
-For your final project, you will design and present an enhanced AI solution relevant to your work or research area, building on one or more modules from this course. You will deliver a **4-minute live presentation** and submit your slide deck.
+For your final project, you will design and present an enhanced AI solution relevant to your work or research area, building on one or more modules from this course. You will deliver a **4- minute live presentation** and submit your slide deck.
 
 We recommend that your project should be based on one or more of the core themes covered in each module of the course: 
 
@@ -17,8 +17,10 @@ We recommend that your project should be based on one or more of the core themes
 - **A research/text analysis product** using LLMs (Week 3)
 - **A chatbot/agent** (Week 4)
 - **An automation workflow** (Week 5)
-- **A design/communication asset** (Week 6)
+- **A design/communication campaign** (Week 6)
 - **Or a combination of some of these**
+
+The presentation will be on either Friday, 27 Jun 2025  3 – 5 PM (GMT) or Sunday, 29 Jun 2025  5 – 7 PM (GMT).
 
 # Project Requirements
 
@@ -27,6 +29,10 @@ We recommend that your project should be based on one or more of the core themes
 - **Originality:** Enhance or extend the example from the chosen week(s) with your own data, content, or workflow.
 - **Presentation:** Prepare a clear, engaging 4-minute presentation and submit your slide deck (PDF, PPTX or HTML).
 - **Reflection:** Reflect on what worked and what was not ideal, especially with regard to AI limitations and or ethical considerations. 
+
+# Instructor Feedback Session
+
+Our second-to-last session will be an optional session where you can get feedback and mentorship on your final project. Try to make sure you have at least a draft of the presentation by then. 
 
 # Submission Instructions
 
