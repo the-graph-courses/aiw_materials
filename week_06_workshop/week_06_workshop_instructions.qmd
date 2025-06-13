@@ -36,7 +36,6 @@ Create an attractive flyer for the following event:
 ► Sign up instructions: "To sign up, visit my website [YOUR WEBSITE NAME HERE] and open the chat bubble. Tell the AI agent you would like to attend the showcase. It will collect your details and we'll send you a confirmation email.”
 ```
 
-
 4.  Click **Generate**. Pick the best variation and press **Download** (JPG or PNG).
 
 ------------------------------------------------------------------------
@@ -46,15 +45,14 @@ Create an attractive flyer for the following event:
 Typically, the text will be error-ridden. To fix this, we can use Canva's Grab Text feature.
 
 1.  Go to **canva.com** Sign up and start a free trial for the pro features. Cancel the trial immediately after. (If you have already used up your free trial, please create a new account with a fresh email. If this is not possible, please contact an instructor for help.)
-2.  Drag-and-drop your Ideogram image onto the blank page.
+2.  Drag-and-drop your Ideogram image into the Canva interface
 3.  Once uploaded, click it and right click "Create design" at the top right.
-4.  Select the image, click to edit it, then in the left sidebar click **Magic Studio → Grab Text**. *Canva auto-extracts the pixel text into editable layers.*
 
 ![](images/create_design.jpg){width="306"}
 
----
+4.  Select the image, click to edit it, then in the left sidebar click **Magic Studio → Grab Text**. *Canva auto-extracts the pixel text into editable layers.*
 
- ![](images/edit.jpg){width="166"} 
+![](images/edit.jpg){width="166"} 
 
 ---
 
@@ -71,6 +69,8 @@ Then click on Grab Text under Magic Studio. You may need to scroll right to see 
 3.  Upload the PDF to the course page.
 
 # Optional Challenge – AI Visual Abstracts
+
+In this section, we'll use a design tool to turn a research paper into a visual abstract. A visual abstract is a pictorial representation of the main findings of a research paper, and is a great way to communicate the key results of a paper in an appealing way.
 
 ### 2-A Choose Your Paper
 
