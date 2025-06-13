@@ -1,0 +1,61 @@
+---
+title: "Workshop 6: GenAI‑Assisted Design"
+format: 
+  html:
+    embed-resources: true
+author: "The Graph Courses"
+---
+
+# Overview
+
+In this session you will try two small but practical GenAI design workflows:
+
+1. **Create a promotional flyer** for our course showcase using **Ideogram** for image generation and **Canva** for final editing.
+2. (**Optional challenge**) **Turn a research paper into a visual abstract** using **Claude** and **HTML** or **SVG**. 
+
+# Task 1  –  AI Flyer for the Final Presentation 
+
+### 1-A  Generate the first draft in Ideogram
+
+1. Sign up for a free account on **ideogram.ai**.
+2. In the prompt box, describe the image you want to create. Here is the proposed prompt. 
+
+<details><summary><strong>Short Ideogram prompt (~900 chars)</strong></summary>
+
+```
+Create an attractive flyer for the following event:
+► Main headline: “Graph Courses – Generative AI Portfolio Showcase”.
+► Sub-headline: “Final class presentation”.
+► Date and Time
+   • Friday, 27 Jun 2025  3 – 5 PM (GMT)
+   • Sunday, 29 Jun 2025  5 – 7 PM (GMT)
+► Sign up instructions: “Sign up on my website [WEBSITE NAME HERE] open the chat bubble and tell the agent you would like to attend the showcase.”
+```
+
+</details>
+
+4. Click **Generate**. Pick the best variation and press **Download** (JPG or PNG).
+
+---
+
+### 1-B  Fix typography in Canva
+
+Typically, the text will be error-ridden. To fix this, we can use Canva's Grab Text feature.
+
+1. Go to **canva.com** Sign up and start a free trial for the pro features. Cancel the trial immediately after. 
+2. Drag-and-drop your Ideogram image onto the blank page.
+3. Once uploaded, click it and right click create design at the top right.
+4. Select the image, click to edit it, then in the left sidebar click **Magic Studio → Grab Text**. 
+   *Canva auto-extracts the pixel text into editable layers.*
+5. Correct any typos, tweak fonts, adjust colours.
+---
+
+### 1-C  Share & Upload
+
+1. Download as a PDF and upload to the course page. 
+
+# Task Optional Challenge – AI Visual Abstracts
+
+Pick any recent research paper you find intriguing. Use Claude to create either an SVG or HTML visual abstract. For the SVG, you can edit using Powerpoint, and for the HTML, you can edit using GrapesJS. 
+
+Take a screenshot of your final output and upload to the course page. 

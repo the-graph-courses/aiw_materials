@@ -1,0 +1,210 @@
+---
+title: "LLM Prompting"
+subtitle: "Tips for Better Results"
+author: "**The Graph Courses**"
+format: 
+  revealjs:
+    theme: white
+    logo: graph_courses_logo.png
+    footer: "The Graph Courses • Generative AI for Work & Research"
+---
+
+## Quick Reference: All Tips ✨ {.smaller .scrollable}
+
+
+<style>
+:root {
+  --dark-teal: #2d5a5a;
+  --light-teal: #5a9999;
+  --pastel-orange: #ffcc99;
+  --pastel-yellow: #fff3b3;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  color: var(--dark-teal);
+}
+
+.reveal .slides section .fragment.highlight-current-blue {
+  background-color: var(--pastel-yellow);
+}
+
+.accent {
+  color: var(--light-teal);
+  font-weight: bold;
+}
+
+.highlight {
+  background-color: var(--pastel-orange);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.tip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tip-section {
+  background: linear-gradient(135deg, var(--light-teal)10, var(--pastel-yellow)10);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--light-teal);
+}
+
+.tip-section h3 {
+  color: var(--dark-teal);
+  margin-top: 0;
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tip-list {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.tip-list li {
+  margin-bottom: 0.8rem;
+  color: var(--dark-teal);
+}
+
+.tip-list strong {
+  color: var(--light-teal);
+}
+</style>
+
+
+```{=html}
+<div class="tip-grid">
+  <div class="tip-section">
+    <h4>🔧 Give Good Context</h4>
+    <ul class="tip-list">
+      <li><strong>Start fresh frequently</strong></li>
+      <li>Use <span class="highlight">clipboard manager</span></li>
+      <li><strong>Shift + Enter</strong> for new line</li>
+      <li>Often, <strong>edit</strong> > follow-up</li>
+      <li>Paste link text via <strong>Google Docs</strong></li>
+
+    </ul>
+  </div>
+  
+  <div class="tip-section">
+    <h4>🎯 Iterate</h4>
+    <ul class="tip-list">
+      <li>Try <strong>multiple attempts</strong></li>
+      <li>Ask for <span class="highlight">many suggestions</span></li>
+      <li>Let model <strong>ask questions</strong></li>
+      <li>Request <strong>multiple styles</strong></li>
+      <li>Request <strong>multiple formats</strong></li>
+      <li>Use <span class="highlight">multiple models</span></li>
+      <li>Ask for <strong>self-critique</strong></li>
+    </ul>
+  </div>
+  
+  <div class="tip-section">
+    <h4>✅ Verify</h4>
+    <ul class="tip-list">
+      <li><strong>Verify</strong> model capabilities</li>
+      <li>Don't trust claims <span class="highlight">blindly</span></li>
+    </ul>
+  </div>
+  
+  <div class="tip-section">
+    <h4>💡 Experiment</h4>
+    <ul class="tip-list">
+      <li>Don't <strong>underestimate</strong> models</li>
+      <li><span class="highlight">Experiment</span> with approaches</li>
+    </ul>
+  </div>
+</div>
+```
+
+## Motivating Task 📋
+
+After taking our course, your boss asks you to give a **presentation** on two possible applications of the skills learned to the company/your work. You want to use LLMs for some **brainstorming help**. 🧠
+
+**Links we'll use:**
+
+- [AI for Work & Research Course](https://thegraphcourses.org/aiw/) 📚
+- [Sample Resume](https://the-graph-courses.github.io/misc_public/taylor_helper.html) (Taylor Helper) 📄
+- [ICON Company Overview](https://www.iconplc.com/about/icon-glance) 🏢  
+
+## A. Give Good Context 🔧
+
+::: {.incremental}
+
+1. **Start fresh sessions** for different topics to keep context clear 🔄
+   <!-- This helps keep the context clear and focused -->
+
+2. Use a good **clipboard manager** for managing context 📋. [Windows](https://www.youtube.com/watch?v=mOXDyrEwjK0), [Mac](https://maccy.app/)
+   <!-- A clipboard manager helps efficiently handle multiple pieces of text and context -->
+
+3. **Shift + Enter** to go to new line ↵
+   <!-- This keyboard shortcut helps maintain clean formatting in prompts -->
+
+4. **Edit** instead of extending the conversation to fix mistakes ✏️
+   <!-- Keeps conversations concise and maintains context -->
+
+5. To copy in text that has links, first paste into <span class="highlight">Google Docs</span>, then copy as markdown 🔗
+   <!-- Converts links to markdown format for better compatibility -->
+
+6. Let the model **ask clarifying questions** ❓
+   <!-- Ensures all requirements are understood before proceeding -->
+
+
+:::
+
+::: {.notes}
+Example workflow that we will use to demonstrate points 1 to 4:
+- After taking our course, your boss asks you to give a presentation on two possible applications of the skills learned to the company/your work.
+- We'll demo how you can copy the AI course description, company description, and CV
+- Ask the model to suggest applications of the skills
+- Use clipboard manager to efficiently manage all copied content 
+- Use the edit button to fix mistakes
+:::
+
+## B. Iterate 🎯
+
+::: {.incremental}
+
+1. **Try again** - first attempt isn't always best 🔄
+
+2. Ask for a <span class="highlight">ridiculous number</span> of suggestions 💯
+   <!-- 100! Why not? Then we pick one that works -->
+
+3. Ask for **multiple styles** 🎨  
+   <!-- Academic style, Business style, Conversational style -->
+
+4. Ask for **multiple formats** 📋
+   <!-- HTML overview, HTML slides, PPTX, etc. -->
+
+5. Ask **many models** 🤖
+   <!-- Use openrouter or go to each model's website -->
+
+6. Ask the model to **critique itself** 🔍
+   <!-- Self-review can lead to significant improvements -->
+
+:::
+
+## C. Verify ✅
+
+- **Don't trust** that the model is competent at a class of tasks just because it claims to be - <span class="highlight">always verify first</span> 🚨
+
+<!-- Models can be overconfident and hallucinate information. Always verify capabilities before relying on them -->
+
+::: {.fragment}
+**Example:**
+
+- Ask DeepSeek (no search turned on): *"Suggest some papers from 2024 I should read to write a discussion for this [paper](https://www.nature.com/articles/s41467-021-25946-0) ..."*
+
+- Gets lots of **hallucinated papers** 🚫
+:::
+
+## D. Experiment 💪
+
+- Models are **powerful** and getting better all the time 🚀
+- <span class="highlight">Try things</span> before assuming the model can't do it ✨
