@@ -12,19 +12,11 @@ In this session you will try two small but practical GenAI design workflows:
 
 1.  **Create a promotional flyer** for our course showcase using **Ideogram** for image generation and **Canva** for final editing. (You're encouraged to embed this on your website, and share this flyer with colleagues and friends to get them to come to the showcase.)
 
-2.  (**Optional challenge**) **Turn a research paper into a visual abstract** using **Claude** and **HTML** or **SVG**.
-
-# Required Account Signups
-
-Before starting the workshop tasks, please sign up for the following free accounts:
-
-1.  **Ideogram.ai** - Sign up for a free account at **ideogram.ai** (used for AI image generation)
-
-2.  **Canva.com** - Sign up and start a free trial for the pro features at **canva.com**. **Important**: Cancel the trial within your account settings immediately after completing the signup process to avoid charges. (If you have already used up your free trial, please create a new account with a different email address. If this is not possible, please contact an instructor for help.)
-
-3.  **Claude.ai** - Sign up for a free account at **claude.ai** (used for the optional visual abstract challenge)
+2.  **Turn a research paper into a visual abstract** using **Claude** and **HTML** or **SVG**.
 
 # Task 1 – AI Flyer for the Final Presentation
+
+**Account Required**: You'll need a free **Ideogram.ai** account. Sign up at **ideogram.ai** if you haven't already.
 
 ### 1-A Generate the first draft in Ideogram
 
@@ -33,7 +25,7 @@ Before starting the workshop tasks, please sign up for the following free accoun
 2.  In the prompt box, describe the image you want to create. Copy and paste the following recommended prompt, making sure to replace `[YOUR WEBSITE NAME HERE]` with your actual website name:
 
 ```         
-Create an attractive flyer for the following event:
+Create an elegant modern flyer for the following event:
 ► Main headline: "Graph Courses – AI Portfolio Showcase Day".
 ► Sub-headline: "Generative AI for Work & Research".
 ► Date and Time
@@ -47,6 +39,8 @@ Create an attractive flyer for the following event:
 ------------------------------------------------------------------------
 
 ### 1-B Fix typography in Canva
+
+**Account Required**: You'll need a **Canva.com** account with pro features. Sign up and start a free trial at **canva.com**. **Important**: Cancel the trial within your account settings immediately after completing the signup process to avoid charges. (If you have already used up your free trial, please create a new account with a different email address. If this is not possible, please contact an instructor for help.)
 
 AI-generated text in the images from Ideogram are likely to be error-ridden. To fix this, we can use Canva's Grab Text feature to make the text editable and fix the errors.
 
@@ -74,7 +68,9 @@ Then click on Grab Text under Magic Studio. You may need to scroll right to see 
 2.  Click on "Download", change the file type to "PDF Standard" and click "Download".
 3.  Upload the PDF to your assignment submission area on the course page.
 
-# Optional Challenge – AI Visual Abstracts
+# Task 2 – AI Visual Abstracts
+
+**Account Required**: You'll need a free **Claude.ai** account. Sign up at **claude.ai** if you haven't already.
 
 In this section, we'll use AI and design tools to turn a research paper into a visual abstract. A visual abstract is a pictorial representation of the main findings of a research paper, and is a great way to communicate the key results of a paper in an appealing visual format.
 
