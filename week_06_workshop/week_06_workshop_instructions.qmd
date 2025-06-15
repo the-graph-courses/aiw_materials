@@ -12,7 +12,7 @@ In this session you will try two small but practical GenAI design workflows:
 
 1.  **Create a promotional flyer** for our course showcase using **Ideogram** for image generation and **Canva** for final editing. (You're encouraged to embed this on your website, and share this flyer with colleagues and friends to get them to come to the showcase.)
 
-2.  **Turn a research paper into a visual abstract** using **Claude** and **HTML** or **SVG**.
+2.  (**Optional challenge**) **Turn a research paper into a visual abstract** using **Claude** and **HTML** or **SVG**.
 
 # Task 1 – AI Flyer for the Final Presentation
 
@@ -68,7 +68,7 @@ Then click on Grab Text under Magic Studio. You may need to scroll right to see 
 2.  Click on "Download", change the file type to "PDF Standard" and click "Download".
 3.  Upload the PDF to your assignment submission area on the course page.
 
-# Task 2 – AI Visual Abstracts
+# Optional Challenge – AI Visual Abstracts
 
 **Account Required**: You'll need a free **Claude.ai** account. Sign up at **claude.ai** if you haven't already.
 
