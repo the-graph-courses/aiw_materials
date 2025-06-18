@@ -4,6 +4,7 @@ subtitle: "Tips for Better Results"
 author: "**The Graph Courses**"
 format: 
   revealjs:
+    embed-resources: true
     theme: white
     logo: graph_courses_logo.png
     footer: "The Graph Courses • Generative AI for Work & Research"

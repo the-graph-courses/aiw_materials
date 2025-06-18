@@ -20,7 +20,7 @@ We recommend that your project should be based on one or more of the core themes
 - **A design/communication campaign** (Week 6)
 - **Or a combination of some of these**
 
-The presentation will be on either Friday, 27 Jun 2025  3 – 5 PM (GMT) or Sunday, 29 Jun 2025  5 – 7 PM (GMT).
+The presentation will be on either Friday, 27 Jun 2025  3 – 5 PM (GMT) or Sunday, 29 Jun 2025  5 – 7 PM (GMT). You can pick whatever session works best for you. 
 
 # Project Requirements
 
@@ -30,7 +30,9 @@ The presentation will be on either Friday, 27 Jun 2025  3 – 5 PM (GMT) or Sund
 - **Presentation:** Prepare a clear, engaging 4-minute presentation and submit your slide deck (PDF, PPTX or HTML).
 - **Reflection:** Reflect on what worked and what was not ideal, especially with regard to AI limitations and or ethical considerations. 
 
-# Instructor Feedback Session
+An important ques
+
+# Instructor Feedback Sessions (June 20, 22)
 
 Our second-to-last session will be an optional session where you can get feedback and mentorship on your final project. Try to make sure you have at least a draft of the presentation by then. 
 
@@ -66,3 +68,39 @@ We recommend that your presentation should include the following sections, with 
 - Build a custom chatbot to support a specific task, such as answering questions about a research paper, guiding a user through a protocol, or managing a project. 
 - Design and implement an automation addressing a real pain point in your work or organization
 - Create a suite of professional communication materials for a campaign for an event, project, or publication (e.g., flyer, social media posts, visual abstract)
+
+# Frequently Asked Questions
+
+## **What if my project is not related to work or research?**
+
+This is fine! It can be related to your personal life, a hobby, or a project you are working on for fun. 
+
+## **How do I prove I used an AI tool during the project?**
+
+“Work on problems that used to be impossible, but are now really hard.”
+— Kevin Scott, Chief Technology Officer, Microsoft (2024)
+
+While lots of people are trying to prove they *didn't* use AI in their work, we actually want to see that you *did* use it! This can be tricky to show, especially for things like data analysis where you could have done it all yourself. Here's how to handle this:
+
+1. **Keep Track**: Take some screenshots or short videos of you working with AI tools, like keeping receipts to show what you did!
+
+2. **Show the Difference**: Show how it helped you do more than you could have done on your own.  The CEO of Microsoft, Kevin Scott, said this:
+“Work on problems that used to be impossible, but are now really hard.” Apply this to your project. Build a project that you would not have been able to achieve (at least not within two weeks) without the help of AI tools.
+
+## **Can I use AI tools not covered in the course?**
+Yes! While you should use at least one tool covered in the course, you're encouraged to explore additional AI tools that enhance your project.
+
+## **What if my project doesn't work perfectly?**
+That's completely fine and expected! Part of the reflection component is discussing what didn't work well. Failed experiments and limitations are valuable learning experiences.
+
+## **Can I present preliminary results or a work-in-progress?**
+It's okay if your work is not finished by the end of the course.  Be clear about what's preliminary and what your next steps would be.
+
+## **How strict is the 4-minute time limit?**
+We'll aim for 4-5 minutes total to allow for brief Q&A. Practice your timing to ensure you cover all key points effectively.
+
+## **Can I use the same data/project from another course?**
+Yes, but you must add significant AI components that weren't part of your original work. The focus should be on the AI enhancement/integration.
+
+## **What if I miss the feedback session?**
+The feedback sessions are optional but highly recommended. If you can't attend, you can reach out via email or during regular office hours for guidance.
