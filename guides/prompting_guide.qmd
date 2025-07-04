@@ -1,17 +1,14 @@
 ---
-title: "LLM Prompting"
-subtitle: "Tips for Better Results"
+title: "LLM Prompting: Tips for Better Results"
 author: "**The Graph Courses**"
 format: 
-  revealjs:
+  html:
     embed-resources: true
-    theme: white
-    logo: graph_courses_logo.png
-    footer: "The Graph Courses • Generative AI for Work & Research"
+    theme: cosmo
+    toc: true
+    toc-location: left
+    css: custom-styles.css
 ---
-
-## Quick Reference: All Tips ✨ {.smaller .scrollable}
-
 
 <style>
 :root {
@@ -19,14 +16,31 @@ format:
   --light-teal: #5a9999;
   --pastel-orange: #ffcc99;
   --pastel-yellow: #fff3b3;
+  --light-bg: #f8f9fa;
 }
 
-.reveal h1, .reveal h2, .reveal h3 {
+body {
+  line-height: 1.6;
+  color: #333;
+}
+
+h1, h2, h3 {
   color: var(--dark-teal);
+  margin-top: 2rem;
 }
 
-.reveal .slides section .fragment.highlight-current-blue {
-  background-color: var(--pastel-yellow);
+h1 {
+  border-bottom: 3px solid var(--light-teal);
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  border-left: 4px solid var(--light-teal);
+  padding-left: 1rem;
+  background: linear-gradient(135deg, var(--light-bg) 0%, var(--pastel-yellow) 100%);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 2rem 0 1rem 0;
 }
 
 .accent {
@@ -38,26 +52,28 @@ format:
   background-color: var(--pastel-orange);
   padding: 2px 6px;
   border-radius: 4px;
+  font-weight: 500;
 }
 
 .tip-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
 .tip-section {
-  background: linear-gradient(135deg, var(--light-teal)10, var(--pastel-yellow)10);
+  background: linear-gradient(135deg, rgba(90, 153, 153, 0.1) 0%, rgba(255, 243, 179, 0.2) 100%);
   padding: 1.5rem;
   border-radius: 12px;
   border-left: 4px solid var(--light-teal);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.tip-section h3 {
+.tip-section h4 {
   color: var(--dark-teal);
   margin-top: 0;
-  font-size: 1.3em;
+  font-size: 1.2em;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -76,136 +92,134 @@ format:
 .tip-list strong {
   color: var(--light-teal);
 }
+
+.example-box {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.warning-box {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.links-section {
+  background: var(--light-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
 </style>
 
+## Quick Reference: All Tips ✨
 
-```{=html}
-<div class="tip-grid">
-  <div class="tip-section">
-    <h4>🔧 Give Good Context</h4>
-    <ul class="tip-list">
-      <li><strong>Start fresh frequently</strong></li>
-      <li>Use <span class="highlight">clipboard manager</span></li>
-      <li><strong>Shift + Enter</strong> for new line</li>
-      <li>Often, <strong>edit</strong> > follow-up</li>
-      <li>Paste link text via <strong>Google Docs</strong></li>
+### 🔧 Give Good Context
+- **Start fresh frequently**
+- Use clipboard manager
+- **Shift + Enter** for new line
+- Often, **edit** > follow-up
+- Paste link text via **Google Docs**
 
-    </ul>
-  </div>
-  
-  <div class="tip-section">
-    <h4>🎯 Iterate</h4>
-    <ul class="tip-list">
-      <li>Try <strong>multiple attempts</strong></li>
-      <li>Ask for <span class="highlight">many suggestions</span></li>
-      <li>Let model <strong>ask questions</strong></li>
-      <li>Request <strong>multiple styles</strong></li>
-      <li>Request <strong>multiple formats</strong></li>
-      <li>Use <span class="highlight">multiple models</span></li>
-      <li>Ask for <strong>self-critique</strong></li>
-    </ul>
-  </div>
-  
-  <div class="tip-section">
-    <h4>✅ Verify</h4>
-    <ul class="tip-list">
-      <li><strong>Verify</strong> model capabilities</li>
-      <li>Don't trust claims <span class="highlight">blindly</span></li>
-    </ul>
-  </div>
-  
-  <div class="tip-section">
-    <h4>💡 Experiment</h4>
-    <ul class="tip-list">
-      <li>Don't <strong>underestimate</strong> models</li>
-      <li><span class="highlight">Experiment</span> with approaches</li>
-    </ul>
-  </div>
-</div>
-```
+### 🎯 Iterate
+- Try **multiple attempts**
+- Ask for many suggestions
+- Let model **ask questions**
+- Request **multiple styles**
+- Request **multiple formats**
+- Use multiple models
+- Ask for **self-critique**
+
+### ✅ Verify
+- **Verify** model capabilities
+- Don't trust claims blindly
+
+### 💡 Experiment
+- Don't **underestimate** models
+- Experiment with approaches
 
 ## Motivating Task 📋
 
 After taking our course, your boss asks you to give a **presentation** on two possible applications of the skills learned to the company/your work. You want to use LLMs for some **brainstorming help**. 🧠
 
+<div class="links-section">
 **Links we'll use:**
 
 - [AI for Work & Research Course](https://thegraphcourses.org/aiw/) 📚
 - [Sample Resume](https://the-graph-courses.github.io/misc_public/taylor_helper.html) (Taylor Helper) 📄
 - [ICON Company Overview](https://www.iconplc.com/about/icon-glance) 🏢  
+</div>
 
 ## A. Give Good Context 🔧
 
-::: {.incremental}
+### 1. Start fresh sessions for different topics 🔄
+Keep context clear and focused by starting new conversations for different topics rather than extending one long conversation.
 
-1. **Start fresh sessions** for different topics to keep context clear 🔄
-   <!-- This helps keep the context clear and focused -->
+### 2. Use a good clipboard manager 📋
+A clipboard manager helps efficiently handle multiple pieces of text and context. Get one for [Windows](https://www.youtube.com/watch?v=mOXDyrEwjK0) or [Mac](https://maccy.app/).
 
-2. Use a good **clipboard manager** for managing context 📋. [Windows](https://www.youtube.com/watch?v=mOXDyrEwjK0), [Mac](https://maccy.app/)
-   <!-- A clipboard manager helps efficiently handle multiple pieces of text and context -->
+### 3. Use Shift + Enter for new lines ↵
+This keyboard shortcut helps maintain clean formatting in prompts without accidentally sending incomplete messages.
 
-3. **Shift + Enter** to go to new line ↵
-   <!-- This keyboard shortcut helps maintain clean formatting in prompts -->
+### 4. Edit instead of extending conversations ✏️
+When you need to fix mistakes, use the edit button rather than adding follow-up messages. This keeps conversations concise and maintains better context.
 
-4. **Edit** instead of extending the conversation to fix mistakes ✏️
-   <!-- Keeps conversations concise and maintains context -->
+### 5. Handle links properly 🔗
+To copy text that contains links, first paste it into <span class="highlight">Google Docs</span>, then copy as markdown. This converts links to markdown format for better compatibility.
 
-5. To copy in text that has links, first paste into <span class="highlight">Google Docs</span>, then copy as markdown 🔗
-   <!-- Converts links to markdown format for better compatibility -->
+### 6. Let the model ask clarifying questions ❓
+Allow the model to ask questions to ensure all requirements are understood before proceeding with the task.
 
-6. Let the model **ask clarifying questions** ❓
-   <!-- Ensures all requirements are understood before proceeding -->
-
-
-:::
-
-::: {.notes}
-Example workflow that we will use to demonstrate points 1 to 4:
-- After taking our course, your boss asks you to give a presentation on two possible applications of the skills learned to the company/your work.
-- We'll demo how you can copy the AI course description, company description, and CV
-- Ask the model to suggest applications of the skills
-- Use clipboard manager to efficiently manage all copied content 
-- Use the edit button to fix mistakes
-:::
 
 ## B. Iterate 🎯
 
-::: {.incremental}
+### 1. Try again 🔄
+The first attempt isn't always the best. Don't settle for the initial response if it doesn't meet your needs.
 
-1. **Try again** - first attempt isn't always best 🔄
+### 2. Ask for many suggestions 💯
+Ask for a <span class="highlight">ridiculous number</span> of suggestions - why not 100? Then pick the ones that work best for your needs.
 
-2. Ask for a <span class="highlight">ridiculous number</span> of suggestions 💯
-   <!-- 100! Why not? Then we pick one that works -->
+### 3. Request multiple styles 🎨
+Ask for different approaches:
+- Academic style
+- Business style  
+- Conversational style
+- Technical style
 
-3. Ask for **multiple styles** 🎨  
-   <!-- Academic style, Business style, Conversational style -->
+### 4. Ask for multiple formats 📋
+Request the same content in different formats:
+- HTML overview
+- HTML slides
+- PowerPoint presentations
+- Bullet points
+- Prose summaries
 
-4. Ask for **multiple formats** 📋
-   <!-- HTML overview, HTML slides, PPTX, etc. -->
+### 5. Try many models 🤖
+Use different AI models through platforms like OpenRouter, or visit each model's website directly to compare results.
 
-5. Ask **many models** 🤖
-   <!-- Use openrouter or go to each model's website -->
-
-6. Ask the model to **critique itself** 🔍
-   <!-- Self-review can lead to significant improvements -->
-
-:::
+### 6. Ask for self-critique 🔍
+Request that the model critique its own work. Self-review can lead to significant improvements in the output quality.
 
 ## C. Verify ✅
 
-- **Don't trust** that the model is competent at a class of tasks just because it claims to be - <span class="highlight">always verify first</span> 🚨
+<div class="warning-box">
+**Important:** Don't trust that a model is competent at a class of tasks just because it claims to be - <span class="highlight">always verify first</span> 🚨
+</div>
 
-<!-- Models can be overconfident and hallucinate information. Always verify capabilities before relying on them -->
-
-::: {.fragment}
-**Example:**
-
-- Ask DeepSeek (no search turned on): *"Suggest some papers from 2024 I should read to write a discussion for this [paper](https://www.nature.com/articles/s41467-021-25946-0) ..."*
-
-- Gets lots of **hallucinated papers** 🚫
-:::
+Models can be overconfident and hallucinate information. Always verify capabilities before relying on them for important tasks.
 
 ## D. Experiment 💪
 
+### Don't underestimate AI capabilities
 - Models are **powerful** and getting better all the time 🚀
 - <span class="highlight">Try things</span> before assuming the model can't do it ✨
+- What seemed impossible yesterday might be routine today
+
+### Push boundaries
+While you should be careful with hallucinations, you should also experiment with creative approaches and novel applications. You might be surprised by what current models can accomplish.
+
