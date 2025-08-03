@@ -117,32 +117,6 @@ h2 {
 }
 </style>
 
-## Quick Reference: All Tips ✨
-
-### 🔧 Give Good Context
-- **Start fresh frequently**
-- Use clipboard manager
-- **Shift + Enter** for new line
-- Often, **edit** > follow-up
-- Paste link text via **Google Docs**
-
-### 🎯 Iterate
-- Try **multiple attempts**
-- Ask for many suggestions
-- Let model **ask questions**
-- Request **multiple styles**
-- Request **multiple formats**
-- Use multiple models
-- Ask for **self-critique**
-
-### ✅ Verify
-- **Verify** model capabilities
-- Don't trust claims blindly
-
-### 💡 Experiment
-- Don't **underestimate** models
-- Experiment with approaches
-
 ## Motivating Task 📋
 
 After taking our course, your boss asks you to give a **presentation** on two possible applications of the skills learned to the company/your work. You want to use LLMs for some **brainstorming help**. 🧠
