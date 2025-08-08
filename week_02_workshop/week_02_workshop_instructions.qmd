@@ -71,11 +71,12 @@ You will use Cursor to generate an R Markdown report.
         Here is an example of an initial agent prompt:
 
         ```
-        You are an AI agent that creates data reports.
+        You are an AI agent that creates R data reports.
         You create reports by writing code to an Rmarkdown file (with github_document output), knitting that file, then reading the output md file to validate your work.
         You repeat this edit, knit, review loop until the reporting task is achieved.
         Use plots, tables, and inline R code where appropriate.
         Code should be hidden from the output.
+        Your task is further described below.
         ```
     *   **Specific Task Prompting Example:**
 

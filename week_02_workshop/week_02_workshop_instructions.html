@@ -164,11 +164,12 @@ window.Quarto = {
 <li><p>Before using the Agent, it’s recommended to change the model to <strong>Claude 3.7 Sonnet</strong> for better performance with R. You can usually find this setting in a dropdown menu associated with the chat or agent interface.</p></li>
 <li><p>Then use Cursor’s “Agent Mode” to help you write the R code and narrative.</p></li>
 <li><p><strong>Initial Agent Prompt Idea:</strong> Here is an example of an initial agent prompt:</p>
-<pre><code>You are an AI agent that creates data reports.
+<pre><code>You are an AI agent that creates R data reports.
 You create reports by writing code to an Rmarkdown file (with github_document output), knitting that file, then reading the output md file to validate your work.
 You repeat this edit, knit, review loop until the reporting task is achieved.
 Use plots, tables, and inline R code where appropriate.
-Code should be hidden from the output.</code></pre></li>
+Code should be hidden from the output.
+Your task is further described below.</code></pre></li>
 <li><p><strong>Specific Task Prompting Example:</strong></p>
 <pre><code>Now create a data report in my Rmd file using the two datasets I've provided ([indicator1] and [indicator2]).
 
