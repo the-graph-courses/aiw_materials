@@ -8,50 +8,39 @@ This guide walks you through the steps to set up your AI‑Course Portfolio Webs
 
 **⚠️ NOTE:** This document is a short summary of the steps. For clearer instructions, consult the corresponding video on the website. 
 
-## Open ChatGPT & switch to `o3`
-- Go to [chatgpt.com](https://chatgpt.com).
-- Click the `▼ Model` dropdown at the top left of the chat window.
-- Select **OpenAI o3**.
-   
-> **Run out of o3 messages?** That's fine. Most other models can handle a single page website.
-
 ## Paste the prompt & course text 
-- Copy any relevant parts of the course description from [thegraphcourses.org/aiw](https://thegraphcourses.org/aiw).
+- Download the course brochure from [thegraphcourses.org/aiw](https://thegraphcourses.org/aiw).
+- Go to [chatgpt.com](https://chatgpt.com).
 - Start a new message and create an instruction similar to this:
   ```
-  Build a one‑page portfolio website for my "Generative AI for Work & Research" course.
-  Use the course information below and my CV.
-  At least these three sections:
+  Build an elegant one‑page portfolio website for my "Generative AI for Work & Research" course.
+  Use the course information and my CV, which are attached. The site should have at least the following sections:
   - About me
   - About the course
   - My weekly submissions (here we will add links to each submission later on)
   Show the HTML in a Canvas.
-  Avoid frameworks.
   Don't include my email in the site to avoid spam
-
-  [PASTE THE COURSE TEXT AND YOUR CV HERE]
   ```
-- (If you are very private, you can use a pseudonym or use a random sample CV from the internet)
+- (If you are very private and don't want a public website with your info online, you can use a pseudonym or use a random sample CV from the internet. e.g. [this one](https://careercenter.ucdavis.edu/sites/g/files/dgvnsk15461/files/media/documents/AES-Agriculture-and-Plants.pdf))
 
 ## Render the Canvas & refine
 - ChatGPT should reply in a code block canvas.
 - Click the `Run code` button at its top‑right to open the live view.
 - Now you can ask follow‑up prompts. For example:
-  - "Change the accent colour to green."
-  - "Use a serif font for headings."
-  - Upload a screenshot of a site you like → "Match this layout."
+  - You can upload a screenshot of a site you like and ask the model to "take some inspiration from this theme and layout".
+  - Or you can ask the model to "change the accent colour to green", or change specific pieces of text.
 
 ## Stop preview & copy `index.html`
 - Click the `■ Stop` button (same location as the eye) to close preview.
 - Select all the HTML inside the code box then copy it with `Ctrl/Cmd+C`.
 
 ## Create a GitHub account (one‑off)
-Github is a platform for hosting and collaborating on code. It offers free hosting for static websites. We will use it to host your portfolio.
+Github is a platform for hosting and collaborating on code. It is one of the most generous and reliable platforms for freely hosting static websites. We will use it to host your portfolio website.
 - Visit [github.com](https://github.com) → click **Sign up** and follow the steps.
 
 ## Make a new repository
 - Click the `＋` icon (top‑right) → **New repository**.
-- Name it `graph-ai-portfolio` (something similar).
+- Name it `graph-ai-portfolio` (or something similar).
 - Leave it **Public**. Click **Create repository**.
 
 ## Add your HTML file
@@ -73,8 +62,13 @@ Github is a platform for hosting and collaborating on code. It offers free hosti
 - Upload your image.
 - Click **Commit changes**.
 - Open the uploaded image → right‑click it → **Copy image address**.
-- Back in ChatGPT, ask the model to insert the image, which you paste as a link, as a circular avatar at the top. 
-- Copy the new HTML → return to *index.html* → click **Edit** (✎) → replace code → **Commit**.
+- Back in ChatGPT, ask the model to insert the image. Your prompt might might look something like this:
+  ```
+  Insert this image of me at the top of the page as a circular avatar.
+  The image is at this address: https://github.com/kendavidn/my_graph_portfolio_2/blob/main/linkedin%20photo%20-%20Kene%20David%20Nwosu%20(1).png?raw=true
+  ```
+
+- Copy the new HTML that ChatGPT generated → return to *index.html* on GitHub → click **Edit** (✎) → replace code → **Commit**.
 - Refresh your live site – after about 1 minute the avatar should appear.
 
 ## Submitting your work
@@ -89,11 +83,11 @@ LaTeX is a powerful typesetting system commonly used for academic and profession
 
 ### Step 1: Get the LaTeX Template
 - Go to [overleaf.com](https://overleaf.com) → **New Project → Blank Project**.
-- Click **Templates** (left) → search "simple resume" → **Use template**.
+- Click **Templates** (left) → search "resume" and pick one of the templates → **Use template**.
 - Copy the entire LaTeX template code.
 
 ### Step 2: Format Your CV with AI
-- Take the LaTeX template to ChatGPT (using o3 model).
+- Take the LaTeX template to ChatGPT.
 - Paste your CV text and the LaTeX template.
 - Ask the model to reformat your CV using the LaTeX template structure.
 - Copy the AI-generated LaTeX code.

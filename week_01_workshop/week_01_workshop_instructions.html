@@ -64,70 +64,55 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This guide walks you through the steps to set up your AI‑Course Portfolio Website for the Generative AI for Work &amp; Research course.</p>
 <p><strong>⚠️ NOTE:</strong> This document is a short summary of the steps. For clearer instructions, consult the corresponding video on the website.</p>
-<section id="open-chatgpt-switch-to-o3" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="open-chatgpt-switch-to-o3"><span class="header-section-number">1</span> Open ChatGPT &amp; switch to <code>o3</code></h2>
+<section id="paste-the-prompt-course-text" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="paste-the-prompt-course-text"><span class="header-section-number">1</span> Paste the prompt &amp; course text</h2>
 <ul>
-<li>Go to <a href="https://chatgpt.com">chatgpt.com</a>.</li>
-<li>Click the <code>▼ Model</code> dropdown at the top left of the chat window.</li>
-<li>Select <strong>OpenAI o3</strong>.</li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Run out of o3 messages?</strong> That’s fine. Most other models can handle a single page website.</p>
-</blockquote>
-</section>
-<section id="paste-the-prompt-course-text" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="paste-the-prompt-course-text"><span class="header-section-number">2</span> Paste the prompt &amp; course text</h2>
-<ul>
-<li><p>Copy any relevant parts of the course description from <a href="https://thegraphcourses.org/aiw">thegraphcourses.org/aiw</a>.</p></li>
+<li><p>Download the course brochure from <a href="https://thegraphcourses.org/aiw">thegraphcourses.org/aiw</a>.</p></li>
+<li><p>Go to <a href="https://chatgpt.com">chatgpt.com</a>.</p></li>
 <li><p>Start a new message and create an instruction similar to this:</p>
-<pre><code>Build a one‑page portfolio website for my "Generative AI for Work &amp; Research" course.
-Use the course information below and my CV.
-At least these three sections:
+<pre><code>Build an elegant one‑page portfolio website for my "Generative AI for Work &amp; Research" course.
+Use the course information and my CV, which are attached. The site should have at least the following sections:
 - About me
 - About the course
 - My weekly submissions (here we will add links to each submission later on)
 Show the HTML in a Canvas.
-Avoid frameworks.
-Don't include my email in the site to avoid spam
-
-[PASTE THE COURSE TEXT AND YOUR CV HERE]</code></pre></li>
-<li><p>(If you are very private, you can use a pseudonym or use a random sample CV from the internet)</p></li>
+Don't include my email in the site to avoid spam</code></pre></li>
+<li><p>(If you are very private and don’t want a public website with your info online, you can use a pseudonym or use a random sample CV from the internet. e.g.&nbsp;<a href="https://careercenter.ucdavis.edu/sites/g/files/dgvnsk15461/files/media/documents/AES-Agriculture-and-Plants.pdf">this one</a>)</p></li>
 </ul>
 </section>
-<section id="render-the-canvas-refine" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="render-the-canvas-refine"><span class="header-section-number">3</span> Render the Canvas &amp; refine</h2>
+<section id="render-the-canvas-refine" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="render-the-canvas-refine"><span class="header-section-number">2</span> Render the Canvas &amp; refine</h2>
 <ul>
 <li>ChatGPT should reply in a code block canvas.</li>
 <li>Click the <code>Run code</code> button at its top‑right to open the live view.</li>
 <li>Now you can ask follow‑up prompts. For example:
 <ul>
-<li>“Change the accent colour to green.”</li>
-<li>“Use a serif font for headings.”</li>
-<li>Upload a screenshot of a site you like → “Match this layout.”</li>
+<li>You can upload a screenshot of a site you like and ask the model to “take some inspiration from this theme and layout”.</li>
+<li>Or you can ask the model to “change the accent colour to green”, or change specific pieces of text.</li>
 </ul></li>
 </ul>
 </section>
-<section id="stop-preview-copy-index.html" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="stop-preview-copy-index.html"><span class="header-section-number">4</span> Stop preview &amp; copy <code>index.html</code></h2>
+<section id="stop-preview-copy-index.html" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="stop-preview-copy-index.html"><span class="header-section-number">3</span> Stop preview &amp; copy <code>index.html</code></h2>
 <ul>
 <li>Click the <code>■ Stop</code> button (same location as the eye) to close preview.</li>
 <li>Select all the HTML inside the code box then copy it with <code>Ctrl/Cmd+C</code>.</li>
 </ul>
 </section>
-<section id="create-a-github-account-oneoff" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="create-a-github-account-oneoff"><span class="header-section-number">5</span> Create a GitHub account (one‑off)</h2>
-<p>Github is a platform for hosting and collaborating on code. It offers free hosting for static websites. We will use it to host your portfolio. - Visit <a href="https://github.com">github.com</a> → click <strong>Sign up</strong> and follow the steps.</p>
+<section id="create-a-github-account-oneoff" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="create-a-github-account-oneoff"><span class="header-section-number">4</span> Create a GitHub account (one‑off)</h2>
+<p>Github is a platform for hosting and collaborating on code. It is one of the most generous and reliable platforms for freely hosting static websites. We will use it to host your portfolio website. - Visit <a href="https://github.com">github.com</a> → click <strong>Sign up</strong> and follow the steps.</p>
 </section>
-<section id="make-a-new-repository" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="make-a-new-repository"><span class="header-section-number">6</span> Make a new repository</h2>
+<section id="make-a-new-repository" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="make-a-new-repository"><span class="header-section-number">5</span> Make a new repository</h2>
 <ul>
 <li>Click the <code>＋</code> icon (top‑right) → <strong>New repository</strong>.</li>
-<li>Name it <code>graph-ai-portfolio</code> (something similar).</li>
+<li>Name it <code>graph-ai-portfolio</code> (or something similar).</li>
 <li>Leave it <strong>Public</strong>. Click <strong>Create repository</strong>.</li>
 </ul>
 </section>
-<section id="add-your-html-file" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="add-your-html-file"><span class="header-section-number">7</span> Add your HTML file</h2>
+<section id="add-your-html-file" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="add-your-html-file"><span class="header-section-number">6</span> Add your HTML file</h2>
 <ul>
 <li>Inside the GitHub repo you created, find the button to create a new file and click it.</li>
 <li>Type <code>index.html</code> in the filename box, lowercase with no spaces.</li>
@@ -135,8 +120,8 @@ Don't include my email in the site to avoid spam
 <li>Click <strong>Commit new file</strong>.</li>
 </ul>
 </section>
-<section id="turn-on-github-pages" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="turn-on-github-pages"><span class="header-section-number">8</span> Turn on GitHub Pages</h2>
+<section id="turn-on-github-pages" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="turn-on-github-pages"><span class="header-section-number">7</span> Turn on GitHub Pages</h2>
 <ul>
 <li>Go to <strong>Settings</strong> (tab near top).</li>
 <li>In the sidebar, click <strong>Pages</strong>.</li>
@@ -146,20 +131,22 @@ Don't include my email in the site to avoid spam
 <li>Your site URL appears at the top (e.g.&nbsp;<code>https://username.github.io/ai-portfolio/</code>). Click to check.</li>
 </ul>
 </section>
-<section id="add-a-profile-picture-to-github" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="add-a-profile-picture-to-github"><span class="header-section-number">9</span> Add a profile picture to GitHub</h2>
+<section id="add-a-profile-picture-to-github" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="add-a-profile-picture-to-github"><span class="header-section-number">8</span> Add a profile picture to GitHub</h2>
 <ul>
-<li>In the repo, locate the button or icon to upload a file.</li>
-<li>Upload your image.</li>
-<li>Click <strong>Commit changes</strong>.</li>
-<li>Open the uploaded image → right‑click it → <strong>Copy image address</strong>.</li>
-<li>Back in ChatGPT, ask the model to insert the image, which you paste as a link, as a circular avatar at the top.</li>
-<li>Copy the new HTML → return to <em>index.html</em> → click <strong>Edit</strong> (✎) → replace code → <strong>Commit</strong>.</li>
-<li>Refresh your live site – after about 1 minute the avatar should appear.</li>
+<li><p>In the repo, locate the button or icon to upload a file.</p></li>
+<li><p>Upload your image.</p></li>
+<li><p>Click <strong>Commit changes</strong>.</p></li>
+<li><p>Open the uploaded image → right‑click it → <strong>Copy image address</strong>.</p></li>
+<li><p>Back in ChatGPT, ask the model to insert the image. Your prompt might might look something like this:</p>
+<pre><code>Insert this image of me at the top of the page as a circular avatar.
+The image is at this address: https://github.com/kendavidn/my_graph_portfolio_2/blob/main/linkedin%20photo%20-%20Kene%20David%20Nwosu%20(1).png?raw=true</code></pre></li>
+<li><p>Copy the new HTML that ChatGPT generated → return to <em>index.html</em> on GitHub → click <strong>Edit</strong> (✎) → replace code → <strong>Commit</strong>.</p></li>
+<li><p>Refresh your live site – after about 1 minute the avatar should appear.</p></li>
 </ul>
 </section>
-<section id="submitting-your-work" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="submitting-your-work"><span class="header-section-number">10</span> Submitting your work</h2>
+<section id="submitting-your-work" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="submitting-your-work"><span class="header-section-number">9</span> Submitting your work</h2>
 <ul>
 <li>On the GitHub repo, click on the <strong>index.html</strong> file.</li>
 <li>Locate the download button or icon in the top right corner.</li>
@@ -167,28 +154,28 @@ Don't include my email in the site to avoid spam
 <li>Upload the file to the course portal.</li>
 </ul>
 </section>
-<section id="optional-challenge-create-a-professional-cv-with-latex" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="optional-challenge-create-a-professional-cv-with-latex"><span class="header-section-number">11</span> Optional Challenge: Create a Professional CV with LaTeX</h2>
+<section id="optional-challenge-create-a-professional-cv-with-latex" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="optional-challenge-create-a-professional-cv-with-latex"><span class="header-section-number">10</span> Optional Challenge: Create a Professional CV with LaTeX</h2>
 <p>LaTeX is a powerful typesetting system commonly used for academic and professional documents. It’s another markup format like HTML or Markdown, but specifically designed for creating beautifully formatted PDF documents. In this optional (ungraded) challenge, you’ll create a professional CV using LaTeX.</p>
-<section id="step-1-get-the-latex-template" class="level3" data-number="11.1">
-<h3 data-number="11.1" class="anchored" data-anchor-id="step-1-get-the-latex-template"><span class="header-section-number">11.1</span> Step 1: Get the LaTeX Template</h3>
+<section id="step-1-get-the-latex-template" class="level3" data-number="10.1">
+<h3 data-number="10.1" class="anchored" data-anchor-id="step-1-get-the-latex-template"><span class="header-section-number">10.1</span> Step 1: Get the LaTeX Template</h3>
 <ul>
 <li>Go to <a href="https://overleaf.com">overleaf.com</a> → <strong>New Project → Blank Project</strong>.</li>
-<li>Click <strong>Templates</strong> (left) → search “simple resume” → <strong>Use template</strong>.</li>
+<li>Click <strong>Templates</strong> (left) → search “resume” and pick one of the templates → <strong>Use template</strong>.</li>
 <li>Copy the entire LaTeX template code.</li>
 </ul>
 </section>
-<section id="step-2-format-your-cv-with-ai" class="level3" data-number="11.2">
-<h3 data-number="11.2" class="anchored" data-anchor-id="step-2-format-your-cv-with-ai"><span class="header-section-number">11.2</span> Step 2: Format Your CV with AI</h3>
+<section id="step-2-format-your-cv-with-ai" class="level3" data-number="10.2">
+<h3 data-number="10.2" class="anchored" data-anchor-id="step-2-format-your-cv-with-ai"><span class="header-section-number">10.2</span> Step 2: Format Your CV with AI</h3>
 <ul>
-<li>Take the LaTeX template to ChatGPT (using o3 model).</li>
+<li>Take the LaTeX template to ChatGPT.</li>
 <li>Paste your CV text and the LaTeX template.</li>
 <li>Ask the model to reformat your CV using the LaTeX template structure.</li>
 <li>Copy the AI-generated LaTeX code.</li>
 </ul>
 </section>
-<section id="step-3-create-your-cv" class="level3" data-number="11.3">
-<h3 data-number="11.3" class="anchored" data-anchor-id="step-3-create-your-cv"><span class="header-section-number">11.3</span> Step 3: Create Your CV</h3>
+<section id="step-3-create-your-cv" class="level3" data-number="10.3">
+<h3 data-number="10.3" class="anchored" data-anchor-id="step-3-create-your-cv"><span class="header-section-number">10.3</span> Step 3: Create Your CV</h3>
 <ul>
 <li>Go back to Overleaf and paste the AI-generated LaTeX code.</li>
 <li>Click <strong>Recompile</strong> to see your formatted CV.</li>
@@ -196,8 +183,8 @@ Don't include my email in the site to avoid spam
 <li>Click <strong>Download PDF</strong> to save your CV.</li>
 </ul>
 </section>
-<section id="step-4-add-to-your-portfolio" class="level3" data-number="11.4">
-<h3 data-number="11.4" class="anchored" data-anchor-id="step-4-add-to-your-portfolio"><span class="header-section-number">11.4</span> Step 4: Add to Your Portfolio</h3>
+<section id="step-4-add-to-your-portfolio" class="level3" data-number="10.4">
+<h3 data-number="10.4" class="anchored" data-anchor-id="step-4-add-to-your-portfolio"><span class="header-section-number">10.4</span> Step 4: Add to Your Portfolio</h3>
 <ul>
 <li>Upload your CV PDF to Google Drive.</li>
 <li>Get a shareable link (make sure it’s publicly accessible).</li>

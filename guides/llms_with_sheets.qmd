@@ -1,0 +1,199 @@
+---
+title: "Using LLM APIs in Google Sheets"
+subtitle: "Transcription of a Video Tutorial from the GRAPH Network's Generative AI for Work & Research Course"
+author: "The GRAPH Courses"
+format: pdf
+editor: source
+---
+
+## Introduction
+
+While chat interfaces like ChatGPT and Gemini are common, using Large Language Models (LLMs) through an Application Programming Interface (API) is a powerful skill. An API allows you to call models programmatically using code, which is ideal for automating and repeating tasks hundreds or even thousands of times.
+
+This tutorial will guide you through setting up and using an LLM API directly within Google Sheets to perform data enrichment tasks.
+
+---
+
+## 1. Setting Up Your Google Sheet
+
+First, you'll need the data we'll be working with. You can create your own copy of the spreadsheet.
+
+1.  **Open the template sheet** (you would typically provide a link here).
+2.  Select all cells (`Ctrl+A` or `Cmd+A`) and copy them (`Ctrl+C` or `Cmd+C`).
+3.  Open a brand-new Google Sheet by navigating to `sheets.new` in your browser.
+4.  Paste the copied data into your new sheet (`Ctrl+V` or `Cmd+V`).
+
+You should now have a sheet with a long list of countries. Our first task will be to find the current **head of state** for each country and then determine their **gender**. While you could copy-paste this into a chat interface, an API is more reliable for this many individual queries.
+
+---
+
+## 2. Get an API Key from OpenRouter
+
+We will use **OpenRouter**, a service that provides a unified interface to access many different LLMs.
+
+### Sign Up and Add Credits
+
+1.  Navigate to **[openrouter.ai](https://openrouter.ai/)**.
+2.  Sign up for an account (you can use a Google account).
+3.  After signing in, locate the **Credits** section (usually in the top-right).
+4.  You'll need to add credits to use the API. The minimum is typically around $5. Add the funds to your account.
+    * *Note: If you are part of a specific program or cohort, you might be provided with a key directly.*
+
+### Create and Copy Your API Key
+
+An API key is like a password that grants your code access to your account.
+
+1.  Find the **Keys** section on the OpenRouter dashboard (look for a key icon).
+2.  Click **Create Key**.
+3.  Give your key a descriptive name (e.g., `gpt-sheets-key`).
+4.  **Set a credit limit**. This is a crucial safety measure to prevent unexpected costs if your key is ever exposed. A limit of `$3` is more than enough for this exercise.
+5.  Click **Create**.
+6.  **Immediately copy the generated key**. You will not be able to see it again.
+7.  For now, paste this key into a temporary cell in your Google Sheet for safekeeping.
+
+
+
+---
+
+## 3. Choose Your Models
+
+OpenRouter provides access to hundreds of models. You can browse them in the **Models** section. For our tasks, we will use two specific models.
+
+1.  **Google Gemini 1.5 Flash**: A fast and very cheap model. Its ID is `google/gemini-flash-1.5`.
+2.  **Perplexity Sonar**: A model optimized for tasks requiring real-time internet search to provide up-to-date information. Its ID is `perplexity/sonar-small-32k-online`.
+
+Copy these two model IDs and paste them into your spreadsheet for easy access later.
+
+---
+
+## 4. Create a Custom Function in Google Sheets
+
+To call the API from a sheet formula, we need to create a custom function using Google Apps Script.
+
+1.  In your Google Sheet, go to **Extensions > Apps Script**.
+2.  An editor will open in a new tab. Give your project a name (e.g., "MyGPT").
+3.  **Delete** any boilerplate code in the editor (`function myFunction() {...}`).
+4.  Copy and paste the following JavaScript code into the editor. This function, named `MYGPT`, will take your prompt, the model ID, and your API key as inputs, send them to OpenRouter, and return the LLM's response.
+
+```javascript
+function MYGPT(prompt, model, key) {
+  if (!prompt) return '';
+  if (!model) throw new Error('Model ID required (e.g. "openai/gpt-4o").');
+  if (!key) throw new Error('OpenRouter API key required.');
+
+  const url = 'https://openrouter.ai/api/v1/chat/completions';
+  const body = {
+    model,
+    messages: [{ role: 'user', content: String(prompt) }]
+  };
+
+  const options = {
+    method: 'post',
+    contentType: 'application/json',
+    headers: { Authorization: 'Bearer ' + key },
+    payload: JSON.stringify(body),
+    muteHttpExceptions: true
+  };
+
+  try {
+    const res = UrlFetchApp.fetch(url, options);
+    const json = JSON.parse(res.getContentText());
+    return json.choices[0].message.content.trim();
+  } catch (err) {
+    return 'GPT error: ' + err;
+  }
+}
+```
+
+5.  Click the **Save project** icon (floppy disk).
+6.  Click the **Run** button.
+
+### Authorize the Script
+
+The first time you run the script, Google will ask for permissions.
+
+1.  A "Authorization required" popup will appear. Click **Review permissions**.
+2.  Choose the Google account associated with the sheet.
+3.  You may see a "Google hasn't verified this app" screen. This is normal for personal scripts. Click **Advanced**, then click **Go to [Your Project Name] (unsafe)**.
+4.  Review the permissions (it needs to connect to an external service, which is the OpenRouter API) and click **Allow**.
+5.  You might need to click **Run** one more time in the editor to ensure everything is initialized.
+
+---
+
+## 5. Task 1: Find the Head of State
+
+Now, let's use our new `MYGPT` function.
+
+### Test the Function
+
+First, test it in any empty cell to make sure it works. The function requires three arguments: `prompt`, `model`, and `key`.
+
+```excel
+=MYGPT("What model are you?", "google/gemini-2.5-flash", "sk-or-...")
+```
+
+Replace `"sk-or-..."` with your actual OpenRouter key. After a moment, you should see a response like "I am a large language model trained by Google."
+
+### Create a Dynamic Prompt
+
+To get the head of state for each country, we'll construct a prompt for each row.
+
+1.  Insert a new column to the left of "Head of State" and name it "Prompt".
+2.  In cell `B2` (assuming countries are in column A), enter the following formula to create a specific prompt for the country in `A2`:
+
+    ```excel
+    =CONCATENATE("Who is the head of state of ", A2, "? 
+    Return just their name. If unclear, return 'Undefined'.")
+    ```
+
+3.  Drag the fill handle (the small square at the bottom-right of the cell) down to create a prompt for every country.
+
+### Apply the API Function
+
+Now, use the `MYGPT` function to answer each prompt.
+
+1.  In the "Head of State" column (cell `C2`), enter your formula. This time, reference the prompt in cell `B2` instead of typing it manually.
+
+    ```excel
+    =MYGPT(B2, "perplexity/sonar", "YOUR_API_KEY_HERE")
+    ```
+
+    * **Note:** We are using the `perplexity` model because it can search the web and provide up-to-date information, which is crucial for a topic like current world leaders. The standard Gemini model might have outdated knowledge.
+
+2.  After confirming it works for the first row, drag the formula down for all other rows. The sheet will take some time to process all ~200 API calls.
+
+### Save Your Results as Values
+
+**This is a critical step.** Once the formulas have returned all the names, you must convert them from formulas to static text. Otherwise, any small change to the sheet could cause all ~200 API calls to run again, wasting your credits.
+
+1.  Select the entire "Head of State" column.
+2.  Copy it (`Ctrl+C`).
+3.  With the column still selected, right-click and choose **Paste special > Values only**.
+
+The cells now contain the plain text names instead of the `=MYGPT(...)` formula.
+
+---
+
+## 6. Task 2: Find the Gender
+
+We will repeat the process to find the gender of each head of state.
+
+1.  Create a new "Gender Prompt" column (e.g., column D).
+2.  In cell `D2`, create a prompt that uses the country and the leader's name we just found:
+
+    ```excel
+    =CONCATENATE("What is the gender of ", C2, " (the head of state of ", A2, ")?
+     Return only M, F, NB, or Undefined.")
+    ```
+
+3.  Drag this formula down for all rows.
+4.  In the "Gender" column (cell `E2`), use the `MYGPT` function again:
+
+    ```excel
+    =MYGPT(D2, "perplexity/sonar", "YOUR_API_KEY_HERE")
+    ```
+
+5.  Drag the formula down to get the gender for each person.
+6.  Once complete, remember to **copy and paste the results as values** to prevent re-running the API calls.
+
+You now have a dataset enriched with up-to-date information, all automated directly within your spreadsheet!

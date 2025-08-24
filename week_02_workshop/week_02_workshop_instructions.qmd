@@ -117,7 +117,7 @@ You will use Julius, an AI data analysis chat-based tool, to analyze your data a
 1.  **Setup Julius:**
 
     *   Go to [Julius.ai](https://julius.ai/){target="_blank"} and sign up.
-    *   For a 2-week trial of premium features, go to your **Settings**, then **Usage**, and under **Institutional Codes**, enter: `GRAPHAIR`
+    *   For a 2-week trial of premium features, go to your **Settings**, then **Usage**, and under **Institutional Codes**, enter the code provided to you by your instructor.
     *   **Please do not share this code.**
 
 2.  **Starting Your Analysis in Julius:**
